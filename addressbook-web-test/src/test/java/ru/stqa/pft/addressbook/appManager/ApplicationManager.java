@@ -1,18 +1,25 @@
-package ru.stqa.pft.addressbook;
+package ru.stqa.pft.addressbook.appManager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import ru.stqa.pft.addressbook.model.Emails123;
+import ru.stqa.pft.addressbook.model.LastNameNick2;
+import ru.stqa.pft.addressbook.model.NameFirstMiddle;
 
 import java.util.concurrent.TimeUnit;
 
 /**
  * Created by khomep on 08-Jun-16.
  */
-public class TestBase {
+public class ApplicationManager  {
+
     FirefoxDriver wd;
+
+    // private final GroupHelper groupHelper = new GroupHelper();
+
+    private NavigationHelper navigationHelper;
+    private GroupHelper groupHelper;
 
     public static boolean isAlertPresent(FirefoxDriver wd) {
         try {
@@ -23,70 +30,26 @@ public class TestBase {
         }
     }
 
-    @BeforeMethod
-    public void setUp() throws Exception {
-        // goes method 'setup'
+    public void initTests() {
+        // .....goes method 'setup'
+        // groupHelper.wd = new FirefoxDriver();
         wd = new FirefoxDriver();
         // init attribute of object = WD
+        // groupHelper.wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        // groupHelper.wd.get("http://localhost/addressbook/group.php");
         wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         wd.get("http://localhost/addressbook/group.php");
+        groupHelper = new GroupHelper(wd);
+        navigationHelper = new NavigationHelper(wd);
         loginAddressbook("admin", "secret");
     }
 
-    private void loginAddressbook(String username, String pass) {
-        // method , not function due to 'wd' - variable of object by GroupCreationTest type
-        gotoGroupPage2();
-        wd.findElement(By.name("user")).clear();
-        wd.findElement(By.name("user")).sendKeys(username);
-        wd.findElement(By.name("pass")).click();
-        wd.findElement(By.name("pass")).clear();
-        wd.findElement(By.name("pass")).sendKeys(pass);
-        wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
-    }
-
-    private void gotoGroupPage2() {
-        wd.findElement(By.name("user")).click();
-    }
-
-    protected void returntoGroupPage() {
-        wd.findElement(By.linkText("group page")).click();
-    }
-
-    protected void submitGroupCreation() {
-        wd.findElement(By.name("submit")).click();
-    }
-
-    protected void fillInGroupForm(GroupData groupData) {
-        wd.findElement(By.name("group_name")).click();
-        wd.findElement(By.name("group_name")).clear();
-        wd.findElement(By.name("group_name")).sendKeys(groupData.getName());
-        wd.findElement(By.name("group_header")).click();
-        wd.findElement(By.name("group_header")).clear();
-        wd.findElement(By.name("group_header")).sendKeys(groupData.getHeader());
-        wd.findElement(By.name("group_footer")).click();
-        wd.findElement(By.name("group_footer")).clear();
-        wd.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
-    }
-
-    protected void initGroupCreation() {
-        wd.findElement(By.name("new")).click();
-    }
-
-    protected void gotoGroupCreation() {
-        wd.findElement(By.linkText("groups")).click();
-    }
-
-    @AfterMethod
-    public void tearDown() {
-        wd.quit();
-    }
-
-    protected void fillAddNamePad() {
+    public void fillAddNamePad() {
         wd.findElement(By.id("content")).click();
         wd.findElement(By.linkText("add new")).click();
     }
 
-    protected void fillFirstNameMiddleName(NameFirstMiddle nameFirstMiddle) {
+    public void fillFirstNameMiddleName(NameFirstMiddle nameFirstMiddle) {
         wd.findElement(By.name("firstname")).click();
         wd.findElement(By.name("firstname")).clear();
         wd.findElement(By.name("firstname")).sendKeys(nameFirstMiddle.getFirstname());
@@ -95,7 +58,7 @@ public class TestBase {
         wd.findElement(By.name("middlename")).sendKeys(nameFirstMiddle.getMiddleName());
     }
 
-    protected void fillLastNameNickName(LastNameNick2 lastNameNick2) {
+    public void fillLastNameNickName(LastNameNick2 lastNameNick2) {
         wd.findElement(By.name("lastname")).click();
         wd.findElement(By.name("lastname")).clear();
         wd.findElement(By.name("lastname")).sendKeys(lastNameNick2.getLastname());
@@ -104,25 +67,25 @@ public class TestBase {
         wd.findElement(By.name("nickname")).sendKeys(lastNameNick2.getNickname());
     }
 
-    protected void fillTitle(String title) {
+    public void fillTitle(String title) {
         wd.findElement(By.name("title")).click();
         wd.findElement(By.name("title")).clear();
         wd.findElement(By.name("title")).sendKeys(title);
     }
 
-    protected void fillCompany(String companyName) {
+    public void fillCompany(String companyName) {
         wd.findElement(By.name("company")).click();
         wd.findElement(By.name("company")).clear();
         wd.findElement(By.name("company")).sendKeys(companyName);
     }
 
-    protected void fillAddress1(String address1) {
+    public void fillAddress1(String address1) {
         wd.findElement(By.name("address")).click();
         wd.findElement(By.name("address")).clear();
         wd.findElement(By.name("address")).sendKeys(address1);
     }
 
-    protected void fillHomeMobileTlf(String hometlf, String mobiletlf) {
+    public void fillHomeMobileTlf(String hometlf, String mobiletlf) {
         wd.findElement(By.name("home")).click();
         wd.findElement(By.name("home")).clear();
         wd.findElement(By.name("home")).sendKeys(hometlf);
@@ -131,14 +94,14 @@ public class TestBase {
         wd.findElement(By.name("mobile")).sendKeys(mobiletlf);
     }
 
-    protected void fillFaxWorkTlf() {
+    public void fillFaxWorkTlf() {
         wd.findElement(By.name("work")).click();
         wd.findElement(By.name("work")).sendKeys("\\9");
         wd.findElement(By.name("fax")).click();
         wd.findElement(By.name("fax")).sendKeys("\\9");
     }
 
-    protected void fillEmail(Emails123 emails123) {
+    public void fillEmail(Emails123 emails123) {
         wd.findElement(By.name("email")).click();
         wd.findElement(By.name("email")).clear();
         wd.findElement(By.name("email")).sendKeys(emails123.getEmail1());
@@ -149,13 +112,13 @@ public class TestBase {
         wd.findElement(By.name("email3")).sendKeys(emails123.getEmail3());
     }
 
-    protected void fillHomePage() {
+    public void fillHomePage() {
         wd.findElement(By.name("homepage")).click();
         wd.findElement(By.name("homepage")).clear();
         wd.findElement(By.name("homepage")).sendKeys("www.kultura.tv");
     }
 
-    protected void fillBithday() {
+    public void fillBithday() {
         if (!wd.findElement(By.xpath("//div[@id='content']/form/select[1]//option[1]")).isSelected()) {
             wd.findElement(By.xpath("//div[@id='content']/form/select[1]//option[1]")).click();
         }
@@ -170,7 +133,7 @@ public class TestBase {
         wd.findElement(By.name("byear")).sendKeys("1799");
     }
 
-    protected void fillContent() {
+    public void fillContent() {
         if (!wd.findElement(By.xpath("//div[@id='content']/form/select[3]//option[1]")).isSelected()) {
             wd.findElement(By.xpath("//div[@id='content']/form/select[3]//option[1]")).click();
         }
@@ -184,13 +147,13 @@ public class TestBase {
         }
     }
 
-    protected void fillAddress2() {
+    public void fillAddress2() {
         wd.findElement(By.name("address2")).click();
         wd.findElement(By.name("address2")).clear();
         wd.findElement(By.name("address2")).sendKeys("Spb, Puchkinskij dom");
     }
 
-    protected void fillPhone2() {
+    public void fillPhone2() {
         wd.findElement(By.name("phone2")).click();
         wd.findElement(By.name("phone2")).clear();
         wd.findElement(By.name("phone2")).sendKeys("Spb Fontanka,6");
@@ -198,18 +161,28 @@ public class TestBase {
         wd.findElement(By.name("notes")).clear();
     }
 
-    protected void submit() {
+    public void submit() {
         wd.findElement(By.name("notes")).sendKeys(".");
         wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
     }
 
-    protected void deleteSelectedGroup() {
-        wd.findElement(By.xpath("//div[@id='content']/form/input[5]")).click();
+
+    private void loginAddressbook(String username, String pass) {
+        // method , not function due to 'wd' - variable of object by GroupCreationTest type
+        groupHelper.getNavigationHelper().gotoGroupPage2();
+        wd.findElement(By.name("user")).clear();
+        wd.findElement(By.name("user")).sendKeys(username);
+        wd.findElement(By.name("pass")).click();
+        wd.findElement(By.name("pass")).clear();
+        wd.findElement(By.name("pass")).sendKeys(pass);
+        wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
     }
 
-    protected void selectOneGroupFromAllGroup() {
-        if (!wd.findElement(By.xpath("//div[@id='content']/form/span[2]/input")).isSelected()) {
-            wd.findElement(By.xpath("//div[@id='content']/form/span[2]/input")).click();
-        }
+    public void afterTests() {
+        wd.quit();
+    }
+
+    public GroupHelper getGroupHelper() {
+        return groupHelper;
     }
 }
