@@ -133,9 +133,9 @@ public class ContactHelper extends HelperBase {
         //wd.findElement(By.name("notes")).clear();
     }
 
-    public void initContactMark() {
-        //click(By.xpath("//div[@id='content']/form/span[2]/input"));
-        click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+    public void submitDelete() {
+        //click(By.xpath("//div[@id='content']/form[1]/input[22]"));
+        click(By.xpath("//div[@id='content']/form[2]/input[2]"));
     }
 
     public void initContactModification() {
