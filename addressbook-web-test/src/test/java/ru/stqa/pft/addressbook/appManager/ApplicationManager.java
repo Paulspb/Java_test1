@@ -1,7 +1,6 @@
 package ru.stqa.pft.addressbook.appManager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.pft.addressbook.model.Emails123;
 import ru.stqa.pft.addressbook.model.LastNameNick2;
@@ -17,18 +16,11 @@ public class ApplicationManager  {
     FirefoxDriver wd;
 
     // private final GroupHelper groupHelper = new GroupHelper();
-
+    private SessionHelper sessionHelper;
     private NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
 
-    public static boolean isAlertPresent(FirefoxDriver wd) {
-        try {
-            wd.switchTo().alert();
-            return true;
-        } catch (NoAlertPresentException e) {
-            return false;
-        }
-    }
+
 
     public void initTests() {
         // .....goes method 'setup'
@@ -41,7 +33,10 @@ public class ApplicationManager  {
         wd.get("http://localhost/addressbook/group.php");
         groupHelper = new GroupHelper(wd);
         navigationHelper = new NavigationHelper(wd);
-        loginAddressbook("admin", "secret");
+        sessionHelper    = new SessionHelper(wd);
+        sessionHelper.loginAddressbook("admin", "secret");
+        //groupHelper.getNavigationHelper().gotoGroupPage2();
+
     }
 
     public void fillAddNamePad() {
@@ -166,17 +161,6 @@ public class ApplicationManager  {
         wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
     }
 
-
-    private void loginAddressbook(String username, String pass) {
-        // method , not function due to 'wd' - variable of object by GroupCreationTest type
-        groupHelper.getNavigationHelper().gotoGroupPage2();
-        wd.findElement(By.name("user")).clear();
-        wd.findElement(By.name("user")).sendKeys(username);
-        wd.findElement(By.name("pass")).click();
-        wd.findElement(By.name("pass")).clear();
-        wd.findElement(By.name("pass")).sendKeys(pass);
-        wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
-    }
 
     public void afterTests() {
         wd.quit();
