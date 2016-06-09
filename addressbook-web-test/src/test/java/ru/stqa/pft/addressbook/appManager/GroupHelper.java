@@ -17,11 +17,11 @@ public class GroupHelper extends HelperBase {
         navigationHelper = new NavigationHelper(wd);
     }
 
-    public void submitGroupCreation() {
+    public void submitGroupCreation()    {
         click(By.name("submit"));
     }
 
-    public void initGroupCreation() {
+    public void initGroupCreation()    {
         click(By.name("new"));
     }
 
@@ -47,5 +47,9 @@ public class GroupHelper extends HelperBase {
 
     public NavigationHelper getNavigationHelper() {
         return navigationHelper;
+    }
+
+    public void initGroupModificatio() {
+        click(By.name("edit"));
     }
 }

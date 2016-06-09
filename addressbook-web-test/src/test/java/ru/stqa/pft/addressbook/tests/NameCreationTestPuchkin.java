@@ -9,20 +9,20 @@ public class NameCreationTestPuchkin extends TestBase {
 
     @Test
     public void nameCreationTestPushkinMethod() {
-        app.fillAddNamePad();
-        app.fillFirstNameMiddleName(new NameFirstMiddle("Alexey", "Sergeevich"));
-        app.fillLastNameNickName(new LastNameNick2("Pushkin", "Puschkin"));
-        app.fillTitle("mr.");
-        app.fillCompany("ooo Boldino");
-        app.fillAddress1("Pskovskaya obl.");
-        app.fillHomeMobileTlf("8 888 555 3214", "8 921 921 921 921");
-        app.fillFaxWorkTlf();
-        app.fillEmail(new Emails123("alexander0.puchkin@gmail.com", "apuchkin@kultura.tv", "\\9"));
-        app.fillHomePage();
-        app.fillBithday();
-        app.fillContent();
-        app.fillAddress2();
-        app.fillPhone2();
+        app.getContactHelper().fillAddNamePad();
+        app.getContactHelper().fillFirstNameMiddleName(new NameFirstMiddle("Alexey", "Sergeevich"));
+        app.getContactHelper().fillLastNameNickName(new LastNameNick2("Pushkin", "Puschkin"));
+        app.getContactHelper().fillTitle("mr.");
+        app.getContactHelper().fillCompany("ooo Boldino");
+        app.getContactHelper().fillAddress1("Pskovskaya obl.");
+        app.getContactHelper().fillHomeMobileTlf("8 888 555 3214", "8 921 921 921 921");
+        app.getContactHelper().fillFaxWorkTlf();
+        app.getContactHelper().fillEmail(new Emails123("alexander0.puchkin@gmail.com", "apuchkin@kultura.tv", "\\9"));
+        app.getContactHelper().fillHomePage();
+        app.getContactHelper().fillBithday();
+        app.getContactHelper().fillContent();
+        app.getContactHelper().fillAddress2();
+        app.getContactHelper().fillPhone2();
         app.submit();
     }
 
