@@ -31,9 +31,7 @@ public class ContactHelper extends HelperBase {
         //wd.findElement(By.name("firstname")).clear();
         //wd.findElement(By.name("firstname")).sendKeys(nameFirstMiddle.getFirstname());
         type(By.name("middlename"),nameFirstMiddle.getMiddleName());
-        //wd.findElement(By.name("middlename")).click();
-        //wd.findElement(By.name("middlename")).clear();
-        //wd.findElement(By.name("middlename")).sendKeys(nameFirstMiddle.getMiddleName());
+
     }
 
     public void fillLastNameNickName(LastNameNick2 lastNameNick2) {
@@ -43,9 +41,7 @@ public class ContactHelper extends HelperBase {
 
     public void fillTitle(String title) {
         type(By.name("title"),title);
-        //wd.findElement(By.name("title")).click();
-        //wd.findElement(By.name("title")).clear();
-        //wd.findElement(By.name("title")).sendKeys(title);
+
     }
 
     public void fillCompany(String companyName) {
