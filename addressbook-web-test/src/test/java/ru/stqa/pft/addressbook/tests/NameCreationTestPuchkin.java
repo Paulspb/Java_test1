@@ -9,6 +9,7 @@ public class NameCreationTestPuchkin extends TestBase {
 
     @Test
     public void nameCreationTestPushkinMethod() {
+        app.getContactHelper().goToContact();
         app.getContactHelper().fillAddNamePad();
         app.getContactHelper().fillFirstNameMiddleName(new NameFirstMiddle("Alexey", "Sergeevich"));
         app.getContactHelper().fillLastNameNickName(new LastNameNick2("Pushkin", "Puschkin"));

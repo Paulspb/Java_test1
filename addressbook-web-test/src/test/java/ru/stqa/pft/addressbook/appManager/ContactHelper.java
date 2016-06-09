@@ -17,8 +17,15 @@ public class ContactHelper extends HelperBase {
         super(wd);
     }
 
+    public void goToContact() {
+        click(By.linkText("home"));
+        //click(By.id("content"));
+        //wd.findElement(By.id("content")).click();
+        //click(By.linkText("add new"));
+        //wd.findElement(By.linkText("add new")).click();
+    }
     public void fillAddNamePad() {
-        click(By.id("content"));
+        //click(By.id("content"));
         //wd.findElement(By.id("content")).click();
         click(By.linkText("add new"));
         //wd.findElement(By.linkText("add new")).click();
@@ -124,5 +131,19 @@ public class ContactHelper extends HelperBase {
         // wd.findElement(By.name("phone2")).sendKeys("Spb Fontanka,6");
         //wd.findElement(By.name("notes")).click();
         //wd.findElement(By.name("notes")).clear();
+    }
+
+    public void initContactMark() {
+        //click(By.xpath("//div[@id='content']/form/span[2]/input"));
+        click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+    }
+
+    public void initContactModification() {
+        //click(By.xpath("//div[@id='content']/form/span[2]/input"));
+        click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+    }
+
+    public void submitUpdate() {
+        click(By.xpath("//div[@id='content']/form[1]/input[22]"));
     }
 }
