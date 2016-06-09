@@ -66,10 +66,12 @@ public class ContactHelper extends HelperBase {
     }
 
     public void fillFaxWorkTlf() {
-        wd.findElement(By.name("work")).click();
-        wd.findElement(By.name("work")).sendKeys("\\9");
-        wd.findElement(By.name("fax")).click();
-        wd.findElement(By.name("fax")).sendKeys("\\9");
+        type(By.name("work"),"8788");
+        type(By.name("fax"),"32455");
+        //wd.findElement(By.name("work")).click();
+        //wd.findElement(By.name("work")).sendKeys("\\9");
+        //wd.findElement(By.name("fax")).click();
+        //wd.findElement(By.name("fax")).sendKeys("\\9");
     }
 
     public void fillEmail(Emails123 emails123) {
@@ -122,8 +124,9 @@ public class ContactHelper extends HelperBase {
 
     public void fillPhone2() {
         type(By.name("address2"),"Spb, fontanka,6");
+        type(By.name("notes"),"...notes...");
         // wd.findElement(By.name("phone2")).sendKeys("Spb Fontanka,6");
-        wd.findElement(By.name("notes")).click();
-        wd.findElement(By.name("notes")).clear();
+        //wd.findElement(By.name("notes")).click();
+        //wd.findElement(By.name("notes")).clear();
     }
 }
