@@ -2,6 +2,7 @@ package ru.stqa.pft.addressbook.appManager;
 
 import com.sun.javafx.binding.ExpressionHelperBase;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.pft.addressbook.model.GroupData;
 
@@ -12,8 +13,9 @@ public class GroupHelper extends HelperBase {
 
     private NavigationHelper navigationHelper;
 
-    public GroupHelper(FirefoxDriver wd) {
-        super(wd);
+    //public GroupHelper(FirefoxDriver wd) {
+    public GroupHelper(WebDriver wd) {
+            super(wd);
         navigationHelper = new NavigationHelper(wd);
     }
 

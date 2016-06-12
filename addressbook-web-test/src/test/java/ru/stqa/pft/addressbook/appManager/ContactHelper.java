@@ -1,6 +1,7 @@
 package ru.stqa.pft.addressbook.appManager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.pft.addressbook.model.Emails123;
 import ru.stqa.pft.addressbook.model.LastNameNick2;
@@ -12,7 +13,7 @@ import ru.stqa.pft.addressbook.model.NameFirstMiddle;
 public class ContactHelper extends HelperBase {
     // no after super.wd;   private FirefoxDriver wd;
 
-    public ContactHelper(FirefoxDriver wd) {
+    public ContactHelper(WebDriver wd) {
         //this.wd = wd;
         super(wd);
     }
