@@ -48,10 +48,12 @@ public class GroupHelper extends HelperBase {
     }
 
     public void selectOneGroupFromAllGroup() {
-        if (!wd.findElement(By.xpath("//div[@id='content']/form/span[2]/input")).isSelected()) {
-            click(By.xpath("//div[@id='content']/form/span[2]/input"));
+       click(By.name("selected[]"));
+        // it has so recorded:
+        // if (!wd.findElement(By.xpath("//div[@id='content']/form/span[2]/input")).isSelected()) {
+       //     click(By.xpath("//div[@id='content']/form/span[2]/input"));
         }
-    }
+
 
     public void fillInGroupForm(GroupData groupData) {
         type(By.name("group_name"), groupData.getName());
@@ -77,4 +79,17 @@ public class GroupHelper extends HelperBase {
     public void submitGroupDelete() {
         click(By.name("delete"));
     }
+
+    public void createGroup(GroupData group) {
+        initGroupCreation();
+        //fillInGroupForm(new GroupData("test123423434", "test21", "test31"));
+        fillInGroupForm(group);
+        submitGroupCreation();
+        getNavigationHelper().returntoGroupPage();
+    }
+
+    public boolean isThereAGroup() {
+       return isElementPresent(By.name("selected[]"));
+    }
+
 }
