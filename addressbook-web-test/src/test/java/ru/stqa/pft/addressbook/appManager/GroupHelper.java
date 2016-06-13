@@ -27,7 +27,19 @@ public class GroupHelper extends HelperBase {
         click(By.name("new"));
     }
 
-    public  void gotoGroupCreation() {
+    public  void gotoGroupPage() {
+
+        // look if "Group" tag present via analyze element into FireFox  &&
+        // look if Element within h1 == Group &&
+        // elememt #2= "new"
+        if (isElementPresent(By.tagName("h1"))
+                && wd.findElement(By.tagName("h1")).getText().equals("Groups")
+                && isElementPresent(By.name("new"))) {
+        //if ( ! isElementPresent(By.tagName("h1"))
+        //            || ! wd.findElement(By.tagName("h1")).getText().equals("Groups")
+        //            || ! isElementPresent(By.name("new"))) {
+              return;
+            }  // else
         click(By.linkText("groups"));
     }
 

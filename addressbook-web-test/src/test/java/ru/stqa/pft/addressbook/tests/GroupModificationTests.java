@@ -9,10 +9,10 @@ import ru.stqa.pft.addressbook.model.GroupData;
 public class GroupModificationTests extends TestBase {
     @Test
     public void testGroupModification() {
-        app.getGroupHelper().gotoGroupCreation();
+        app.getGroupHelper().gotoGroupPage();
         app.getGroupHelper().selectOneGroupFromAllGroup();
         app.getGroupHelper().initGroupModification();
-        app.getGroupHelper().fillInGroupForm(new GroupData("upda3334", "updat3331", "updat3331"));
+        app.getGroupHelper().fillInGroupForm(new GroupData("test123423434", "updat3331", "updat3331"));
         app.getGroupHelper().submitGroupModification();
         app.getGroupHelper().getNavigationHelper().returntoGroupPage();
 

@@ -9,7 +9,7 @@ import ru.stqa.pft.addressbook.model.GroupData;
 public class GroupDeleteOneOf extends TestBase {
      @Test
         public void testGroupDeleteOneOf() {
-            app.getGroupHelper().gotoGroupCreation();
+            app.getGroupHelper().gotoGroupPage();
             app.getGroupHelper().selectOneGroupFromAllGroup();
             //app.getGroupHelper().initGroupModification();
             //app.getGroupHelper().fillInGroupForm(new GroupData("dete11", "del 11", "del 11111"));

@@ -16,6 +16,10 @@ public class NavigationHelper extends HelperBase {
     }
 
     public void returntoGroupPage()    {
+        // table present only in this page, it has ID
+        if (isElementPresent(By.id("maintable"))) {
+            return;
+        }
         // click(By.linkText("group page"));
         // wd.findElement(By.linkText("group page")).click();
         click(By.linkText("groups"));

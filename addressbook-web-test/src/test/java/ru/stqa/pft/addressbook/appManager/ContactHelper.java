@@ -1,8 +1,11 @@
 package ru.stqa.pft.addressbook.appManager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.Emails123;
 import ru.stqa.pft.addressbook.model.LastNameNick2;
 import ru.stqa.pft.addressbook.model.NameFirstMiddle;
@@ -19,6 +22,10 @@ public class ContactHelper extends HelperBase {
     }
 
     public void goToContact() {
+        // table present only in this page, it has ID
+        if (isElementPresent(By.id("maintable"))) {
+            return;
+          }  // else
         click(By.linkText("home"));
         //click(By.id("content"));
         //wd.findElement(By.id("content")).click();
@@ -31,8 +38,8 @@ public class ContactHelper extends HelperBase {
         click(By.linkText("add new"));
         //wd.findElement(By.linkText("add new")).click();
     }
-
-    public void fillFirstNameMiddleName(NameFirstMiddle nameFirstMiddle) {
+    // boolean = 1 - creation, 0 - modify
+    public void fillFirstNameMiddleName(NameFirstMiddle nameFirstMiddle, boolean creation) {
 
         type(By.name("firstname"),nameFirstMiddle.getFirstname());
         //wd.findElement(By.name("firstname")).click();
@@ -40,6 +47,16 @@ public class ContactHelper extends HelperBase {
         //wd.findElement(By.name("firstname")).sendKeys(nameFirstMiddle.getFirstname());
         type(By.name("middlename"),nameFirstMiddle.getMiddleName());
 
+        if (creation) {
+            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(nameFirstMiddle.getGroup());
+        } else {
+            // test modify, not creating
+            Assert.assertFalse(isElementPresent(By.name("new_group")));
+        }
+        // take element from predefined values
+        // //if (isElementPresent(By.name("new_group"))) {
+            //new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(nameFirstMiddle.getGroup());
+        //  }
     }
 
     public void fillLastNameNickName(LastNameNick2 lastNameNick2) {

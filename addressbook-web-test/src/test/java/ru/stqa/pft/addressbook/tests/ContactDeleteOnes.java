@@ -12,7 +12,7 @@ public class ContactDeleteOnes extends TestBase {
     public void testContactModification() {
         app.getContactHelper().goToContact();
         app.getContactHelper().initContactModification();
-        app.getContactHelper().fillFirstNameMiddleName(new NameFirstMiddle("delete", "Serge-delete"));
+        app.getContactHelper().fillFirstNameMiddleName(new NameFirstMiddle("delete", "Serge-delete", "delete3"), false);
         app.getContactHelper().fillLastNameNickName(new LastNameNick2("delete", "delete-Puschkin"));
         app.getContactHelper().submitDelete();
      }

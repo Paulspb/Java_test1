@@ -12,7 +12,8 @@ public class ContactModificationTests extends TestBase {
     public void testContactModification() {
         app.getContactHelper().goToContact();
         app.getContactHelper().initContactModification();
-        app.getContactHelper().fillFirstNameMiddleName(new NameFirstMiddle("Update1", "Serge-update"));
+        //app.getContactHelper().fillFirstNameMiddleName(new NameFirstMiddle("Update1", "Serge-update","upda3334"), false);
+        app.getContactHelper().fillFirstNameMiddleName(new NameFirstMiddle("Update1", "Serge-update",null), false);
         app.getContactHelper().fillLastNameNickName(new LastNameNick2("UPdate11", "update1-Puschkin"));
         app.getContactHelper().submitUpdate();
         //app.fillTitle("mr.");
