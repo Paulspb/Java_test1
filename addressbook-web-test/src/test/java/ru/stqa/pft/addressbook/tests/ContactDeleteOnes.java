@@ -1,6 +1,8 @@
 package ru.stqa.pft.addressbook.tests;
 
 import org.testng.annotations.Test;
+import ru.stqa.pft.addressbook.model.Emails123;
+import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.LastNameNick2;
 import ru.stqa.pft.addressbook.model.NameFirstMiddle;
 
@@ -10,10 +12,12 @@ import ru.stqa.pft.addressbook.model.NameFirstMiddle;
 public class ContactDeleteOnes extends TestBase {
     @Test
     public void testContactModification() {
+
         app.getContactHelper().goToContact();
-        app.getContactHelper().initContactModification();
-        app.getContactHelper().fillFirstNameMiddleName(new NameFirstMiddle("delete", "Serge-delete", "delete3"), false);
-        app.getContactHelper().fillLastNameNickName(new LastNameNick2("delete", "delete-Puschkin"));
+        if (! app.getContactHelper().isThereAContact()) {
+            app.getContactHelper().createSimpleContact(new NameFirstMiddle("update2", "Sergeevich","test134"), true);
+            }
+        app.getContactHelper().initContactModification(2);
         app.getContactHelper().submitDelete();
      }
 }

@@ -7,6 +7,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.Emails123;
+import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.LastNameNick2;
 import ru.stqa.pft.addressbook.model.NameFirstMiddle;
 
@@ -32,7 +33,7 @@ public class ContactHelper extends HelperBase {
         //click(By.linkText("add new"));
         //wd.findElement(By.linkText("add new")).click();
     }
-    public void fillAddNamePad() {
+    public void goToAddNamePad() {
         //click(By.id("content"));
         //wd.findElement(By.id("content")).click();
         click(By.linkText("add new"));
@@ -47,7 +48,10 @@ public class ContactHelper extends HelperBase {
         //wd.findElement(By.name("firstname")).sendKeys(nameFirstMiddle.getFirstname());
         type(By.name("middlename"),nameFirstMiddle.getMiddleName());
 
+        // take group from GroupName
         if (creation) {
+            //if (isElementPresent(wd.findElement(By.name("new_group")).selectByVisibleText(nameFirstMiddle.getGroup()) {
+            //}
             new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(nameFirstMiddle.getGroup());
         } else {
             // test modify, not creating
@@ -133,9 +137,10 @@ public class ContactHelper extends HelperBase {
         }
         wd.findElement(By.name("ayear")).click();
         wd.findElement(By.name("ayear")).sendKeys("\\9");
-        if (!wd.findElement(By.xpath("//div[@id='content']/form/select[5]//option[1]")).isSelected()) {
-            wd.findElement(By.xpath("//div[@id='content']/form/select[5]//option[1]")).click();
-        }
+        // group choice
+        //if (!wd.findElement(By.xpath("//div[@id='content']/form/select[5]//option[1]")).isSelected()) {
+        //    wd.findElement(By.xpath("//div[@id='content']/form/select[5]//option[1]")).click();
+        //}
     }
 
     public void fillAddress2() {
@@ -156,12 +161,52 @@ public class ContactHelper extends HelperBase {
         click(By.xpath("//div[@id='content']/form[2]/input[2]"));
     }
 
-    public void initContactModification() {
+    public void initContactModification(int index) {
         //click(By.xpath("//div[@id='content']/form/span[2]/input"));
-        click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+        click(By.xpath("//table[@id='maintable']/tbody/tr[" + index +"]/td[8]/a/img"));
     }
+    //public void initContactModification() {
+    //    //click(By.xpath("//div[@id='content']/form/span[2]/input"));
+    //    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+    //}
 
     public void submitUpdate() {
         click(By.xpath("//div[@id='content']/form[1]/input[22]"));
+    }
+
+
+    public void createContactName(LastNameNick2 lastNameNick2) {
+    //    fillAddNamePad();
+    //    //app.getContactHelper().fillFirstNameMiddleName(new NameFirstMiddle("Alexey", "Sergeevich"));
+    //    //fillFirstNameMiddleName(nameFirstMiddle, true);
+    //    //app.getContactHelper().fillLastNameNickName(new LastNameNick2("delete", "delete-Puschkin"));
+        fillLastNameNickName(lastNameNick2);
+    //     submitContact();
+    }
+
+    public void submitContact() {
+        wd.findElement(By.name("notes")).sendKeys(".");
+        wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
+    }
+
+    public boolean isThereAContact() {
+        //return isElementPresent(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+
+        //return isElementPresent(By.name("selected[]"));
+        return (isElementPresent(By.name("selected[]")) &&
+                ! wd.findElement(By.tagName("strong")).getText().equals("Select all")    );
+        //if (isElementPresent(By.tagName("h1"))
+        //        && wd.findElement(By.tagName("h1")).getText().equals("Groups")
+        //        && isElementPresent(By.name("new"))) {
+
+        }
+
+    public void createSimpleContact(NameFirstMiddle nameFirstMiddle, boolean b) {
+
+        goToAddNamePad();
+        fillFirstNameMiddleName(nameFirstMiddle,true);
+        fillEmail(new Emails123("alexander0.puchkin@gmail.com", "apuchkin@kultura.tv", "ACPushkin@kultura.tv"));
+        submitContact();
+        goToContact();
     }
 }

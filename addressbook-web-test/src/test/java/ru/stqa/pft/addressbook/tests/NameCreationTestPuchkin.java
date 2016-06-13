@@ -10,10 +10,12 @@ public class NameCreationTestPuchkin extends TestBase {
     @Test
     public void nameCreationTestPushkinMethod() {
         app.getContactHelper().goToContact();
-        app.getContactHelper().fillAddNamePad();
-        //app.getContactHelper().fillFirstNameMiddleName(new NameFirstMiddle("Alexey", "Sergeevich"));
+        app.getContactHelper().goToAddNamePad();
         app.getContactHelper().fillFirstNameMiddleName(new NameFirstMiddle("Alexey", "Sergeevich","test134"), true);
-        app.getContactHelper().fillLastNameNickName(new LastNameNick2("Pushkin", "Puschkin"));
+        //app.getContactHelper().createContactName(new NameFirstMiddle("Alexey", "Sergeevich","test134"), true);
+
+        //app.getContactHelper().fillLastNameNickName(new LastNameNick2("Pushkin", "Puschkin"));
+        app.getContactHelper().createContactName(new LastNameNick2("Pushkin","Push"));
         app.getContactHelper().fillTitle("mr.");
         app.getContactHelper().fillCompany("ooo Boldino");
         app.getContactHelper().fillAddress1("Pskovskaya obl.");
@@ -25,7 +27,8 @@ public class NameCreationTestPuchkin extends TestBase {
         app.getContactHelper().fillContent();
         app.getContactHelper().fillAddress2();
         app.getContactHelper().fillPhone2();
-        app.submit();
+        //app.submit();
+        app.getContactHelper().submitContact();
     }
 
 

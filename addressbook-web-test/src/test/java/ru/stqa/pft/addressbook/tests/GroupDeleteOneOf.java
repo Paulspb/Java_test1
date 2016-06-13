@@ -19,5 +19,5 @@ public class GroupDeleteOneOf extends TestBase {
             app.getGroupHelper().submitGroupDelete();
             app.getGroupHelper().getNavigationHelper().returntoGroupPage();
 
-        }
+     }
 }
