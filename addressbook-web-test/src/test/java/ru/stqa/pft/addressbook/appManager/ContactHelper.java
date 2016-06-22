@@ -1,15 +1,17 @@
 package ru.stqa.pft.addressbook.appManager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.Emails123;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.LastNameNick2;
 import ru.stqa.pft.addressbook.model.NameFirstMiddle;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by khomep on 09-Jun-16.
@@ -136,7 +138,7 @@ public class ContactHelper extends HelperBase {
             wd.findElement(By.xpath("//div[@id='content']/form/select[4]//option[1]")).click();
         }
         wd.findElement(By.name("ayear")).click();
-        wd.findElement(By.name("ayear")).sendKeys("\\9");
+        wd.findElement(By.name("ayear")).sendKeys("1837");
         // group choice
         //if (!wd.findElement(By.xpath("//div[@id='content']/form/select[5]//option[1]")).isSelected()) {
         //    wd.findElement(By.xpath("//div[@id='content']/form/select[5]//option[1]")).click();
@@ -208,5 +210,61 @@ public class ContactHelper extends HelperBase {
         fillEmail(new Emails123("alexander0.puchkin@gmail.com", "apuchkin@kultura.tv", "ACPushkin@kultura.tv"));
         submitContact();
         goToContact();
+    }
+
+    public int getContactCount() {
+        return wd.findElements(By.name("selected[]")).size();
+    }
+
+    //public List<GroupData> getContactlist() {
+    public List<NameFirstMiddle> getContactlist() {
+        //List<GroupData> contacts    = new ArrayList<GroupData>(); jun20,@01
+        List<NameFirstMiddle> contacts    = new ArrayList<NameFirstMiddle>();
+
+        //List<GroupData> contactsOdd = new ArrayList<GroupData>();
+
+        // next takes one element of array = ArrayList
+        /// tag = "span" && tag = "group"
+        // was <span  class ="group" >, this is one element definition
+        // now <td    class ="center"
+        // empty element List<WebElement> elementNotodds = wd.findElements(By.cssSelector("td.center")); // +1
+        //3 List<WebElement> elementCs = wd.findElements(By.cssSelector("tr.odd"));
+        //1 List<WebElement> elementCs = wd.findElements(By.cssSelector("tr.name=entry"));
+        //List<WebElement> elementNotodds   = wd.findElements(By.cssSelector("tr..entry")); = 0
+        //List<WebElement> elementNotodds   = wd.findElements(By.cssSelector("tr"));  //= 10 - no. it's =9
+        //List<WebElement> elementNotodds   = wd.findElements(By.cssSelector("td"));  //= 77, null
+        // List<WebElement> elementNotodds   = wd.findElements(By.cssSelector("tr."));  = 10
+        // List<WebElement> elementNotodds   = wd.findElements(By.cssSelector("tr.td.center")); = 0
+        //List<WebElement> elementNotodds   = wd.findElements(By.cssSelector("td.center")); // = 78, but null WORKS!
+        //List<WebElement> elementNotodds   = wd.findElements(By.cssSelector("input#name=selected[]")); // error
+        List<WebElement> elementNotodds   = wd.findElements(By.cssSelector("input")); // works !! null
+        //List<WebElement> elementNotodds   = wd.findElements(By.cssSelector("tr.''")); // = error
+        //List<WebElement> elementNotodds   = wd.findElements(By.cssSelector("tr##")); // = error
+        //List<WebElement> elementNotodds   = wd.findElements(By.cssSelector("tr#entry")); // = 0
+        //List<WebElement> elementNotodds   = wd.findElements(By.cssSelector("tr.#entry")); // = error
+
+        //List<WebElement> elementOdds = wd.findElements(By.cssSelector("tr.odd.entry"));
+        List<WebElement> elementOdds = wd.findElements(By.cssSelector("tr.odd"));  // = 42
+        // 5 List<WebElement> elementCs = wd.findElements(By.cssSelector("tr.name.entry"));
+        for (WebElement element :elementNotodds) {
+            String contactName = element.getText();  // name of groups
+            //GroupData contact = new GroupData(contactName,null, null); Jun,20 @01
+            //NameFirstMiddle contact = new NameFirstMiddle("update2", "Sergeevich","test134"), true);
+            NameFirstMiddle contact = new NameFirstMiddle(contactName,null, null);
+            //GroupData contact = new NameFirstMiddle("update2", "Sergeevich","test134"), true);
+            // app.getContactHelper().createSimpleContact(new NameFirstMiddle("update2", "Sergeevich","test134"), true);
+
+            // add element to contact
+            //System.out.println("contact=" + contact);
+            contacts.add(contact);
+        }
+        //for (WebElement element2 :elementOdds) {
+        //    String contactNameOdds = element2.getText();  // name of groups
+        //    GroupData contact2 = new GroupData(contactNameOdds,null, null);
+        //    // add element to contact
+        //    //contacts.add(contact2);
+        //    //System.out.println("contactOdd=" + contact2);
+        //}
+        return contacts;
     }
 }

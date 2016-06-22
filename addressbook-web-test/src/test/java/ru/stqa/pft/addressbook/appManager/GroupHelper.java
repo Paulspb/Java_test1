@@ -3,8 +3,12 @@ package ru.stqa.pft.addressbook.appManager;
 import com.sun.javafx.binding.ExpressionHelperBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.pft.addressbook.model.GroupData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by khomep on 08-Jun-16.
@@ -47,9 +51,10 @@ public class GroupHelper extends HelperBase {
         click(By.xpath("//div[@id='content']/form/input[5]"));
     }
 
-    public void selectOneGroupFromAllGroup() {
-       click(By.name("selected[]"));
-        // it has so recorded:
+    public void selectOneGroupFromAllGroup(int index) {
+        wd.findElements(By.name("selected[]")).get(index).click();
+       //click(By.name("selected[]")); it's any selecting
+        // it has recorded:
         // if (!wd.findElement(By.xpath("//div[@id='content']/form/span[2]/input")).isSelected()) {
        //     click(By.xpath("//div[@id='content']/form/span[2]/input"));
         }
@@ -93,4 +98,23 @@ public class GroupHelper extends HelperBase {
         return isElementPresent(By.name("selected[]"));
     }
 
+    public int getGroupCount() {
+        return wd.findElements(By.name("selected[]")).size();
+    }
+
+    public List<GroupData> getGroupList() {
+        List<GroupData> groups = new ArrayList<GroupData>();
+        // next takes one element of array = ArrayList
+        /// tag = "span" && tag = "group"
+        // <span = class ="group" >, this is one element definition
+        List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
+        for (WebElement element :elements) {
+            String name = element.getText();  // name of groups
+            GroupData group = new GroupData(name,null, null);
+            //app.getGroupHelper().createGroup(new GroupData("tesNotNull",null,null));
+            // add element to group
+            groups.add(group);
+        }
+        return  groups;
+    }
 }

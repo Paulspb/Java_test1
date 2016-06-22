@@ -1,15 +1,23 @@
 package ru.stqa.pft.addressbook.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.Emails123;
+import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.LastNameNick2;
 import ru.stqa.pft.addressbook.model.NameFirstMiddle;
+
+import java.util.List;
 
 public class NameCreationTestPuchkin extends TestBase {
 
     @Test
     public void nameCreationTestPushkinMethod() {
         app.getContactHelper().goToContact();
+        //int before = app.getGroupHelper().getGroupCount();
+        //int before = app.getContactHelper().getContactCount();  it's counter
+        //List<GroupData> before = app.getContactHelper().getContactlist();  // it's full parms of one contact
+        List<NameFirstMiddle> before = app.getContactHelper().getContactlist();
         app.getContactHelper().goToAddNamePad();
         app.getContactHelper().fillFirstNameMiddleName(new NameFirstMiddle("Alexey", "Sergeevich","test134"), true);
         //app.getContactHelper().createContactName(new NameFirstMiddle("Alexey", "Sergeevich","test134"), true);
@@ -29,6 +37,14 @@ public class NameCreationTestPuchkin extends TestBase {
         app.getContactHelper().fillPhone2();
         //app.submit();
         app.getContactHelper().submitContact();
+        app.getContactHelper().goToContact();
+        //int after = app.getContactHelper().getContactCount();
+        //Assert.assertEquals(after,before +1);
+        //List<GroupData> after = app.getContactHelper().getContactlist();
+        List<NameFirstMiddle> after = app.getContactHelper().getContactlist();
+        // int after = app.getGroupHelper().getGroupCount();
+        //Assert.assertEquals(after,before +1);
+        Assert.assertEquals(after.size(),before.size() +6);
     }
 
 
