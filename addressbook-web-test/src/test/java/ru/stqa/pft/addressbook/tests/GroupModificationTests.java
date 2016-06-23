@@ -4,6 +4,9 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
 
+import java.util.HashSet;
+import java.util.List;
+
 /**
  * Created by khomep on 09-Jun-16.
  */
@@ -14,14 +17,27 @@ public class GroupModificationTests extends TestBase {
             app.getGroupHelper().createGroup(new GroupData("test123423434", "test21", "test31"));
         }
         app.getGroupHelper().gotoGroupPage();
-        int before = app.getGroupHelper().getGroupCount();
-        app.getGroupHelper().selectOneGroupFromAllGroup(before -1);
+        //int before = app.getGroupHelper().getGroupCount();
+        List<GroupData> before = app.getGroupHelper().getGroupList();
+        app.getGroupHelper().selectOneGroupFromAllGroup(before.size() -1);
         app.getGroupHelper().initGroupModification();
-        app.getGroupHelper().fillInGroupForm(new GroupData("test123423434", "updat3331", "updat3331"));
+        // one line instead of 2
+        //                               take id from last element
+        GroupData group = new GroupData(before.get(before.size()-1).getId(),
+                "test123423434", "updat3331", "updat3331");
+        app.getGroupHelper().fillInGroupForm(group);
         app.getGroupHelper().submitGroupModification();
         app.getGroupHelper().getNavigationHelper().returntoGroupPage();
-        int after = app.getGroupHelper().getGroupCount();
-        Assert.assertEquals(after,before );
-
+        //int after = app.getGroupHelper().getGroupCount();
+        List<GroupData> after = app.getGroupHelper().getGroupList();
+        Assert.assertEquals(after.size(),before.size() );
+        //Assert.assertEquals(after,before );
+        // modify old spicok in two steps
+        before.remove(before.size() -1);
+        before.add(group);
+        // ne-uporjado4en - massiv
+        // uporjado4en    - spisok
+        // spicok -> mnogestvoб BUT HashSet contains only unique names aND remove duplicates names
+        Assert.assertEquals(new HashSet<Object>(before),new HashSet<Object>(after));
     }
 }

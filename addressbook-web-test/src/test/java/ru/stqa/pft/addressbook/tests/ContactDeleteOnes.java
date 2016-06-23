@@ -17,22 +17,19 @@ public class ContactDeleteOnes extends TestBase {
     public void testContactModification() {
         app.getContactHelper().goToContact();
         if (! app.getContactHelper().isThereAContact()) {
-            app.getContactHelper().createSimpleContact(new NameFirstMiddle("update2", "Sergeevich","test134"), true);
+            app.getContactHelper().createSimpleContact(new NameFirstMiddle(null,"update2", "Sergeevich","test134"), true);
             }
-        int contactBefore = app.getContactHelper().getContactCount();
-        //List<GroupData> before = app.getContactHelper().getContactlist();
         List<NameFirstMiddle> before = app.getContactHelper().getContactlist();
         //System.out.println("contactBefore =" + contactBefore);
         //System.out.println("before.size =" +before.size());
-        app.getContactHelper().initContactModification(contactBefore -1);
+        app.getContactHelper().initContactModification(before.size() + 1);
         app.getContactHelper().submitDelete();
         app.getContactHelper().goToContact();
-        //List<GroupData> after = app.getContactHelper().getContactlist();
         List<NameFirstMiddle> after = app.getContactHelper().getContactlist();
         //System.out.println("after.size =" +after.size());
         // int after = app.getGroupHelper().getGroupCount();
         //Assert.assertEquals(after,before - 1);
-        Assert.assertEquals(after.size(),before.size() - 6);
+        Assert.assertEquals(after.size(),before.size() - 1);
         before.remove(before.size() - 1);
         //for ( int i = 0; i < after.size(); i++) {
         //    Assert.assertEquals(after.get(i),before.get(i));

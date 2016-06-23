@@ -19,11 +19,16 @@ public class NameCreationTestPuchkin extends TestBase {
         //List<GroupData> before = app.getContactHelper().getContactlist();  // it's full parms of one contact
         List<NameFirstMiddle> before = app.getContactHelper().getContactlist();
         app.getContactHelper().goToAddNamePad();
-        app.getContactHelper().fillFirstNameMiddleName(new NameFirstMiddle("Alexey", "Sergeevich","test134"), true);
+        //app.getContactHelper().fillFirstNameMiddleName(new NameFirstMiddle(null,"Alexey", "Sergeevich","test134"), true);
+
+        app.getContactHelper().fillFirstNameMiddleName(new NameFirstMiddle
+                (null,"Alexey", "Pushkin","test134"), true);
+
         //app.getContactHelper().createContactName(new NameFirstMiddle("Alexey", "Sergeevich","test134"), true);
 
         //app.getContactHelper().fillLastNameNickName(new LastNameNick2("Pushkin", "Puschkin"));
-        app.getContactHelper().createContactName(new LastNameNick2("Pushkin","Push"));
+        //app.getContactHelper().createContactName(new LastNameNick2("Sergeevich","Push"));
+        app.getContactHelper().createContactName(new LastNameNick2("Push"));
         app.getContactHelper().fillTitle("mr.");
         app.getContactHelper().fillCompany("ooo Boldino");
         app.getContactHelper().fillAddress1("Pskovskaya obl.");
@@ -44,7 +49,7 @@ public class NameCreationTestPuchkin extends TestBase {
         List<NameFirstMiddle> after = app.getContactHelper().getContactlist();
         // int after = app.getGroupHelper().getGroupCount();
         //Assert.assertEquals(after,before +1);
-        Assert.assertEquals(after.size(),before.size() +6);
+        Assert.assertEquals(after.size(),before.size() +1);
     }
 
 

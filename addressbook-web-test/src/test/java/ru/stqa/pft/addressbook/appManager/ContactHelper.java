@@ -48,8 +48,8 @@ public class ContactHelper extends HelperBase {
         //wd.findElement(By.name("firstname")).click();
         //wd.findElement(By.name("firstname")).clear();
         //wd.findElement(By.name("firstname")).sendKeys(nameFirstMiddle.getFirstname());
-        type(By.name("middlename"),nameFirstMiddle.getMiddleName());
-
+        //type(By.name("middlename"),nameFirstMiddle.getMiddleName());
+        type(By.name("lastname"),nameFirstMiddle.getLastName());
         // take group from GroupName
         if (creation) {
             //if (isElementPresent(wd.findElement(By.name("new_group")).selectByVisibleText(nameFirstMiddle.getGroup()) {
@@ -66,7 +66,8 @@ public class ContactHelper extends HelperBase {
     }
 
     public void fillLastNameNickName(LastNameNick2 lastNameNick2) {
-        type(By.name("lastname"),lastNameNick2.getLastname());
+        //type(By.name("lastname"),lastNameNick2.getLastname());
+        //type(By.name("middlename"),lastNameNick2.getMiddleName());
         type(By.name("nickname"),lastNameNick2.getNickname());
         }
 
@@ -218,53 +219,26 @@ public class ContactHelper extends HelperBase {
 
     //public List<GroupData> getContactlist() {
     public List<NameFirstMiddle> getContactlist() {
-        //List<GroupData> contacts    = new ArrayList<GroupData>(); jun20,@01
-        List<NameFirstMiddle> contacts    = new ArrayList<NameFirstMiddle>();
-
-        //List<GroupData> contactsOdd = new ArrayList<GroupData>();
+        List<NameFirstMiddle> contacts    = new ArrayList<>();
 
         // next takes one element of array = ArrayList
         /// tag = "span" && tag = "group"
         // was <span  class ="group" >, this is one element definition
         // now <td    class ="center"
         // empty element List<WebElement> elementNotodds = wd.findElements(By.cssSelector("td.center")); // +1
-        //3 List<WebElement> elementCs = wd.findElements(By.cssSelector("tr.odd"));
-        //1 List<WebElement> elementCs = wd.findElements(By.cssSelector("tr.name=entry"));
-        //List<WebElement> elementNotodds   = wd.findElements(By.cssSelector("tr..entry")); = 0
-        //List<WebElement> elementNotodds   = wd.findElements(By.cssSelector("tr"));  //= 10 - no. it's =9
-        //List<WebElement> elementNotodds   = wd.findElements(By.cssSelector("td"));  //= 77, null
-        // List<WebElement> elementNotodds   = wd.findElements(By.cssSelector("tr."));  = 10
-        // List<WebElement> elementNotodds   = wd.findElements(By.cssSelector("tr.td.center")); = 0
-        //List<WebElement> elementNotodds   = wd.findElements(By.cssSelector("td.center")); // = 78, but null WORKS!
-        //List<WebElement> elementNotodds   = wd.findElements(By.cssSelector("input#name=selected[]")); // error
-        List<WebElement> elementNotodds   = wd.findElements(By.cssSelector("input")); // works !! null
-        //List<WebElement> elementNotodds   = wd.findElements(By.cssSelector("tr.''")); // = error
-        //List<WebElement> elementNotodds   = wd.findElements(By.cssSelector("tr##")); // = error
-        //List<WebElement> elementNotodds   = wd.findElements(By.cssSelector("tr#entry")); // = 0
-        //List<WebElement> elementNotodds   = wd.findElements(By.cssSelector("tr.#entry")); // = error
+        List<WebElement> elementNotodds   = wd.findElements(By.xpath("//tr[@name='entry']"));
 
-        //List<WebElement> elementOdds = wd.findElements(By.cssSelector("tr.odd.entry"));
-        List<WebElement> elementOdds = wd.findElements(By.cssSelector("tr.odd"));  // = 42
-        // 5 List<WebElement> elementCs = wd.findElements(By.cssSelector("tr.name.entry"));
         for (WebElement element :elementNotodds) {
-            String contactName = element.getText();  // name of groups
-            //GroupData contact = new GroupData(contactName,null, null); Jun,20 @01
-            //NameFirstMiddle contact = new NameFirstMiddle("update2", "Sergeevich","test134"), true);
-            NameFirstMiddle contact = new NameFirstMiddle(contactName,null, null);
-            //GroupData contact = new NameFirstMiddle("update2", "Sergeevich","test134"), true);
-            // app.getContactHelper().createSimpleContact(new NameFirstMiddle("update2", "Sergeevich","test134"), true);
+            String id = element.findElement(By.tagName("input")).getAttribute("id");
+            String lastName  = element.findElement(By.xpath(".//td[2]")).getText();
+            String firstName = element.findElement(By.xpath(".//td[3]")).getText();
+            NameFirstMiddle contact = new NameFirstMiddle(id,firstName,lastName, null);
 
-            // add element to contact
             //System.out.println("contact=" + contact);
+                    // add element to contact
             contacts.add(contact);
         }
-        //for (WebElement element2 :elementOdds) {
-        //    String contactNameOdds = element2.getText();  // name of groups
-        //    GroupData contact2 = new GroupData(contactNameOdds,null, null);
-        //    // add element to contact
-        //    //contacts.add(contact2);
-        //    //System.out.println("contactOdd=" + contact2);
-        //}
+
         return contacts;
     }
 }

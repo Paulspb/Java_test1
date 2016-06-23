@@ -19,8 +19,6 @@ public class GroupDeleteOneOf extends TestBase {
                 //int before = app.getGroupHelper().getGroupCount();
          List<GroupData> before = app.getGroupHelper().getGroupList();
          app.getGroupHelper().selectOneGroupFromAllGroup(before.size() -1);
-                //app.getGroupHelper().initGroupModification();
-                //app.getGroupHelper().fillInGroupForm(new GroupData("dete11", "del 11", "del 11111"));
          app.getGroupHelper().submitGroupDelete();
          app.getGroupHelper().getNavigationHelper().returntoGroupPage();
          List<GroupData> after = app.getGroupHelper().getGroupList();
@@ -29,10 +27,10 @@ public class GroupDeleteOneOf extends TestBase {
          Assert.assertEquals(after.size(),before.size() -1);
                     // remove before comparasion
          before.remove(before.size() - 1);
-         //for ( int i = 0; i < after.size(); i++) {
-         //    Assert.assertEquals(after.get(i),before.get(i));
-         //}
-         // assertEquals can do so:
+            //for ( int i = 0; i < after.size(); i++) {
+            //    Assert.assertEquals(after.get(i),before.get(i));
+            //}
+            // assertEquals can do so:
          Assert.assertEquals(after,before);
 
      }

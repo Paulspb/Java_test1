@@ -7,6 +7,7 @@ import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.LastNameNick2;
 import ru.stqa.pft.addressbook.model.NameFirstMiddle;
 
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -17,27 +18,30 @@ public class ContactModificationTests extends TestBase {
     public void testContactModification() {
         app.getContactHelper().goToContact();
         if (! app.getContactHelper().isThereAContact()) {
-            app.getContactHelper().createSimpleContact(new NameFirstMiddle("update2", "Sergeevich","test134"),
+            app.getContactHelper().createSimpleContact(new NameFirstMiddle(
+                    null,"update2", "Sergeevich","test134"),
                     true);
         }
-        int contactBefore = app.getContactHelper().getContactCount();
-        //List<GroupData> before = app.getContactHelper().getContactlist(); jun 20
         List<NameFirstMiddle> before = app.getContactHelper().getContactlist();
-        //System.out.println("before.size() =" + before.size());
-        //System.out.println("contactBefore =" + contactBefore);
-        //app.getContactHelper().initContactModification( before.size() -1 );
-        app.getContactHelper().initContactModification( contactBefore -1 );
-        app.getContactHelper().fillFirstNameMiddleName(new NameFirstMiddle("Update1", "Serge-update",null),
-                false);
-        app.getContactHelper().fillLastNameNickName(new LastNameNick2("UPdate11", "update1-Puschkin"));
+        app.getContactHelper().initContactModification( before.size() + 1 );
+        NameFirstMiddle contact = new NameFirstMiddle
+                (before.get(before.size()-1).getId(),"UpdateFirst1", "Last-update3",null);
+
+        app.getContactHelper().fillFirstNameMiddleName(contact,false);
         app.getContactHelper().submitUpdate();
         app.getContactHelper().goToContact();
-        //List<GroupData> after = app.getContactHelper().getContactlist();
         List<NameFirstMiddle> after = app.getContactHelper().getContactlist();
-            // int after = app.getGroupHelper().getGroupCount();
-            //Assert.assertEquals(after,before );
         Assert.assertEquals(after.size(),before.size() );
-
+        //System.out.println("before--" + before.get(before.size() -1 ));
+        //System.out.println("after--" + after.get(after.size() - 1));
+        before.remove(before.size() - 1);
+        before.add(contact);
+        //System.out.println("before-2--" + before.get(before.size() -1 ));
+        //System.out.println("after----" + after.get(after.size() - 1));
+            // ne-uporjado4en - massiv
+            // uporjado4en    - spisok
+            // spicok -> mnogestvoб BUT HashSet contains only unique names aND remove duplicates names
+        Assert.assertEquals(new HashSet<Object>(before),new HashSet<Object>(after));
         //app.fillTitle("mr.");
         //app.fillCompany("ooo Boldino");
         //app.fillAddress1("Pskovskaya obl.");
