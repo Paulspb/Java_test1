@@ -8,7 +8,9 @@ public class NameFirstMiddle {
     private final String group;
 
     public NameFirstMiddle(int id,String firstname, String lastname, String group) {
-        this.id        = id;
+                //this.id        = id; error !!!
+                //this.id   = 0;  // new line in begin
+        this.id   = Integer.MAX_VALUE;  // new line at the buttom
         this.firstname = firstname;
         //this.middleName = middleName;
         this.lastname  = lastname;

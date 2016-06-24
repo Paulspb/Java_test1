@@ -7,6 +7,7 @@ import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.LastNameNick2;
 import ru.stqa.pft.addressbook.model.NameFirstMiddle;
 
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
@@ -50,17 +51,25 @@ public class NameCreationTestPuchkin extends TestBase {
         Assert.assertEquals(after.size(),before.size() +1);
         // find max ID
         int max = 0;
-        for (NameFirstMiddle g : after)
+        for (NameFirstMiddle g : after) {
             if(g.getId() > max ) {
                 max = g.getId();
             }
-        name.setId(max);
+        }
+        // lyambda -
+        Comparator<? super GroupData> byId = (o1, o2) ->  Integer.compare(o1.getId(),o2.getId());
+            //int max2 = after.stream().max((o1,o2) -> Integer.compare(o1.getId(),o2.getId())).get().getId();
+
+        name.setId(after.stream().max((o1,o2) -> Integer.compare(o1.getId(),o2.getId())).get().getId());
         //System.out.println("before - " + before);
         //System.out.println("after - " + after);
         before.add(name);
-        //Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
-        //Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
         Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
+            // comparation via anonimous func.
+        Comparator<? super NameFirstMiddle> byId2 = (g1, g2) -> Integer.compare(g1.getId(),g2.getId());
+        before.sort(byId2);
+        after.sort(byId2);
+        Assert.assertEquals(before,after);
     }
 
 

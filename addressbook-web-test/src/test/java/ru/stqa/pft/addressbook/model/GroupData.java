@@ -7,7 +7,8 @@ public class GroupData {
     private final String footer;
 
     public GroupData(String name, String header, String footer) {
-        this.id   = 0;
+        //this.id   = 0;  // new line in begin
+        this.id   = Integer.MAX_VALUE;  // new line at the buttom
         this.name = name;
         this.header = header;
         this.footer = footer;
