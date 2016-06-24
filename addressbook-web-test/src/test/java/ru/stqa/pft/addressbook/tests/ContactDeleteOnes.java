@@ -17,7 +17,7 @@ public class ContactDeleteOnes extends TestBase {
     public void testContactModification() {
         app.getContactHelper().goToContact();
         if (! app.getContactHelper().isThereAContact()) {
-            app.getContactHelper().createSimpleContact(new NameFirstMiddle(null,"update2", "Sergeevich","test134"), true);
+            app.getContactHelper().createSimpleContact(new NameFirstMiddle(0,"update2", "Sergeevich","test134"), true);
             }
         List<NameFirstMiddle> before = app.getContactHelper().getContactlist();
         //System.out.println("contactBefore =" + contactBefore);

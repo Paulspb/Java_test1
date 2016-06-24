@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class GroupCreationTest extends TestBase {
@@ -13,15 +14,28 @@ public class GroupCreationTest extends TestBase {
         //app.getGroupHelper().gotoGroupPage2();
         //app.getNavigationHelper()
         app.getGroupHelper().gotoGroupPage();
-        int before = app.getGroupHelper().getGroupCount();
-        app.getGroupHelper().createGroup(new GroupData("test134", "test21", "test31"));
-        // placed into createGroup
-        //app.getGroupHelper().initGroupCreation();
-        //app.getGroupHelper().fillInGroupForm(new GroupData("test123423434", "test21", "test31"));
-        //app.getGroupHelper().submitGroupCreation();
-        //app.getGroupHelper().getNavigationHelper().returntoGroupPage();
-        int after = app.getGroupHelper().getGroupCount();
-        Assert.assertEquals(after,before +1);
+        List<GroupData> before = app.getGroupHelper().getGroupList();
+        //int before1 = app.getGroupHelper().getGroupCount();
+        GroupData group = new GroupData("test134-114", "test21", "test31");
+        app.getGroupHelper().createGroup(group);
+            // placed into createGroup
+            //app.getGroupHelper().initGroupCreation();
+            //app.getGroupHelper().fillInGroupForm(new GroupData("test123423434", "test21", "test31"));
+            //app.getGroupHelper().submitGroupCreation();
+            //app.getGroupHelper().getNavigationHelper().returntoGroupPage();
+        List<GroupData> after = app.getGroupHelper().getGroupList();
+        Assert.assertEquals(after.size(),before.size() +1);
+
+        // find max ID
+        int max = 0;
+        for (GroupData g : after)
+            if(g.getId() > max ) {
+                max = g.getId();
+            }
+        group.setId(max);
+        before.add(group);
+        //System.out.println("before add - " + before);
+        Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
     }
 
     @Test
@@ -43,6 +57,7 @@ public class GroupCreationTest extends TestBase {
         // int after = app.getGroupHelper().getGroupCount();
         //Assert.assertEquals(after,before +1);
         Assert.assertEquals(after.size(),before.size() +1);
+        ///System.out.println("after222 - " + after);
     }
 
 }

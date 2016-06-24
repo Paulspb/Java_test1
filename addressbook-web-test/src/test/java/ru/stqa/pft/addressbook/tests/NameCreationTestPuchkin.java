@@ -7,6 +7,7 @@ import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.LastNameNick2;
 import ru.stqa.pft.addressbook.model.NameFirstMiddle;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class NameCreationTestPuchkin extends TestBase {
@@ -19,14 +20,11 @@ public class NameCreationTestPuchkin extends TestBase {
         //List<GroupData> before = app.getContactHelper().getContactlist();  // it's full parms of one contact
         List<NameFirstMiddle> before = app.getContactHelper().getContactlist();
         app.getContactHelper().goToAddNamePad();
-        //app.getContactHelper().fillFirstNameMiddleName(new NameFirstMiddle(null,"Alexey", "Sergeevich","test134"), true);
-
-        app.getContactHelper().fillFirstNameMiddleName(new NameFirstMiddle
-                (null,"Alexey", "Pushkin","test134"), true);
+        NameFirstMiddle name = new NameFirstMiddle(0,"Alexey", "Pushkin","test134");
+        app.getContactHelper().fillFirstNameMiddleName(name, true);
 
         //app.getContactHelper().createContactName(new NameFirstMiddle("Alexey", "Sergeevich","test134"), true);
 
-        //app.getContactHelper().fillLastNameNickName(new LastNameNick2("Pushkin", "Puschkin"));
         //app.getContactHelper().createContactName(new LastNameNick2("Sergeevich","Push"));
         app.getContactHelper().createContactName(new LastNameNick2("Push"));
         app.getContactHelper().fillTitle("mr.");
@@ -50,6 +48,19 @@ public class NameCreationTestPuchkin extends TestBase {
         // int after = app.getGroupHelper().getGroupCount();
         //Assert.assertEquals(after,before +1);
         Assert.assertEquals(after.size(),before.size() +1);
+        // find max ID
+        int max = 0;
+        for (NameFirstMiddle g : after)
+            if(g.getId() > max ) {
+                max = g.getId();
+            }
+        name.setId(max);
+        //System.out.println("before - " + before);
+        //System.out.println("after - " + after);
+        before.add(name);
+        //Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
+        //Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
+        Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
     }
 
 

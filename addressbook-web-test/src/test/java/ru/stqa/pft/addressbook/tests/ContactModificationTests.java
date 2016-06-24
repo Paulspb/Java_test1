@@ -19,7 +19,7 @@ public class ContactModificationTests extends TestBase {
         app.getContactHelper().goToContact();
         if (! app.getContactHelper().isThereAContact()) {
             app.getContactHelper().createSimpleContact(new NameFirstMiddle(
-                    null,"update2", "Sergeevich","test134"),
+                    0,"update2", "Sergeevich","test134"),
                     true);
         }
         List<NameFirstMiddle> before = app.getContactHelper().getContactlist();

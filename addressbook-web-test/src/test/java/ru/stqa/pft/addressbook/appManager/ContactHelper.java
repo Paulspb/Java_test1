@@ -229,7 +229,7 @@ public class ContactHelper extends HelperBase {
         List<WebElement> elementNotodds   = wd.findElements(By.xpath("//tr[@name='entry']"));
 
         for (WebElement element :elementNotodds) {
-            String id = element.findElement(By.tagName("input")).getAttribute("id");
+            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
             String lastName  = element.findElement(By.xpath(".//td[2]")).getText();
             String firstName = element.findElement(By.xpath(".//td[3]")).getText();
             NameFirstMiddle contact = new NameFirstMiddle(id,firstName,lastName, null);

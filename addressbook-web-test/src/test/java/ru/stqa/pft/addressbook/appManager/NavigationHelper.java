@@ -22,7 +22,8 @@ public class NavigationHelper extends HelperBase {
         }
         // click(By.linkText("group page"));
         // wd.findElement(By.linkText("group page")).click();
-        click(By.linkText("groups"));
+        //click(By.linkText("groups"));
+        click(By.linkText("group page"));
     }
 
     //protected void gotoGroupPage2() {
