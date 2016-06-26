@@ -56,21 +56,18 @@ public class ApplicationManager {
 
     }
 
-    public void submit() {
-        wd.findElement(By.name("notes")).sendKeys(".");
-        wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
-    }
-
-
     public void afterTests() {
         wd.quit();
     }
 
-    public GroupHelper getGroupHelper() {
+    public GroupHelper group() {
         return groupHelper;
     }
+    public NavigationHelper getNavigationHelpe() {
+        return navigationHelper;
+    }
 
-    public ContactHelper getContactHelper() {
+    public ContactHelper contact() {
         return contactHelper;
     }
 }

@@ -1,6 +1,7 @@
 package ru.stqa.pft.addressbook.tests;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
 
@@ -12,29 +13,31 @@ import java.util.List;
  * Created by khomep on 09-Jun-16.
  */
 public class GroupModificationTests extends TestBase {
+
+    @BeforeMethod
+    public void ensurePreconditions() {
+        app.group().groupPage();
+        //app.getNavigationHelpe().groupPage();
+        //if (! app.group().isThereAGroup()) {
+        if ( app.group().list().size() == 0) {
+            app.group().create(new GroupData("test123423434", "test21", "test31"));
+        }
+    }
+
     @Test
     public void testGroupModification() {
-        if (! app.getGroupHelper().isThereAGroup()) {
-            app.getGroupHelper().createGroup(new GroupData("test123423434", "test21", "test31"));
-        }
-        app.getGroupHelper().gotoGroupPage();
-        //int before = app.getGroupHelper().getGroupCount();
-        List<GroupData> before = app.getGroupHelper().getGroupList();
-        app.getGroupHelper().selectOneGroupFromAllGroup(before.size() -1);
-        app.getGroupHelper().initGroupModification();
-        // one line instead of 2
-        //                               take id from last element
-        GroupData group = new GroupData(before.get(before.size()-1).getId(),
+            //int before = app.group().getGroupCount();
+        List<GroupData> before = app.group().list();
+        int index = before.size() -1;
+        GroupData group = new GroupData(before.get(index).getId(),
                 "test-modification", "updat3331", "updat3331");
-        app.getGroupHelper().fillInGroupForm(group);
-        app.getGroupHelper().submitGroupModification();
-        app.getGroupHelper().getNavigationHelper().returntoGroupPage();
-        //int after = app.getGroupHelper().getGroupCount();
-        List<GroupData> after = app.getGroupHelper().getGroupList();
+        app.group().modify(index, group);
+            //int after = app.group().getGroupCount();
+        List<GroupData> after = app.group().list();
         Assert.assertEquals(after.size(),before.size() );
         //Assert.assertEquals(after,before );
         // modify old spicok in two steps
-        before.remove(before.size() -1);
+        before.remove(index);
         before.add(group);
         System.out.println("after =" + after);
         System.out.println("before =" +before);
@@ -48,4 +51,6 @@ public class GroupModificationTests extends TestBase {
         after.sort(byId);
         Assert.assertEquals(before,after);
     }
+
+
 }

@@ -1,10 +1,8 @@
 package ru.stqa.pft.addressbook.tests;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import ru.stqa.pft.addressbook.model.Emails123;
-import ru.stqa.pft.addressbook.model.GroupData;
-import ru.stqa.pft.addressbook.model.LastNameNick2;
 import ru.stqa.pft.addressbook.model.NameFirstMiddle;
 
 import java.util.Comparator;
@@ -15,25 +13,26 @@ import java.util.List;
  * Created by khomep on 09-Jun-16.
  */
 public class ContactModificationTests extends TestBase {
+    @BeforeMethod
+    public void ensurePreconditionContact(){
+        app.contact().goToContact();
+        //if (! app.contact().isThereAContact()) {
+        if ( app.contact().list().size() == 0) {
+            app.contact().create(new NameFirstMiddle(
+                    0,"update2", "Sergeevich","test134"));
+        }
+    }
+
     @Test
     public void testContactModification() {
-        app.getContactHelper().goToContact();
-        if (! app.getContactHelper().isThereAContact()) {
-            app.getContactHelper().createSimpleContact(new NameFirstMiddle(
-                    0,"update2", "Sergeevich","test134"),
-                    true);
-        }
-        List<NameFirstMiddle> before = app.getContactHelper().getContactlist();
-        app.getContactHelper().initContactModification( before.size() + 1 );
+        List<NameFirstMiddle> before = app.contact().list();
+        int index = before.size() -1;
         NameFirstMiddle contact = new NameFirstMiddle
-                (before.get(before.size()-1).getId(),"UpdateFirst1", "Last-update3",null);
-
-        app.getContactHelper().fillFirstNameMiddleName(contact,false);
-        app.getContactHelper().submitUpdate();
-        app.getContactHelper().goToContact();
-        List<NameFirstMiddle> after = app.getContactHelper().getContactlist();
+                (before.get(index).getId(),"UpdateFirst1", "Last-update3",null);
+        app.contact().modify(before, contact);
+        List<NameFirstMiddle> after = app.contact().list();
         Assert.assertEquals(after.size(),before.size() );
-        before.remove(before.size() - 1);
+        before.remove(index);
         before.add(contact);
             //System.out.println("after =" + after);
             //System.out.println("before =" +before);
@@ -54,6 +53,7 @@ public class ContactModificationTests extends TestBase {
             //app.fillEmail(new Emails123("alexander0.puchkin@gmail.com", "apuchkin@kultura.tv", "\\9"));
 
     }
+
 
 
 }

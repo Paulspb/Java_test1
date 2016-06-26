@@ -31,7 +31,7 @@ public class GroupHelper extends HelperBase {
         click(By.name("new"));
     }
 
-    public  void gotoGroupPage() {
+    public  void groupPage() {
 
         // look if "Group" tag present via analyze element into FireFox  &&
         // look if Element within h1 == Group &&
@@ -85,7 +85,7 @@ public class GroupHelper extends HelperBase {
         click(By.name("delete"));
     }
 
-    public void createGroup(GroupData group) {
+    public void create(GroupData group) {
         initGroupCreation();
         //fillInGroupForm(new GroupData("test123423434", "test21", "test31"));
         fillInGroupForm(group);
@@ -93,6 +93,21 @@ public class GroupHelper extends HelperBase {
         getNavigationHelper().returntoGroupPage();
     }
 
+    public void modify(int index, GroupData group) {
+        selectOneGroupFromAllGroup(index);
+        initGroupModification();
+        // one line instead of 2
+        //                               take id from last element
+        fillInGroupForm(group);
+        submitGroupModification();
+        getNavigationHelper().returntoGroupPage();
+    }
+
+    public void delete(int index) {
+        selectOneGroupFromAllGroup(index);
+        deleteSelectedGroup();
+        groupPage();
+    }
     public boolean isThereAGroup() {
 
         return isElementPresent(By.name("selected[]"));
@@ -102,7 +117,7 @@ public class GroupHelper extends HelperBase {
         return wd.findElements(By.name("selected[]")).size();
     }
 
-    public List<GroupData> getGroupList() {
+    public List<GroupData> list() {
         List<GroupData> groups = new ArrayList<GroupData>();
         // next takes one element of array = ArrayList
         /// tag = "span" && tag = "group"
@@ -112,7 +127,7 @@ public class GroupHelper extends HelperBase {
             String name = element.getText();  // name of groups
             int id   = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
             GroupData group = new GroupData(id,name,null, null);
-            //app.getGroupHelper().createGroup(new GroupData("tesNotNull",null,null));
+            //app.group().create(new GroupData("tesNotNull",null,null));
             // add element to group
             groups.add(group);
         }

@@ -10,19 +10,19 @@ import java.util.List;
  * Created by khomep on 09-Jun-16.
  */
 public class GroupDeleteOneOf extends TestBase {
-     @Test
+     @Test(enabled = false)
         public void testGroupDeleteOneOf() {
-         app.getGroupHelper().gotoGroupPage();
-         if (! app.getGroupHelper().isThereAGroup()) {
-             app.getGroupHelper().createGroup(new GroupData("test123423434", "test21", "test31"));
+         app.group().groupPage();
+         if (! app.group().isThereAGroup()) {
+             app.group().create(new GroupData("test123423434", "test21", "test31"));
          }
-                //int before = app.getGroupHelper().getGroupCount();
-         List<GroupData> before = app.getGroupHelper().getGroupList();
-         app.getGroupHelper().selectOneGroupFromAllGroup(before.size() -1);
-         app.getGroupHelper().submitGroupDelete();
-         app.getGroupHelper().getNavigationHelper().returntoGroupPage();
-         List<GroupData> after = app.getGroupHelper().getGroupList();
-                    // int after = app.getGroupHelper().getGroupCount();
+                //int before = app.group().getGroupCount();
+         List<GroupData> before = app.group().list();
+         app.group().selectOneGroupFromAllGroup(before.size() -1);
+         app.group().submitGroupDelete();
+         app.group().getNavigationHelper().returntoGroupPage();
+         List<GroupData> after = app.group().list();
+                    // int after = app.group().getGroupCount();
                     //Assert.assertEquals(after,before +1);
          Assert.assertEquals(after.size(),before.size() -1);
                     // remove before comparasion

@@ -180,9 +180,9 @@ public class ContactHelper extends HelperBase {
 
     public void createContactName(LastNameNick2 lastNameNick2) {
     //    fillAddNamePad();
-    //    //app.getContactHelper().fillFirstNameMiddleName(new NameFirstMiddle("Alexey", "Sergeevich"));
+    //    //app.contact().fillFirstNameMiddleName(new NameFirstMiddle("Alexey", "Sergeevich"));
     //    //fillFirstNameMiddleName(nameFirstMiddle, true);
-    //    //app.getContactHelper().fillLastNameNickName(new LastNameNick2("delete", "delete-Puschkin"));
+    //    //app.contact().fillLastNameNickName(new LastNameNick2("delete", "delete-Puschkin"));
         fillLastNameNickName(lastNameNick2);
     //     submitContact();
     }
@@ -193,32 +193,43 @@ public class ContactHelper extends HelperBase {
     }
 
     public boolean isThereAContact() {
-        //return isElementPresent(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+            //return isElementPresent(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
 
-        //return isElementPresent(By.name("selected[]"));
+            //return isElementPresent(By.name("selected[]"));
         return (isElementPresent(By.name("selected[]")) &&
                 ! wd.findElement(By.tagName("strong")).getText().equals("Select all")    );
-        //if (isElementPresent(By.tagName("h1"))
-        //        && wd.findElement(By.tagName("h1")).getText().equals("Groups")
-        //        && isElementPresent(By.name("new"))) {
+            //if (isElementPresent(By.tagName("h1"))
+            //        && wd.findElement(By.tagName("h1")).getText().equals("Groups")
+            //        && isElementPresent(By.name("new"))) {
 
         }
 
-    public void createSimpleContact(NameFirstMiddle nameFirstMiddle, boolean b) {
+    //public void create(NameFirstMiddle name, boolean b) {
+    public void create(NameFirstMiddle name) {
 
         goToAddNamePad();
-        fillFirstNameMiddleName(nameFirstMiddle,true);
+        fillFirstNameMiddleName(name,true);
         fillEmail(new Emails123("alexander0.puchkin@gmail.com", "apuchkin@kultura.tv", "ACPushkin@kultura.tv"));
         submitContact();
         goToContact();
     }
-
+    public void modify(List<NameFirstMiddle> before, NameFirstMiddle contact) {
+        initContactModification( before.size() + 1 );
+        fillFirstNameMiddleName(contact,false);
+        submitUpdate();
+        goToContact();
+    }
+    public void delete(List<NameFirstMiddle> before) {
+        initContactModification(before.size() + 1);
+        submitDelete();
+        goToContact();
+    }
     public int getContactCount() {
         return wd.findElements(By.name("selected[]")).size();
     }
 
-    //public List<GroupData> getContactlist() {
-    public List<NameFirstMiddle> getContactlist() {
+    //public List<GroupData> list() {
+    public List<NameFirstMiddle> list() {
         List<NameFirstMiddle> contacts    = new ArrayList<>();
 
         // next takes one element of array = ArrayList

@@ -15,37 +15,37 @@ public class NameCreationTestPuchkin extends TestBase {
 
     @Test
     public void nameCreationTestPushkinMethod() {
-        app.getContactHelper().goToContact();
-        //int before = app.getGroupHelper().getGroupCount();
-        //int before = app.getContactHelper().getContactCount();  it's counter
-        //List<GroupData> before = app.getContactHelper().getContactlist();  // it's full parms of one contact
-        List<NameFirstMiddle> before = app.getContactHelper().getContactlist();
-        app.getContactHelper().goToAddNamePad();
+        app.contact().goToContact();
+            //int before = app.group().getGroupCount();
+            //int before = app.contact().getContactCount();  it's counter
+            //List<GroupData> before = app.contact().list();  // it's full parms of one contact
+        List<NameFirstMiddle> before = app.contact().list();
+        app.contact().goToAddNamePad();
         NameFirstMiddle name = new NameFirstMiddle(before.size()-1,"Alexey", "Pushkin","test134");
-        app.getContactHelper().fillFirstNameMiddleName(name, true);
+        app.contact().fillFirstNameMiddleName(name, true);
 
-        //app.getContactHelper().createContactName(new NameFirstMiddle("Alexey", "Sergeevich","test134"), true);
+            //app.contact().createContactName(new NameFirstMiddle("Alexey", "Sergeevich","test134"), true);
 
-        app.getContactHelper().createContactName(new LastNameNick2("Push"));
-        app.getContactHelper().fillTitle("mr.");
-        app.getContactHelper().fillCompany("ooo Boldino");
-        app.getContactHelper().fillAddress1("Pskovskaya obl.");
-        app.getContactHelper().fillHomeMobileTlf("8 888 555 3214", "8 921 921 921 921");
-        app.getContactHelper().fillFaxWorkTlf();
-        app.getContactHelper().fillEmail(new Emails123("alexander0.puchkin@gmail.com", "apuchkin@kultura.tv", "\\9"));
-        app.getContactHelper().fillHomePage();
-        app.getContactHelper().fillBithday();
-        app.getContactHelper().fillContent();
-        app.getContactHelper().fillAddress2();
-        app.getContactHelper().fillPhone2();
-        //app.submit();
-        app.getContactHelper().submitContact();
-        app.getContactHelper().goToContact();
-        //int after = app.getContactHelper().getContactCount();
+        app.contact().createContactName(new LastNameNick2("Push"));
+        app.contact().fillTitle("mr.");
+        app.contact().fillCompany("ooo Boldino");
+        app.contact().fillAddress1("Pskovskaya obl.");
+        app.contact().fillHomeMobileTlf("8 888 555 3214", "8 921 921 921 921");
+        app.contact().fillFaxWorkTlf();
+        app.contact().fillEmail(new Emails123("alexander0.puchkin@gmail.com", "apuchkin@kultura.tv", "\\9"));
+        app.contact().fillHomePage();
+        app.contact().fillBithday();
+        app.contact().fillContent();
+        app.contact().fillAddress2();
+        app.contact().fillPhone2();
+            //app.submit();
+        app.contact().submitContact();
+        app.contact().goToContact();
+        //int after = app.contact().getContactCount();
         //Assert.assertEquals(after,before +1);
-        //List<GroupData> after = app.getContactHelper().getContactlist();
-        List<NameFirstMiddle> after = app.getContactHelper().getContactlist();
-        // int after = app.getGroupHelper().getGroupCount();
+        //List<GroupData> after = app.contact().list();
+        List<NameFirstMiddle> after = app.contact().list();
+        // int after = app.group().getGroupCount();
         //Assert.assertEquals(after,before +1);
         Assert.assertEquals(after.size(),before.size() +1);
         // find max ID
@@ -55,7 +55,7 @@ public class NameCreationTestPuchkin extends TestBase {
                 max = g.getId();
             }
         }
-        // lyambda -
+        //    lyambda -
         Comparator<? super GroupData> byId = (o1, o2) ->  Integer.compare(o1.getId(),o2.getId());
             //int max2 = after.stream().max((o1,o2) -> Integer.compare(o1.getId(),o2.getId())).get().getId();
 
