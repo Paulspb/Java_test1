@@ -35,6 +35,8 @@ public class ContactModificationTests extends TestBase {
         Assert.assertEquals(after.size(),before.size() );
         before.remove(before.size() - 1);
         before.add(contact);
+            //System.out.println("after =" + after);
+            //System.out.println("before =" +before);
             // ne-uporjado4en - massiv
             // uporjado4en    - spisok
             // spicok -> mnogestvoб BUT HashSet contains only unique names aND remove duplicates names
@@ -43,7 +45,7 @@ public class ContactModificationTests extends TestBase {
         Comparator<? super NameFirstMiddle> byId = (g1, g2) -> Integer.compare(g1.getId(),g2.getId());
         before.sort(byId);
         after.sort(byId);
-        Assert.assertEquals(before,after);
+                Assert.assertEquals(before,after);
 
             //app.fillTitle("mr.");
             //app.fillCompany("ooo Boldino");

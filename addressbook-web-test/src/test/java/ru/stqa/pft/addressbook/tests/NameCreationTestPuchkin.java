@@ -21,12 +21,11 @@ public class NameCreationTestPuchkin extends TestBase {
         //List<GroupData> before = app.getContactHelper().getContactlist();  // it's full parms of one contact
         List<NameFirstMiddle> before = app.getContactHelper().getContactlist();
         app.getContactHelper().goToAddNamePad();
-        NameFirstMiddle name = new NameFirstMiddle(0,"Alexey", "Pushkin","test134");
+        NameFirstMiddle name = new NameFirstMiddle(before.size()-1,"Alexey", "Pushkin","test134");
         app.getContactHelper().fillFirstNameMiddleName(name, true);
 
         //app.getContactHelper().createContactName(new NameFirstMiddle("Alexey", "Sergeevich","test134"), true);
 
-        //app.getContactHelper().createContactName(new LastNameNick2("Sergeevich","Push"));
         app.getContactHelper().createContactName(new LastNameNick2("Push"));
         app.getContactHelper().fillTitle("mr.");
         app.getContactHelper().fillCompany("ooo Boldino");
@@ -61,14 +60,14 @@ public class NameCreationTestPuchkin extends TestBase {
             //int max2 = after.stream().max((o1,o2) -> Integer.compare(o1.getId(),o2.getId())).get().getId();
 
         name.setId(after.stream().max((o1,o2) -> Integer.compare(o1.getId(),o2.getId())).get().getId());
-        //System.out.println("before - " + before);
-        //System.out.println("after - " + after);
         before.add(name);
         Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
             // comparation via anonimous func.
         Comparator<? super NameFirstMiddle> byId2 = (g1, g2) -> Integer.compare(g1.getId(),g2.getId());
         before.sort(byId2);
         after.sort(byId2);
+        //System.out.println("before assertE - " + before);
+        //System.out.println("after  assertE - " + after);
         Assert.assertEquals(before,after);
     }
 

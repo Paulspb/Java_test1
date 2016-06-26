@@ -49,8 +49,6 @@ public class GroupCreationTest extends TestBase {
         //int max1 = after.stream().max(byId).get().getId();
         group.setId(max2);
         before.add(group);
-            System.out.println("before add - " + before);
-            System.out.println("after add - " + after);
         Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
 
         Comparator<? super GroupData> byId2 = (g1, g2) -> Integer.compare(g1.getId(),g2.getId());
@@ -62,7 +60,7 @@ public class GroupCreationTest extends TestBase {
         Assert.assertEquals(before,after);
     }
 
-    @Test
+    @Test(enabled = false)
     public void groupCreationTestMethodNull() {
             //app.getGroupHelper().gotoGroupPage2();
             //app.getNavigationHelper()

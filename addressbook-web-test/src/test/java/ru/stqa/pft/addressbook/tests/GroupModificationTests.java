@@ -36,6 +36,8 @@ public class GroupModificationTests extends TestBase {
         // modify old spicok in two steps
         before.remove(before.size() -1);
         before.add(group);
+        System.out.println("after =" + after);
+        System.out.println("before =" +before);
              // ne-uporjado4en - massiv
             // uporjado4en    - spisok
             // spicok -> mnogestvoб BUT HashSet contains only unique names aND remove duplicates names
