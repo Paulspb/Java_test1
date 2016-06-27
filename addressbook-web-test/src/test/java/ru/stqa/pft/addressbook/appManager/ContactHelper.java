@@ -11,7 +11,9 @@ import ru.stqa.pft.addressbook.model.LastNameNick2;
 import ru.stqa.pft.addressbook.model.NameFirstMiddle;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by khomep on 09-Jun-16.
@@ -237,9 +239,9 @@ public class ContactHelper extends HelperBase {
         // was <span  class ="group" >, this is one element definition
         // now <td    class ="center"
         // empty element List<WebElement> elementNotodds = wd.findElements(By.cssSelector("td.center")); // +1
-        List<WebElement> elementNotodds   = wd.findElements(By.xpath("//tr[@name='entry']"));
+        List<WebElement> elements   = wd.findElements(By.xpath("//tr[@name='entry']"));
 
-        for (WebElement element :elementNotodds) {
+        for (WebElement element :elements) {
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
             String lastName  = element.findElement(By.xpath(".//td[2]")).getText();
             String firstName = element.findElement(By.xpath(".//td[3]")).getText();
@@ -248,6 +250,20 @@ public class ContactHelper extends HelperBase {
 
                 //System.out.println("contact=" + contact);
                     // add element to contact
+            contacts.add(new NameFirstMiddle().withId(id).
+                    withFirstname(firstName).withLastname(lastName));
+        }
+
+        return contacts;
+    }
+    public Set<NameFirstMiddle> all() {
+        Set<NameFirstMiddle> contacts = new HashSet<NameFirstMiddle>();
+        List<WebElement> elements   = wd.findElements(By.xpath("//tr[@name='entry']"));
+
+        for (WebElement element :elements) {
+            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
+            String lastName  = element.findElement(By.xpath(".//td[2]")).getText();
+            String firstName = element.findElement(By.xpath(".//td[3]")).getText();
             contacts.add(new NameFirstMiddle().withId(id).
                     withFirstname(firstName).withLastname(lastName));
         }

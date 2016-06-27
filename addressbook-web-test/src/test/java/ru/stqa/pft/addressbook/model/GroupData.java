@@ -8,7 +8,25 @@ public class GroupData {
     private String header;
     private String footer;
 
-    // revoke after
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        GroupData groupData = (GroupData) o;
+
+        if (id != groupData.id) return false;
+        return name != null ? name.equals(groupData.name) : groupData.name == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        return result;
+    }
+// revoke after
             //private int id;
             //private int id = Integer.MAX_VALUE;  // new line at the buttom
 
@@ -52,25 +70,6 @@ public class GroupData {
     public String getHeader() { return header; }
     public String getFooter() {
         return footer;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        GroupData groupData = (GroupData) o;
-
-        if (id != groupData.id) return false;
-        return name != null ? name.equals(groupData.name) : groupData.name == null;
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        return result;
     }
 
     @Override
