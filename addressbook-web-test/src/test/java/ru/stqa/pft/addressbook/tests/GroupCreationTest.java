@@ -17,7 +17,9 @@ public class GroupCreationTest extends TestBase {
         app.group().groupPage();
         List<GroupData> before = app.group().list();
             //int before1 = app.group().getGroupCount();
-        GroupData group = new GroupData("test134", "test21", "test31");
+        //GroupData group = new GroupData("test134", "test21", "test31");
+        GroupData group = new GroupData().withName("test134").
+                withHeader("test21").withFooter("test31");
         app.group().create(group);
             // placed into create
             //app.group().initGroupCreation();
@@ -35,7 +37,7 @@ public class GroupCreationTest extends TestBase {
             }
         }
             //lambda  or function anonimous
-        Comparator<? super GroupData> byId = (o1,o2) ->  Integer.compare(o1.getId(),o2.getId());
+        //Comparator<? super GroupData> byId = (o1,o2) ->  Integer.compare(o1.getId(),o2.getId());
         int max2 = after.stream().max((o1,o2) -> Integer.compare(o1.getId(),o2.getId())).get().getId();
             //    Comparator<? super GroupData> byId = new Comparator<GroupData>() {
             //    @Override
@@ -44,7 +46,8 @@ public class GroupCreationTest extends TestBase {
             //    }
             //};
                 //int max1 = after.stream().max(byId).get().getId();
-        group.setId(max2);
+        //group.setId(max2);
+        group.withId(max2);
         before.add(group);
         Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
 
@@ -66,7 +69,8 @@ public class GroupCreationTest extends TestBase {
         List<GroupData> before = app.group().list();
             // counter (not the list per elements) of group
             //int before = app.group().getGroupCount();
-        app.group().create(new GroupData("testGroupNull",null,null));
+        app.group().create(new GroupData().withName("test134"));
+            //        ("testGroupNull",null,null));
             // placed into create
             //app.group().initGroupCreation();
             //app.group().fillInGroupForm(new GroupData("testNotNull", null,null));

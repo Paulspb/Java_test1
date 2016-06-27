@@ -14,7 +14,7 @@ public class GroupDeleteOneOf extends TestBase {
         public void testGroupDeleteOneOf() {
          app.group().groupPage();
          if (! app.group().isThereAGroup()) {
-             app.group().create(new GroupData("test123423434", "test21", "test31"));
+             app.group().create(new GroupData().withName("test123423434"));
          }
                 //int before = app.group().getGroupCount();
          List<GroupData> before = app.group().list();

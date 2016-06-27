@@ -21,7 +21,9 @@ public class NameCreationTestPuchkin extends TestBase {
             //List<GroupData> before = app.contact().list();  // it's full parms of one contact
         List<NameFirstMiddle> before = app.contact().list();
         app.contact().goToAddNamePad();
-        NameFirstMiddle name = new NameFirstMiddle(before.size()-1,"Alexey", "Pushkin","test134");
+            //NameFirstMiddle name = new NameFirstMiddle(before.size()-1,"Alexey", "Pushkin","test134");
+        NameFirstMiddle name = new NameFirstMiddle().withId(before.size()-1).withFirstname("Alexey").
+                withLastname("Pushkin").withGroup("test134");
         app.contact().fillFirstNameMiddleName(name, true);
 
             //app.contact().createContactName(new NameFirstMiddle("Alexey", "Sergeevich","test134"), true);
@@ -58,8 +60,8 @@ public class NameCreationTestPuchkin extends TestBase {
         //    lyambda -
         Comparator<? super GroupData> byId = (o1, o2) ->  Integer.compare(o1.getId(),o2.getId());
             //int max2 = after.stream().max((o1,o2) -> Integer.compare(o1.getId(),o2.getId())).get().getId();
-
-        name.setId(after.stream().max((o1,o2) -> Integer.compare(o1.getId(),o2.getId())).get().getId());
+            //it was setId
+        name.withId(after.stream().max((o1,o2) -> Integer.compare(o1.getId(),o2.getId())).get().getId());
         before.add(name);
         Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
             // comparation via anonimous func.

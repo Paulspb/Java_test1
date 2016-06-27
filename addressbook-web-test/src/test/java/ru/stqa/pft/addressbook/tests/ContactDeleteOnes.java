@@ -15,8 +15,7 @@ public class ContactDeleteOnes extends TestBase {
     public void ensurePreconditionContact(){
         app.contact().goToContact();
         if ( app.contact().list().size() == 0) {
-            app.contact().create(new NameFirstMiddle(
-                    0,"update2", "Sergeevich","test134"));
+            app.contact().create(new NameFirstMiddle().withId(0).withFirstname("update2"));
         }
     }
 

@@ -243,11 +243,13 @@ public class ContactHelper extends HelperBase {
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
             String lastName  = element.findElement(By.xpath(".//td[2]")).getText();
             String firstName = element.findElement(By.xpath(".//td[3]")).getText();
-            NameFirstMiddle contact = new NameFirstMiddle(id,firstName,lastName, null);
+                    //NameFirstMiddle contact = new NameFirstMiddle().withId(id).
+                    //withFirstname(firstName).withLastname(lastName);
 
-            //System.out.println("contact=" + contact);
+                //System.out.println("contact=" + contact);
                     // add element to contact
-            contacts.add(contact);
+            contacts.add(new NameFirstMiddle().withId(id).
+                    withFirstname(firstName).withLastname(lastName));
         }
 
         return contacts;

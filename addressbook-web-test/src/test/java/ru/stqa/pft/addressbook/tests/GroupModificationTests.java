@@ -20,7 +20,7 @@ public class GroupModificationTests extends TestBase {
         //app.getNavigationHelpe().groupPage();
         //if (! app.group().isThereAGroup()) {
         if ( app.group().list().size() == 0) {
-            app.group().create(new GroupData("test123423434", "test21", "test31"));
+            app.group().create(new GroupData().withName("delete"));
         }
     }
 
@@ -29,8 +29,11 @@ public class GroupModificationTests extends TestBase {
             //int before = app.group().getGroupCount();
         List<GroupData> before = app.group().list();
         int index = before.size() -1;
-        GroupData group = new GroupData(before.get(index).getId(),
-                "test-modification", "updat3331", "updat3331");
+                //GroupData group = new GroupData(before.get(index).getId(),
+                //        "test-modification", "updat3331", "updat3331");
+        GroupData group = new GroupData().withId(before.get(index).getId()).
+                withName("test-modification").withHeader("updat3331").withFooter("updat3331");
+
         app.group().modify(index, group);
             //int after = app.group().getGroupCount();
         List<GroupData> after = app.group().list();

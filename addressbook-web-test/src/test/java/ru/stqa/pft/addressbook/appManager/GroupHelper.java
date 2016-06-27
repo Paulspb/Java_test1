@@ -87,7 +87,7 @@ public class GroupHelper extends HelperBase {
 
     public void create(GroupData group) {
         initGroupCreation();
-        //fillInGroupForm(new GroupData("test123423434", "test21", "test31"));
+            //fillInGroupForm(new GroupData("test123423434", "test21", "test31"));
         fillInGroupForm(group);
         submitGroupCreation();
         getNavigationHelper().returntoGroupPage();
@@ -96,8 +96,8 @@ public class GroupHelper extends HelperBase {
     public void modify(int index, GroupData group) {
         selectOneGroupFromAllGroup(index);
         initGroupModification();
-        // one line instead of 2
-        //                               take id from last element
+                // one line instead of 2
+                // take id from last element
         fillInGroupForm(group);
         submitGroupModification();
         getNavigationHelper().returntoGroupPage();
@@ -119,17 +119,17 @@ public class GroupHelper extends HelperBase {
 
     public List<GroupData> list() {
         List<GroupData> groups = new ArrayList<GroupData>();
-        // next takes one element of array = ArrayList
-        /// tag = "span" && tag = "group"
-        // <span = class ="group" >, this is one element definition
+            // next takes one element of array = ArrayList
+            /// tag = "span" && tag = "group"
+            // <span = class ="group" >, this is one element definition
         List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
         for (WebElement element :elements) {
             String name = element.getText();  // name of groups
             int id   = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            GroupData group = new GroupData(id,name,null, null);
-            //app.group().create(new GroupData("tesNotNull",null,null));
-            // add element to group
-            groups.add(group);
+            // no more needs GroupData group = new GroupData().withId(id).withName(name);
+                    //app.group().create(new GroupData("tesNotNull",null,null));
+                    // add element to group
+            groups.add(new GroupData().withId(id).withName(name));
         }
         return  groups;
     }

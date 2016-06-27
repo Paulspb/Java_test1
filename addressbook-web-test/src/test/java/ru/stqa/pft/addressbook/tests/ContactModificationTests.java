@@ -18,8 +18,7 @@ public class ContactModificationTests extends TestBase {
         app.contact().goToContact();
         //if (! app.contact().isThereAContact()) {
         if ( app.contact().list().size() == 0) {
-            app.contact().create(new NameFirstMiddle(
-                    0,"update2", "Sergeevich","test134"));
+            app.contact().create(new NameFirstMiddle().withId(0).withFirstname("update2"));
         }
     }
 
@@ -27,8 +26,8 @@ public class ContactModificationTests extends TestBase {
     public void testContactModification() {
         List<NameFirstMiddle> before = app.contact().list();
         int index = before.size() -1;
-        NameFirstMiddle contact = new NameFirstMiddle
-                (before.get(index).getId(),"UpdateFirst1", "Last-update3",null);
+        NameFirstMiddle contact = new NameFirstMiddle().withId(before.get(index).getId()).
+        withFirstname("UpdateFirst1").withLastname("Last-update3");
         app.contact().modify(before, contact);
         List<NameFirstMiddle> after = app.contact().list();
         Assert.assertEquals(after.size(),before.size() );
