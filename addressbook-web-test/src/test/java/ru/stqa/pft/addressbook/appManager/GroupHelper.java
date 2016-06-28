@@ -19,7 +19,7 @@ public class GroupHelper extends HelperBase {
 
     private NavigationHelper navigationHelper;
 
-    //public GroupHelper(FirefoxDriver wd) {
+                //public GroupHelper(FirefoxDriver wd) {
     public GroupHelper(WebDriver wd) {
             super(wd);
         navigationHelper = new NavigationHelper(wd);
@@ -41,13 +41,10 @@ public class GroupHelper extends HelperBase {
         if (isElementPresent(By.tagName("h1"))
                 && wd.findElement(By.tagName("h1")).getText().equals("Groups")
                 && isElementPresent(By.name("new"))) {
-        //if ( ! isElementPresent(By.tagName("h1"))
-        //            || ! wd.findElement(By.tagName("h1")).getText().equals("Groups")
-        //            || ! isElementPresent(By.name("new"))) {
-              return;
-            }  // else
-        click(By.linkText("groups"));
-    }
+            return;
+            }
+            click(By.linkText("groups"));
+        }
 
     public void deleteSelectedGroup() {
         click(By.xpath("//div[@id='content']/form/input[5]"));
@@ -55,17 +52,17 @@ public class GroupHelper extends HelperBase {
 
     public void selectOneGroupFromAllGroup(int index) {
         wd.findElements(By.name("selected[]")).get(index).click();
-       //click(By.name("selected[]")); it's any selecting
-        // it has recorded:
-        // if (!wd.findElement(By.xpath("//div[@id='content']/form/span[2]/input")).isSelected()) {
-       //     click(By.xpath("//div[@id='content']/form/span[2]/input"));
+                //click(By.name("selected[]")); it's any selecting
+                // it has recorded:
+                // if (!wd.findElement(By.xpath("//div[@id='content']/form/span[2]/input")).isSelected()) {
+                //     click(By.xpath("//div[@id='content']/form/span[2]/input"));
         }
 
 
     public void selectGroupById(int id) {
-        //html
-        //<input name="selected[]" value="156" title="Select (test-modification)" type="checkbox">
-        //cssSelector
+            //html
+            //<input name="selected[]" value="156" title="Select (test-modification)" type="checkbox">
+            //cssSelector
         wd.findElement(By.cssSelector("input[value='"+id +"']")).click();
     }
 
@@ -104,7 +101,7 @@ public class GroupHelper extends HelperBase {
 
     //public void modify(int index, GroupData group) {
     public void modify(GroupData group) {
-        //selectOneGroupFromAllGroup(index);
+                    //selectOneGroupFromAllGroup(index);
         selectGroupById(group.getId());
         initGroupModification();
                 // one line instead of 2
@@ -114,14 +111,8 @@ public class GroupHelper extends HelperBase {
         getNavigationHelper().returntoGroupPage();
     }
 
-    public void delete(int index) {
-        selectOneGroupFromAllGroup(index);
-        deleteSelectedGroup();
-        groupPage();
-    }
-
     public void delete(GroupData group) {
-        //selectOneGroupFromAllGroup(index);
+                    //selectOneGroupFromAllGroup(index);
         selectGroupById(group.getId());
         deleteSelectedGroup();
         groupPage();
@@ -129,10 +120,6 @@ public class GroupHelper extends HelperBase {
 
     public boolean isThereAGroup() {
         return isElementPresent(By.name("selected[]"));
-    }
-
-    public int getGroupCount() {
-        return wd.findElements(By.name("selected[]")).size();
     }
 
     public List<GroupData> list() {

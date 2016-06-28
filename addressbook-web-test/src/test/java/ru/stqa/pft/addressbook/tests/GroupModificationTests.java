@@ -20,7 +20,7 @@ public class GroupModificationTests extends TestBase {
         app.group().groupPage();
         //app.getNavigationHelpe().groupPage();
         //if (! app.group().isThereAGroup()) {
-        if ( app.group().list().size() == 0) {
+        if ( app.group().all().size() == 0) {
             app.group().create(new GroupData().withName("delete"));
         }
     }

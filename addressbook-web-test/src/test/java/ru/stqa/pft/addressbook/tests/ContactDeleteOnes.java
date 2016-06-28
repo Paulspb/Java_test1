@@ -5,7 +5,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.NameFirstMiddle;
 
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -15,8 +14,10 @@ public class ContactDeleteOnes extends TestBase {
     @BeforeMethod
     public void ensurePreconditionContact(){
         app.contact().goToContact();
-        if ( app.contact().list().size() == 0) {
-            app.contact().create(new NameFirstMiddle().withId(0).withFirstname("update2"));
+        if ( app.contact().all().size() == 0) {
+            app.contact().create(new NameFirstMiddle().withId(0).
+                    withFirstname("new group2").
+                    withLastname("Dostoyevsky").withGroup("test134") );
         }
     }
 
