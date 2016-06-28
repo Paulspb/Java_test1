@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.List;
+import java.util.Set;
 
 public class GroupDeleteTest extends TestBase  {
     @BeforeMethod
@@ -22,18 +23,24 @@ public class GroupDeleteTest extends TestBase  {
             //() - it was any of line
             //(before -1 = <last line -1>
             //int groupbefore = app.group().getGroupCount();
-        List<GroupData> before = app.group().list();
-        int index = before.size() -1;
-        app.group().delete(index);
-        List<GroupData> after = app.group().list();
+        Set<GroupData> before = app.group().all();
+            //take from mnovestvo iterator, then next
+        GroupData deletedGroup = before.iterator().next();
+            // as substitute on deletedGroup int index = before.size() -1;
+                // needs to delete whole element with Id
+                //it was : app.group().delete(index);, now:
+        app.group().delete(deletedGroup);
+        Set<GroupData> after = app.group().all();
         // int after = app.group().getGroupCount();
         //Assert.assertEquals(after,before +1);
         Assert.assertEquals(after.size(),before.size()-1);
-        before.remove(index);
-        //for ( int i = 0; i < after.size(); i++) {
-        //    Assert.assertEquals(after.get(i),before.get(i));
-        //}
-        // assertEquals can do so:
+        // by index from mnovestvo no chance to delete
+            //before.remove(index);
+        before.remove(deletedGroup);
+                //for ( int i = 0; i < after.size(); i++) {
+                //    Assert.assertEquals(after.get(i),before.get(i));
+                //}
+            // assertEquals can do so:
         Assert.assertEquals(after,before);
     }
 

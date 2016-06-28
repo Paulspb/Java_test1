@@ -62,6 +62,13 @@ public class GroupHelper extends HelperBase {
         }
 
 
+    public void selectGroupById(int id) {
+        //html
+        //<input name="selected[]" value="156" title="Select (test-modification)" type="checkbox">
+        //cssSelector
+        wd.findElement(By.cssSelector("input[value='"+id +"']")).click();
+    }
+
     public void fillInGroupForm(GroupData groupData) {
         type(By.name("group_name"), groupData.getName());
         type(By.name("group_header"), groupData.getHeader());
@@ -95,8 +102,10 @@ public class GroupHelper extends HelperBase {
         getNavigationHelper().returntoGroupPage();
     }
 
-    public void modify(int index, GroupData group) {
-        selectOneGroupFromAllGroup(index);
+    //public void modify(int index, GroupData group) {
+    public void modify(GroupData group) {
+        //selectOneGroupFromAllGroup(index);
+        selectGroupById(group.getId());
         initGroupModification();
                 // one line instead of 2
                 // take id from last element
@@ -110,8 +119,15 @@ public class GroupHelper extends HelperBase {
         deleteSelectedGroup();
         groupPage();
     }
-    public boolean isThereAGroup() {
 
+    public void delete(GroupData group) {
+        //selectOneGroupFromAllGroup(index);
+        selectGroupById(group.getId());
+        deleteSelectedGroup();
+        groupPage();
+    }
+
+    public boolean isThereAGroup() {
         return isElementPresent(By.name("selected[]"));
     }
 
@@ -149,4 +165,5 @@ public class GroupHelper extends HelperBase {
         return  groups;
         //put object to mnogestvo
     }
+
 }

@@ -8,6 +8,7 @@ import ru.stqa.pft.addressbook.model.GroupData;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by khomep on 09-Jun-16.
@@ -27,20 +28,24 @@ public class GroupModificationTests extends TestBase {
     @Test
     public void testGroupModification() {
             //int before = app.group().getGroupCount();
-        List<GroupData> before = app.group().list();
-        int index = before.size() -1;
+            //List<GroupData> before = app.group().list(); - spisok
+        Set<GroupData> before = app.group().all();      // mnogestvo
+        GroupData modifiedGroup = before.iterator().next();
+        //int index = before.size() -1;
                 //GroupData group = new GroupData(before.get(index).getId(),
                 //        "test-modification", "updat3331", "updat3331");
-        GroupData group = new GroupData().withId(before.get(index).getId()).
-                withName("test-modification").withHeader("updat3331").withFooter("updat3331");
+        //GroupData group = new GroupData().withId(before.get(index).getId()).
+        GroupData group = new GroupData().withId(modifiedGroup.getId()).
+                withName("test134").withHeader("updat3331").withFooter("updat3331");
 
-        app.group().modify(index, group);
+        //app.group().modify(modifiedGroup, group);
+        app.group().modify( group);
             //int after = app.group().getGroupCount();
-        List<GroupData> after = app.group().list();
+        Set<GroupData> after = app.group().all();
         Assert.assertEquals(after.size(),before.size() );
         //Assert.assertEquals(after,before );
         // modify old spicok in two steps
-        before.remove(index);
+        before.remove(modifiedGroup);
         before.add(group);
         System.out.println("after =" + after);
         System.out.println("before =" +before);
@@ -48,10 +53,11 @@ public class GroupModificationTests extends TestBase {
             // uporjado4en    - spisok
             // spicok -> mnogestvoб BUT HashSet contains only unique names aND remove duplicates names
         Assert.assertEquals(new HashSet<Object>(before),new HashSet<Object>(after));
+        // no needs after added modifiedGroup
             //anonimous function
-        Comparator<? super GroupData> byId = (g1, g2) -> Integer.compare(g1.getId(),g2.getId());
-        before.sort(byId);
-        after.sort(byId);
+        //Comparator<? super GroupData> byId = (g1, g2) -> Integer.compare(g1.getId(),g2.getId());
+        //before.sort(byId);
+        //after.sort(byId);
         Assert.assertEquals(before,after);
     }
 

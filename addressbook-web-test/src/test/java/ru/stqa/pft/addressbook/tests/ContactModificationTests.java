@@ -8,6 +8,7 @@ import ru.stqa.pft.addressbook.model.NameFirstMiddle;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by khomep on 09-Jun-16.
@@ -24,32 +25,45 @@ public class ContactModificationTests extends TestBase {
 
     @Test
     public void testContactModification() {
-        List<NameFirstMiddle> before = app.contact().list();
-        int index = before.size() -1;
-        NameFirstMiddle contact = new NameFirstMiddle().withId(before.get(index).getId()).
-        withFirstname("UpdateFirst1").withLastname("Last-update3");
-        app.contact().modify(before, contact);
-        List<NameFirstMiddle> after = app.contact().list();
+                //List<NameFirstMiddle> before = app.contact().list();
+            // all() return spisok, not mnogestvo
+        Set<NameFirstMiddle> before = app.contact().all();
+            // next() return sly4ainyi element, not last, not first
+        NameFirstMiddle modifiedContact = before.iterator().next();
+            //System.out.println("modifiedContact =" + modifiedContact);
+                //int index = before.size() -1;
+        NameFirstMiddle contact = new NameFirstMiddle().
+            withId(modifiedContact.getId()).
+            withFirstname("upd-Alexander").withLastname("Pushkin");
+        app.contact().modify(contact);
+                //app.contact().modify(contact);
+        Set<NameFirstMiddle> after = app.contact().all();
         Assert.assertEquals(after.size(),before.size() );
-        before.remove(index);
+            //System.out.println("2before =" +before);
+        before.remove(modifiedContact);
+            //System.out.println("2modifiedContact =" + modifiedContact);
+            //System.out.println("2Contact =        " + contact);
         before.add(contact);
-            //System.out.println("after =" + after);
-            //System.out.println("before =" +before);
+            // System.out.println("3before =" +before);
+            // System.out.println("3after =" + after);
             // ne-uporjado4en - massiv
             // uporjado4en    - spisok
             // spicok -> mnogestvoб BUT HashSet contains only unique names aND remove duplicates names
         Assert.assertEquals(new HashSet<Object>(before),new HashSet<Object>(after));
             //anonimous function: sort by Id - our choice
-        Comparator<? super NameFirstMiddle> byId = (g1, g2) -> Integer.compare(g1.getId(),g2.getId());
-        before.sort(byId);
-        after.sort(byId);
-                Assert.assertEquals(before,after);
+                // no need after modifiedContact
+                //Comparator<? super NameFirstMiddle> byId = (g1, g2) -> Integer.compare(g1.getId(),g2.getId());
+                //before.sort(byId);
+                //after.sort(byId);
+            //System.out.println("before assertE - " + before);
+            //System.out.println("after  assertE - " + after);
+        Assert.assertEquals(before,after);
 
-            //app.fillTitle("mr.");
-            //app.fillCompany("ooo Boldino");
-            //app.fillAddress1("Pskovskaya obl.");
-            //app.fillHomeMobileTlf("8 888 555 3214", "8 921 921 921 921");
-            //app.fillEmail(new Emails123("alexander0.puchkin@gmail.com", "apuchkin@kultura.tv", "\\9"));
+                //app.fillTitle("mr.");
+                //app.fillCompany("ooo Boldino");
+                //app.fillAddress1("Pskovskaya obl.");
+                //app.fillHomeMobileTlf("8 888 555 3214", "8 921 921 921 921");
+                //app.fillEmail(new Emails123("alexander0.puchkin@gmail.com", "apuchkin@kultura.tv", "\\9"));
 
     }
 
