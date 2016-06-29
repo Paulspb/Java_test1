@@ -1,5 +1,7 @@
 package ru.stqa.pft.addressbook.tests;
 
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.MatcherAssert;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -59,6 +61,7 @@ public class GroupModificationTests extends TestBase {
         //before.sort(byId);
         //after.sort(byId);
         Assert.assertEquals(before,after);
+
     }
 
 

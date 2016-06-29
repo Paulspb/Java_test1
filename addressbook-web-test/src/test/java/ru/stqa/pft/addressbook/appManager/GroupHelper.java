@@ -1,11 +1,13 @@
 package ru.stqa.pft.addressbook.appManager;
 
 import com.sun.javafx.binding.ExpressionHelperBase;
+import jdk.nashorn.internal.runtime.regexp.joni.Matcher;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -125,6 +127,7 @@ public class GroupHelper extends HelperBase {
     public List<GroupData> list() {
         List<GroupData> groups = new ArrayList<GroupData>();
             // next takes one element of array = ArrayList
+        //Matcher
             /// tag = "span" && tag = "group"
             // <span = class ="group" >, this is one element definition
         List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
@@ -139,9 +142,11 @@ public class GroupHelper extends HelperBase {
         return  groups;
     }
     // type of return object List -> Set
-    public Set<GroupData> all() {
+    //public Set<GroupData> all() {
+    // this return object this type = Group
+    public Groups all() {
         // create mnogestvo -groupdata-
-        Set<GroupData>  groups = new HashSet<GroupData>();
+        Groups  groups = new Groups();
         List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
         for (WebElement element :elements) {
             String name = element.getText();  // name of groups
