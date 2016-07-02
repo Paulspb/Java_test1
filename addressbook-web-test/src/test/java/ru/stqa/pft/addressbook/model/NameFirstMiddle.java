@@ -7,9 +7,11 @@ public class NameFirstMiddle {
             //private final String middleName;
     private String group;
         // lesson 5.9
-    private String home;
-    private String mobile;
-    private String work;
+    private String homePhone;
+    private String mobilePhone;
+    private String workPhone;
+    private String allPhones;
+
 
      //public void withId(int id) {
     public NameFirstMiddle withId(int id) {
@@ -29,30 +31,34 @@ public class NameFirstMiddle {
         this.group = group;
         return this;
     }
-    public NameFirstMiddle withHomePhone(String home) {
-        this.home = home;
+    public NameFirstMiddle withHomePhone(String homePhone) {
+        this.homePhone = homePhone;
         return this;
     }
-    public NameFirstMiddle withMobilePhone(String mobile) {
-        this.mobile = mobile;
+    public NameFirstMiddle withMobilePhone(String mobilePhone) {
+        this.mobilePhone = mobilePhone;
         return this;
     }
-    public NameFirstMiddle withWorkPhone(String work) {
-        this.work = work;
+    public NameFirstMiddle withWorkPhone(String workPhone) {
+        this.workPhone = workPhone;
         return this;
     }
-
+    public NameFirstMiddle withAllPhones(String allPhones) {
+        this.allPhones = allPhones;
+        return this;
+    }
 
 
     public int    getId()        { return id;  }
     public String getFirstname() { return firstname;   }
     public String getLastName()  { return lastname;    }
-    public String getMobile()    { return mobile;    }
-    public String getHome()      { return home;    }
-    public String getWork()      { return work;    }
-    //public String getMiddleName() {
-    //    return middleName;
-    //}
+    public String getMobile()    { return mobilePhone;    }
+    public String getHome()      { return homePhone;    }
+    public String getWork()      { return workPhone;    }
+    public String getAllPhones() {
+        return allPhones;
+    }
+
 
     public String getGroup() {        // to take value of pole
             return group;    }
@@ -77,6 +83,7 @@ public class NameFirstMiddle {
         result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
         return result;
     }
+
     @Override
     public String toString() {
         return "NameFirstMiddle{" +
@@ -84,9 +91,10 @@ public class NameFirstMiddle {
                 ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", group='" + group + '\'' +
-                ", home='" + home + '\'' +
-                ", mobile='" + mobile + '\'' +
-                ", work='" + work + '\'' +
+                ", homePhone='" + homePhone + '\'' +
+                ", mobilePhone='" + mobilePhone + '\'' +
+                ", workPhone='" + workPhone + '\'' +
+                ", allPhones='" + allPhones + '\'' +
                 '}';
     }
 }

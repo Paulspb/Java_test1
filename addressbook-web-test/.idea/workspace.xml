@@ -31,8 +31,8 @@
       <file leaf-file-name="ContactHelper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ContactHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="210" column="59" selection-start-line="210" selection-start-column="59" selection-end-line="210" selection-end-column="59" />
+            <state relative-caret-position="102">
+              <caret line="202" column="60" selection-start-line="202" selection-start-column="60" selection-end-line="202" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -43,8 +43,8 @@
       <file leaf-file-name="NameFirstMiddle.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/model/NameFirstMiddle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="436">
-              <caret line="90" column="5" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="5" />
+            <state relative-caret-position="152">
+              <caret line="87" column="18" selection-start-line="87" selection-start-column="18" selection-end-line="87" selection-end-column="18" />
               <folding>
                 <element signature="method#withId#0;class#NameFirstMiddle#0" expanded="false" />
                 <element signature="method#withFirstname#0;class#NameFirstMiddle#0" expanded="false" />
@@ -52,6 +52,8 @@
                 <element signature="method#withGroup#0;class#NameFirstMiddle#0" expanded="false" />
                 <element signature="method#withHomePhone#0;class#NameFirstMiddle#0" expanded="false" />
                 <element signature="method#withMobilePhone#0;class#NameFirstMiddle#0" expanded="false" />
+                <element signature="method#withWorkPhone#0;class#NameFirstMiddle#0" expanded="false" />
+                <element signature="method#withAllPhones#0;class#NameFirstMiddle#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -60,21 +62,9 @@
       <file leaf-file-name="ContactModificationTests.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/ContactModificationTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="412">
+            <state relative-caret-position="1400">
               <caret line="63" column="0" selection-start-line="61" selection-start-column="8" selection-end-line="63" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ContactDeleteOnes.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/ContactDeleteOnes.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="44" column="39" selection-start-line="44" selection-start-column="39" selection-end-line="44" selection-end-column="39" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -82,23 +72,10 @@
       <file leaf-file-name="ContactPhoneTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/ContactPhoneTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="29" column="53" selection-start-line="29" selection-start-column="53" selection-end-line="29" selection-end-column="53" />
+            <state relative-caret-position="112">
+              <caret line="31" column="57" selection-start-line="31" selection-start-column="57" selection-end-line="31" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#ensurePreconditionContact#0;class#ContactPhoneTest#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ApplicationManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ApplicationManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1400">
-              <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
-              <folding>
-                <element signature="e#2418#2419#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -386,8 +363,9 @@
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/model/GroupData.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/GroupCreationTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ApplicationManager.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/model/NameFirstMiddle.java" />
+        <option value="C:/Program Files/Java/jdk1.8.0_77/jre/lib/rt.jar!/sun/misc/Launcher.class" />
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ContactHelper.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/model/NameFirstMiddle.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/ContactPhoneTest.java" />
       </list>
     </option>
@@ -400,8 +378,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="-2" />
+    <option name="y" value="-5" />
     <option name="width" value="1616" />
     <option name="height" value="876" />
   </component>
@@ -430,6 +408,11 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane />
+      </pane>
       <pane id="Scope">
         <subPane subId="Tests">
           <PATH>
@@ -524,11 +507,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="ProjectPane">
-        <subPane />
-      </pane>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -962,9 +940,9 @@
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="TestNG.ContactPhoneTest" />
-        <item index="1" class="java.lang.String" itemvalue="TestNG.ContactModificationTests" />
-        <item index="2" class="java.lang.String" itemvalue="TestNG.ContactDeleteOnes" />
-        <item index="3" class="java.lang.String" itemvalue="TestNG.NameCreationTestPuchkin" />
+        <item index="1" class="java.lang.String" itemvalue="TestNG.NameCreationTestPuchkin" />
+        <item index="2" class="java.lang.String" itemvalue="TestNG.ContactModificationTests" />
+        <item index="3" class="java.lang.String" itemvalue="TestNG.ContactDeleteOnes" />
         <item index="4" class="java.lang.String" itemvalue="TestNG.GroupCreationTest" />
       </list>
     </recent_temporary>
@@ -986,50 +964,50 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ContactModificationTests - 2016.07.02 at 15h 16m 49s.xml">
-      <configuration name="ContactModificationTests" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="ContactModificationTests - 2016.07.02 at 15h 17m 16s.xml">
-      <configuration name="ContactModificationTests" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="ContactModificationTests - 2016.07.02 at 15h 19m 30s.xml">
-      <configuration name="ContactModificationTests" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="ContactModificationTests - 2016.07.02 at 15h 20m 36s.xml">
-      <configuration name="ContactModificationTests" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="ContactModificationTests - 2016.07.02 at 15h 21m 49s.xml">
-      <configuration name="ContactModificationTests" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="ContactModificationTests - 2016.07.02 at 15h 22m 35s.xml">
-      <configuration name="ContactModificationTests" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="ContactPhoneTest - 2016.07.02 at 15h 32m 19s.xml">
+    <history-entry file="ContactPhoneTest - 2016.07.02 at 22h 11m 00s.xml">
       <configuration name="ContactPhoneTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="ContactPhoneTest - 2016.07.02 at 15h 35m 29s.xml">
+    <history-entry file="ContactPhoneTest - 2016.07.02 at 22h 12m 14s.xml">
       <configuration name="ContactPhoneTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="ContactPhoneTest - 2016.07.02 at 15h 36m 42s.xml">
+    <history-entry file="ContactPhoneTest - 2016.07.02 at 22h 13m 22s.xml">
       <configuration name="ContactPhoneTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="ContactPhoneTest - 2016.07.02 at 15h 39m 42s.xml">
+    <history-entry file="ContactPhoneTest - 2016.07.02 at 22h 49m 11s.xml">
       <configuration name="ContactPhoneTest" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="ContactPhoneTest - 2016.07.02 at 22h 54m 52s.xml">
+      <configuration name="ContactPhoneTest" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="ContactPhoneTest - 2016.07.02 at 22h 58m 56s.xml">
+      <configuration name="ContactPhoneTest" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="ContactPhoneTest - 2016.07.02 at 23h 07m 02s.xml">
+      <configuration name="ContactPhoneTest" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="ContactPhoneTest - 2016.07.02 at 23h 10m 59s.xml">
+      <configuration name="ContactPhoneTest" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="ContactPhoneTest - 2016.07.02 at 23h 17m 02s.xml">
+      <configuration name="ContactPhoneTest" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="NameCreationTestPuchkin - 2016.07.02 at 22h 56m 48s.xml">
+      <configuration name="NameCreationTestPuchkin" configurationId="TestNG" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
-    <editor active="true" />
+    <frame x="-2" y="-5" width="1616" height="876" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3285528" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39895698" sideWeight="0.5025" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32985657" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32985657" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1039,7 +1017,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39895698" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39895698" sideWeight="0.4975" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1141,7 +1119,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/ContactPhoneTest.java</url>
-          <line>28</line>
+          <line>32</line>
           <properties />
           <option name="timeStamp" value="50" />
         </line-breakpoint>
@@ -1163,14 +1141,56 @@
           <properties />
           <option name="timeStamp" value="62" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/ContactPhoneTest.java</url>
+          <line>20</line>
+          <properties />
+          <option name="timeStamp" value="69" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/ContactPhoneTest.java</url>
+          <line>29</line>
+          <properties />
+          <option name="timeStamp" value="70" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ContactHelper.java</url>
+          <line>354</line>
+          <properties />
+          <option name="timeStamp" value="71" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ContactHelper.java</url>
+          <line>355</line>
+          <properties />
+          <option name="timeStamp" value="72" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ContactHelper.java</url>
+          <line>356</line>
+          <properties />
+          <option name="timeStamp" value="73" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ContactHelper.java</url>
+          <line>361</line>
+          <properties />
+          <option name="timeStamp" value="74" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/model/NameFirstMiddle.java</url>
-          <line>27</line>
+          <line>29</line>
           <properties class="ru.stqa.pft.addressbook.model.NameFirstMiddle" method="withGroup" />
           <option name="timeStamp" value="63" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/model/NameFirstMiddle.java</url>
+          <line>41</line>
+          <properties class="ru.stqa.pft.addressbook.model.NameFirstMiddle" method="withWorkPhone" />
+          <option name="timeStamp" value="75" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="64" />
+      <option name="time" value="76" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1179,72 +1199,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-api/2.53.0/6883967bd79c186f4176bf1a5fbd88ba5179ceb2/selenium-api-2.53.0-sources.jar!/org/openqa/selenium/By.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1575">
-          <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#13768#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#6226#6227#0" expanded="false" />
-            <element signature="e#6264#6265#0" expanded="false" />
-            <element signature="e#6596#6597#0" expanded="false" />
-            <element signature="e#6622#6623#0" expanded="false" />
-            <element signature="e#7225#7226#0" expanded="false" />
-            <element signature="e#7260#7261#0" expanded="false" />
-            <element signature="e#7485#7486#0" expanded="false" />
-            <element signature="e#7523#7524#0" expanded="false" />
-            <element signature="e#7885#7886#0" expanded="false" />
-            <element signature="e#7932#7933#0" expanded="false" />
-            <element signature="e#8171#8172#0" expanded="false" />
-            <element signature="e#8209#8210#0" expanded="false" />
-            <element signature="e#8596#8597#0" expanded="false" />
-            <element signature="e#8650#8651#0" expanded="false" />
-            <element signature="e#8858#8859#0" expanded="false" />
-            <element signature="e#8888#8889#0" expanded="false" />
-            <element signature="e#9515#9516#0" expanded="false" />
-            <element signature="e#9554#9555#0" expanded="false" />
-            <element signature="e#9769#9770#0" expanded="false" />
-            <element signature="e#9799#9800#0" expanded="false" />
-            <element signature="e#10388#10389#0" expanded="false" />
-            <element signature="e#10430#10431#0" expanded="false" />
-            <element signature="e#10664#10665#0" expanded="false" />
-            <element signature="e#10716#10717#0" expanded="false" />
-            <element signature="e#11080#11081#0" expanded="false" />
-            <element signature="e#11131#11132#0" expanded="false" />
-            <element signature="e#11361#11362#0" expanded="false" />
-            <element signature="e#11401#11402#0" expanded="false" />
-            <element signature="e#12633#12634#0" expanded="false" />
-            <element signature="e#12682#12683#0" expanded="false" />
-            <element signature="e#12914#12915#0" expanded="false" />
-            <element signature="e#12952#12953#0" expanded="false" />
-            <element signature="e#13710#13711#0" expanded="false" />
-            <element signature="e#13760#13761#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/ContactPhoneTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="26" column="69" selection-start-line="26" selection-start-column="69" selection-end-line="26" selection-end-column="69" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#ensurePreconditionContact#0;class#ContactPhoneTest#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ApplicationManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1400">
-          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
-          <folding>
-            <element signature="e#2418#2419#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ContactHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6525">
@@ -1292,7 +1246,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1368,9 +1322,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="721" column="0" selection-start-line="721" selection-start-column="0" selection-end-line="721" selection-end-column="0" />
-          <folding>
-            <element signature="e#26929#26942#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1437,7 +1388,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1487,8 +1437,8 @@
         <state relative-caret-position="1711">
           <caret line="158" column="43" selection-start-line="158" selection-start-column="43" selection-end-line="158" selection-end-column="43" />
           <folding>
-            <element signature="e#4992#4993#0" expanded="true" />
-            <element signature="e#5060#5061#0" expanded="true" />
+            <element signature="e#4992#4993#0" expanded="false" />
+            <element signature="e#5060#5061#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1498,7 +1448,7 @@
         <state relative-caret-position="458">
           <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1518,16 +1468,8 @@
         <state relative-caret-position="252">
           <caret line="15" column="36" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="36" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/model/Contacts.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-125">
-          <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1547,58 +1489,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ApplicationManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1400">
-          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
-          <folding>
-            <element signature="e#2418#2419#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-api/2.53.0/6883967bd79c186f4176bf1a5fbd88ba5179ceb2/selenium-api-2.53.0-sources.jar!/org/openqa/selenium/By.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1575">
           <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#13768#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#6226#6227#0" expanded="false" />
-            <element signature="e#6264#6265#0" expanded="false" />
-            <element signature="e#6596#6597#0" expanded="false" />
-            <element signature="e#6622#6623#0" expanded="false" />
-            <element signature="e#7225#7226#0" expanded="false" />
-            <element signature="e#7260#7261#0" expanded="false" />
-            <element signature="e#7485#7486#0" expanded="false" />
-            <element signature="e#7523#7524#0" expanded="false" />
-            <element signature="e#7885#7886#0" expanded="false" />
-            <element signature="e#7932#7933#0" expanded="false" />
-            <element signature="e#8171#8172#0" expanded="false" />
-            <element signature="e#8209#8210#0" expanded="false" />
-            <element signature="e#8596#8597#0" expanded="false" />
-            <element signature="e#8650#8651#0" expanded="false" />
-            <element signature="e#8858#8859#0" expanded="false" />
-            <element signature="e#8888#8889#0" expanded="false" />
-            <element signature="e#9515#9516#0" expanded="false" />
-            <element signature="e#9554#9555#0" expanded="false" />
-            <element signature="e#9769#9770#0" expanded="false" />
-            <element signature="e#9799#9800#0" expanded="false" />
-            <element signature="e#10388#10389#0" expanded="false" />
-            <element signature="e#10430#10431#0" expanded="false" />
-            <element signature="e#10664#10665#0" expanded="false" />
-            <element signature="e#10716#10717#0" expanded="false" />
-            <element signature="e#11080#11081#0" expanded="false" />
-            <element signature="e#11131#11132#0" expanded="false" />
-            <element signature="e#11361#11362#0" expanded="false" />
-            <element signature="e#11401#11402#0" expanded="false" />
-            <element signature="e#12633#12634#0" expanded="false" />
-            <element signature="e#12682#12683#0" expanded="false" />
-            <element signature="e#12914#12915#0" expanded="false" />
-            <element signature="e#12952#12953#0" expanded="false" />
-            <element signature="e#13710#13711#0" expanded="false" />
-            <element signature="e#13760#13761#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1606,42 +1500,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1100">
           <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#56545#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#1588#1589#0" expanded="false" />
-            <element signature="e#1616#1617#0" expanded="false" />
-            <element signature="e#1874#1875#0" expanded="false" />
-            <element signature="e#1909#1910#0" expanded="false" />
-            <element signature="e#14779#14780#0" expanded="false" />
-            <element signature="e#14829#14830#0" expanded="false" />
-            <element signature="e#32344#32345#0" expanded="false" />
-            <element signature="e#32390#32391#0" expanded="false" />
-            <element signature="e#33359#33360#0" expanded="false" />
-            <element signature="e#33403#33404#0" expanded="false" />
-            <element signature="e#37123#37124#0" expanded="false" />
-            <element signature="e#37181#37182#0" expanded="false" />
-            <element signature="e#45857#45858#0" expanded="false" />
-            <element signature="e#45913#45914#0" expanded="false" />
-            <element signature="e#47867#47868#0" expanded="false" />
-            <element signature="e#47923#47924#0" expanded="false" />
-            <element signature="e#48805#48806#0" expanded="false" />
-            <element signature="e#48861#48862#0" expanded="false" />
-            <element signature="e#49747#49748#0" expanded="false" />
-            <element signature="e#49803#49804#0" expanded="false" />
-            <element signature="e#50693#50694#0" expanded="false" />
-            <element signature="e#50749#50750#0" expanded="false" />
-            <element signature="e#51393#51394#0" expanded="false" />
-            <element signature="e#51431#51432#0" expanded="false" />
-            <element signature="e#52207#52208#0" expanded="false" />
-            <element signature="e#52277#52278#0" expanded="false" />
-            <element signature="e#53047#53048#0" expanded="false" />
-            <element signature="e#53093#53094#0" expanded="false" />
-            <element signature="e#53792#53793#0" expanded="false" />
-            <element signature="e#53866#53867#0" expanded="false" />
-            <element signature="e#56512#56513#0" expanded="false" />
-            <element signature="e#56540#56541#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1649,13 +1507,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
           <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#25830#0" expanded="false" />
-            <element signature="e#5748#5749#0" expanded="false" />
-            <element signature="e#5784#5785#0" expanded="false" />
-            <element signature="e#10065#10066#0" expanded="false" />
-            <element signature="e#10148#10149#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1663,98 +1514,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2575">
           <caret line="130" column="0" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#11950#0" expanded="false" />
-            <element signature="e#3272#3273#0" expanded="false" />
-            <element signature="e#3303#3304#0" expanded="false" />
-            <element signature="e#10229#10230#0" expanded="false" />
-            <element signature="e#10270#10271#0" expanded="false" />
-            <element signature="e#10337#10338#0" expanded="false" />
-            <element signature="e#10389#10390#0" expanded="false" />
-            <element signature="e#10445#10446#0" expanded="false" />
-            <element signature="e#10490#10491#0" expanded="false" />
-            <element signature="e#10561#10562#0" expanded="false" />
-            <element signature="e#10617#10618#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/src.zip!/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72700">
-          <caret line="2993" column="0" selection-start-line="2993" selection-start-column="0" selection-end-line="2993" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#124311#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#4677#4678#0" expanded="false" />
-            <element signature="e#4714#4715#0" expanded="false" />
-            <element signature="e#5687#5688#0" expanded="false" />
-            <element signature="e#5750#5751#0" expanded="false" />
-            <element signature="e#13098#13099#0" expanded="false" />
-            <element signature="e#13150#13151#0" expanded="false" />
-            <element signature="e#18781#18782#0" expanded="false" />
-            <element signature="e#18834#18835#0" expanded="false" />
-            <element signature="e#20727#20728#0" expanded="false" />
-            <element signature="e#20771#20772#0" expanded="false" />
-            <element signature="e#21961#21962#0" expanded="false" />
-            <element signature="e#22041#22042#0" expanded="false" />
-            <element signature="e#22786#22787#0" expanded="false" />
-            <element signature="e#22821#22822#0" expanded="false" />
-            <element signature="e#23072#23073#0" expanded="false" />
-            <element signature="e#23112#23113#0" expanded="false" />
-            <element signature="e#29462#29463#0" expanded="false" />
-            <element signature="e#29533#29534#0" expanded="false" />
-            <element signature="e#36393#36394#0" expanded="false" />
-            <element signature="e#36459#36460#0" expanded="false" />
-            <element signature="e#38369#38370#0" expanded="false" />
-            <element signature="e#38423#38424#0" expanded="false" />
-            <element signature="e#47538#47539#0" expanded="false" />
-            <element signature="e#47602#47603#0" expanded="false" />
-            <element signature="e#55800#55801#0" expanded="false" />
-            <element signature="e#55844#55845#0" expanded="false" />
-            <element signature="e#56437#56438#0" expanded="false" />
-            <element signature="e#56514#56515#0" expanded="false" />
-            <element signature="e#58481#58482#0" expanded="false" />
-            <element signature="e#58518#58519#0" expanded="false" />
-            <element signature="e#62860#62861#0" expanded="false" />
-            <element signature="e#62916#62917#0" expanded="false" />
-            <element signature="e#66457#66458#0" expanded="false" />
-            <element signature="e#66495#66496#0" expanded="false" />
-            <element signature="e#70749#70750#0" expanded="false" />
-            <element signature="e#70802#70803#0" expanded="false" />
-            <element signature="e#78240#78241#0" expanded="false" />
-            <element signature="e#78299#78300#0" expanded="false" />
-            <element signature="e#82616#82617#0" expanded="false" />
-            <element signature="e#82667#82668#0" expanded="false" />
-            <element signature="e#82971#82972#0" expanded="false" />
-            <element signature="e#83020#83021#0" expanded="false" />
-            <element signature="e#94598#94599#0" expanded="false" />
-            <element signature="e#94636#94637#0" expanded="false" />
-            <element signature="e#104675#104676#0" expanded="false" />
-            <element signature="e#104730#104731#0" expanded="false" />
-            <element signature="e#111196#111197#0" expanded="false" />
-            <element signature="e#111251#111252#0" expanded="false" />
-            <element signature="e#113343#113344#0" expanded="false" />
-            <element signature="e#113370#113371#0" expanded="false" />
-            <element signature="e#118405#118406#0" expanded="false" />
-            <element signature="e#118444#118445#0" expanded="false" />
-            <element signature="e#119456#119457#0" expanded="false" />
-            <element signature="e#119510#119511#0" expanded="false" />
-            <element signature="e#120159#120160#0" expanded="false" />
-            <element signature="e#120213#120214#0" expanded="false" />
-            <element signature="e#120482#120483#0" expanded="false" />
-            <element signature="e#120521#120522#0" expanded="false" />
-            <element signature="e#120889#120890#0" expanded="false" />
-            <element signature="e#120932#120933#0" expanded="false" />
-            <element signature="e#121727#121728#0" expanded="false" />
-            <element signature="e#121769#121770#0" expanded="false" />
-            <element signature="e#122184#122185#0" expanded="false" />
-            <element signature="e#122223#122224#0" expanded="false" />
-            <element signature="e#122645#122646#0" expanded="false" />
-            <element signature="e#122685#122686#0" expanded="false" />
-            <element signature="e#123115#123116#0" expanded="false" />
-            <element signature="e#123156#123157#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1768,10 +1527,78 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/ContactModificationTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1400">
+          <caret line="63" column="0" selection-start-line="61" selection-start-column="8" selection-end-line="63" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ApplicationManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1400">
+          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+          <folding>
+            <element signature="e#2418#2419#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/jre/lib/rt.jar!/sun/misc/Launcher.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1769">
+          <caret line="98" column="55" selection-start-line="98" selection-start-column="55" selection-end-line="98" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/src.zip!/java/lang/Math.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="1335" column="0" selection-start-line="1335" selection-start-column="0" selection-end-line="1335" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/src.zip!/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="1654" column="0" selection-start-line="1654" selection-start-column="0" selection-end-line="1654" selection-end-column="0" />
+          <folding>
+            <element signature="e#62860#62861#0" expanded="false" />
+            <element signature="e#62916#62917#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/src.zip!/java/lang/ClassLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="356" column="0" selection-start-line="356" selection-start-column="0" selection-end-line="356" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/model/Contacts.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ContactHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="202" column="60" selection-start-line="202" selection-start-column="60" selection-end-line="202" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/model/NameFirstMiddle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="90" column="5" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="5" />
+        <state relative-caret-position="152">
+          <caret line="87" column="18" selection-start-line="87" selection-start-column="18" selection-end-line="87" selection-end-column="18" />
           <folding>
             <element signature="method#withId#0;class#NameFirstMiddle#0" expanded="false" />
             <element signature="method#withFirstname#0;class#NameFirstMiddle#0" expanded="false" />
@@ -1779,35 +1606,18 @@
             <element signature="method#withGroup#0;class#NameFirstMiddle#0" expanded="false" />
             <element signature="method#withHomePhone#0;class#NameFirstMiddle#0" expanded="false" />
             <element signature="method#withMobilePhone#0;class#NameFirstMiddle#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/ContactModificationTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="63" column="0" selection-start-line="61" selection-start-column="8" selection-end-line="63" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ContactHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="210" column="59" selection-start-line="210" selection-start-column="59" selection-end-line="210" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#withWorkPhone#0;class#NameFirstMiddle#0" expanded="false" />
+            <element signature="method#withAllPhones#0;class#NameFirstMiddle#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/ContactPhoneTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="29" column="53" selection-start-line="29" selection-start-column="53" selection-end-line="29" selection-end-column="53" />
+        <state relative-caret-position="112">
+          <caret line="31" column="57" selection-start-line="31" selection-start-column="57" selection-end-line="31" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#ensurePreconditionContact#0;class#ContactPhoneTest#0" expanded="false" />
           </folding>
         </state>
       </provider>

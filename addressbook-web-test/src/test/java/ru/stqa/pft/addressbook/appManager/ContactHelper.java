@@ -200,18 +200,18 @@ public class ContactHelper extends HelperBase {
         selectContactById(contact.getId());
         String firstName = wd.findElement(By.name("firstname")).getAttribute("value");
         String lastName  = wd.findElement(By.name("lastname")).getAttribute("value");
-        String home      = wd.findElement(By.name("home")).getAttribute("value");
-        String mobile    = wd.findElement(By.name("mobile")).getAttribute("value");
-        String work      = wd.findElement(By.name("work")).getAttribute("value");
+        String homePhone = wd.findElement(By.name("home")).getAttribute("value");
+        String mobilePhone = wd.findElement(By.name("mobile")).getAttribute("value");
+        String workPhone = wd.findElement(By.name("work")).getAttribute("value");
         goToContact();
             System.out.println("return infoForm.. -> " +
                     new NameFirstMiddle().withId(contact.getId()).
                 withFirstname(firstName).
-                withLastname(lastName).withHomePhone(home).
-                withMobilePhone(mobile).withWorkPhone(work));
+                withLastname(lastName).withHomePhone(homePhone).
+                withMobilePhone(mobilePhone).withWorkPhone(workPhone));
 
         return new NameFirstMiddle().withId(contact.getId()).withFirstname(firstName).
-            withLastname(lastName).withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work);
+            withLastname(lastName).withHomePhone(homePhone).withMobilePhone(mobilePhone).withWorkPhone(workPhone);
     }
 
     //public void modify(List<NameFirstMiddle> before, NameFirstMiddle contact) {
@@ -348,8 +348,16 @@ public class ContactHelper extends HelperBase {
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
             String lastName  = element.findElement(By.xpath(".//td[2]")).getText();
             String firstName = element.findElement(By.xpath(".//td[3]")).getText();
+
+            String allPhone  = element.findElement(By.xpath(".//td[6]")).getText();
+                System.out.println("allPhones "+id+"---"+allPhone);
+                                                        // regular vyragenie via .split()
+                //String[] phones =element.findElement(By.xpath(".//td[6]")).getText().split("\n");
+                //System.out.println("phones ---"+phones[0] + "-"+phones[2]);
             contactCache.add(new NameFirstMiddle().withId(id).
-                    withFirstname(firstName).withLastname(lastName));
+                    withFirstname(firstName).withLastname(lastName).
+                    withAllPhones(allPhone));
+            //withHomePhone(phones[0]).withMobilePhone(phones[1]).withWorkPhone(phones[2]));
         }
         return contactCache;
     }
