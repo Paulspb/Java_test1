@@ -25,6 +25,8 @@ public class GroupCreationTest extends TestBase {
         GroupData group = new GroupData().withName("test134").
                 withHeader("test21").withFooter("test31");
         app.group().create(group);
+            //xeching - method where assert light values does before hard assert
+        assertThat(app.group().count(),equalTo(before.size()+1));
             // placed into create
             //app.group().initGroupCreation();
             //app.group().fillInGroupForm(new GroupData("test123423434", "test21", "test31"));
@@ -36,18 +38,20 @@ public class GroupCreationTest extends TestBase {
             //-old statement- Assert.assertEquals(after.size(),before.size() +1);
             //-old too-assertEquals(after.size(),equalTo(before.size() +1));
         assertThat(after.size(),equalTo(before.size() +1));
+        assertThat(after, equalTo(before.withAdded(
+                        group.withId(after.stream().mapToInt((g)-> g.getId()).max().getAsInt()))));
 
-        // find max ID
-        int max = 0;
-        for (GroupData g : after)  {
-            if(g.getId() > max ) {
-                max = g.getId();
-            }
-        }
+                    // find max ID
+                    //int max = 0;
+                    //for (GroupData g : after)  {
+                    //    if(g.getId() > max ) {
+                    //        max = g.getId();
+                    //    }
+                    //}
             //lambda  or function anonimous
         //Comparator<? super GroupData> byId = (o1,o2) ->  Integer.compare(o1.getId(),o2.getId());
-        int max2 = after.stream().max((o1,o2) -> Integer.
-                compare(o1.getId(),o2.getId())).get().getId();
+        //int max2 = after.stream().max((o1,o2) -> Integer.
+        //        compare(o1.getId(),o2.getId())).get().getId();
             //    Comparator<? super GroupData> byId = new Comparator<GroupData>() {
             //    @Override
             //    public int compare(GroupData o1, GroupData o2) {
@@ -69,8 +73,8 @@ public class GroupCreationTest extends TestBase {
             //Comparator<? super GroupData> byId2 = (g1, g2) -> Integer.compare(g1.getId(),g2.getId());
             //before.sort(byId2);
             //after.sort(byId2);
-            System.out.println("before2 - " + before);
-            System.out.println("after2 - " + after);
+        //    System.out.println("before2 - " + before);
+        //    System.out.println("after2 - " + after);
              //comp. not mnogestvo, but spisok
                 //Assert.assertEquals(before,after); now:
                 //assertThat(after, equalTo(before));
@@ -80,10 +84,36 @@ public class GroupCreationTest extends TestBase {
                     // also convert via alt+ enter
                 //MatcherAssert.assertThat(after, equalTo(before));
                 //-do updates- assertThat(after, equalTo(before));
-        assertThat(after, equalTo(before.withAdded(
-                group.withId(after.stream().mapToInt((g)-> g.getId()).max().getAsInt()))));
+        //assertThat(after, equalTo(before.withAdded(
+        //        group.withId(after.stream().mapToInt((g)-> g.getId()).max().getAsInt()))));
 
     }
+
+    @Test
+    public void groupCreationTestBadMethod() {
+        app.group().groupPage();
+        Groups before = app.group().all();  // ' is bad data
+        GroupData group = new GroupData().withName("test134'").
+                withHeader("test21").withFooter("test31");
+        app.group().create(group);
+                // why needs to load all group if needs for size() only ?
+                // count() take size() faster
+                //xeching - method where assert light values does before hard assert
+        assertThat(app.group().count(),equalTo(before.size()));
+        Groups after = app.group().all();
+        //assertThat(after.size(),equalTo(before.size() +1));
+        assertThat(after.size(),equalTo(before.size()));
+            //System.out.println("before2 - " + before);
+            //System.out.println("after2 - " + after);
+        // no group added due to failed syntax '
+        assertThat(after, equalTo(before));
+
+        //assertThat(after, equalTo(before.withAdded(
+        //        group.withId(after.stream().mapToInt((g)-> g.getId()).max().getAsInt()))));
+
+    }
+
+
 
     @Test(enabled = false)
     public void groupCreationTestMethodNull() {

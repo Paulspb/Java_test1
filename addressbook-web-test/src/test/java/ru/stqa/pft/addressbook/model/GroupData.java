@@ -22,6 +22,7 @@ public class GroupData {
 
     @Override
     public int hashCode() {
+            //if hashCode not the same, then equlas() not needs. hashCode - faster
         int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;

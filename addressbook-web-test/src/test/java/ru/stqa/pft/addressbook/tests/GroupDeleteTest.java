@@ -12,6 +12,7 @@ import static org.testng.Assert.assertEquals;
 public class GroupDeleteTest extends TestBase  {
     @BeforeMethod
     public void ensurePreconditions() {
+                // load web in cache 1-time
         app.group().groupPage();
         if ( app.group().all().size() == 0) {
             app.group().create(new GroupData().withName("delete"));
@@ -24,6 +25,7 @@ public class GroupDeleteTest extends TestBase  {
             //(before -1 = <last line -1>
             //int groupbefore = app.group().getGroupCount();
             // in was  Set<GrooupData> before
+            // load web in cache 2-time
         Groups before = app.group().all();
             //take from mnovestvo iterator, then next
         GroupData deletedGroup = before.iterator().next();

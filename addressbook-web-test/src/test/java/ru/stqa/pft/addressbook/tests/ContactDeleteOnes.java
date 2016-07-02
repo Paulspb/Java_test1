@@ -5,8 +5,6 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.NameFirstMiddle;
 
-import java.util.Set;
-
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.testng.Assert.assertEquals;
@@ -20,7 +18,7 @@ public class ContactDeleteOnes extends TestBase {
         app.contact().goToContact();
         if ( app.contact().all().size() == 0) {
             app.contact().create(new NameFirstMiddle().withId(0).
-                    withFirstname("new group2").
+                    withFirstname("new contact2").
                     withLastname("Dostoyevsky").withGroup("test134") );
         }
     }

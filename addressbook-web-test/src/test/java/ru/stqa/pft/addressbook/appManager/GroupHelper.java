@@ -98,6 +98,7 @@ public class GroupHelper extends HelperBase {
             //fillInGroupForm(new GroupData("test123423434", "test21", "test31"));
         fillInGroupForm(group);
         submitGroupCreation();
+        groupCache = null;
         getNavigationHelper().returntoGroupPage();
     }
 
@@ -110,6 +111,7 @@ public class GroupHelper extends HelperBase {
                 // take id from last element
         fillInGroupForm(group);
         submitGroupModification();
+        groupCache = null;
         getNavigationHelper().returntoGroupPage();
     }
 
@@ -117,6 +119,8 @@ public class GroupHelper extends HelperBase {
                     //selectOneGroupFromAllGroup(index);
         selectGroupById(group.getId());
         deleteSelectedGroup();
+            // cache empty
+        groupCache = null;
         groupPage();
     }
 
@@ -141,21 +145,40 @@ public class GroupHelper extends HelperBase {
         }
         return  groups;
     }
+
+    //public int getGroupCount() {
+    public int count() {
+        return wd.findElements(By.name("selected[]")).size();
+    }
+
+    // keep just has read group to cache
+    private Groups groupCache = null;
+
     // type of return object List -> Set
     //public Set<GroupData> all() {
     // this return object this type = Group
     public Groups all() {
-        // create mnogestvo -groupdata-
-        Groups  groups = new Groups();
+                // verify if cache is empty
+                //cache needs to empty in case if it was changing
+        if (groupCache != null) {
+                //return new / copy of old groupCache
+            return new Groups(groupCache);
+        }
+                    // create mnogestvo -groupdata-
+                    //Groups  groups = new Groups();
+            //copy of input Groups
+        groupCache = new Groups();
         List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
         for (WebElement element :elements) {
             String name = element.getText();  // name of groups
             int id   = Integer.parseInt(element.findElement
                     (By.tagName("input")).getAttribute("value"));
-            groups.add(new GroupData().withId(id).withName(name));
+                    //groups.add(new GroupData().withId(id).withName(name));
+            groupCache.add(new GroupData().withId(id).withName(name));
         }
-        return  groups;
-        //put object to mnogestvo
+        return new Groups(groupCache);
+                //  return  groups;
+                //put object to mnogestvo
     }
 
 }

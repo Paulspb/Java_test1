@@ -17,28 +17,17 @@ public class NameCreationTestPuchkin extends TestBase {
                 //int before = app.group().getGroupCount();
                 //int before = app.contact().getContactCount();  it's counter
                 //List<GroupData> before = app.contact().list();  // it's full parms of one contact
-        //  -no need Set<NameFirstMiddle> before = app.contact().all();
+            //  -no need Set<NameFirstMiddle> before = app.contact().all();
         Contacts before = app.contact().all();
-        app.contact().goToAddNamePad();
-                    //NameFirstMiddle name = new NameFirstMiddle(before.size()-1,"Alexey", "Pushkin","test134");
-        NameFirstMiddle name = new NameFirstMiddle().withId(before.size()-1).withFirstname("Allllexey").
+        NameFirstMiddle name = new NameFirstMiddle().withId(before.size()-1).withFirstname("Alexey").
                 withLastname("Pushkin").withGroup("test134");
-        app.contact().fillFirstNameMiddleName(name, true);
+        //app.contact().fillFirstLastNames(name, true);
+        app.contact().create(name);
                     //app.contact().createContactName(new NameFirstMiddle("Alexey", "Sergeevich","test134"), true);
-        app.contact().createContactName(new LastNameNick2("Push"));
-        app.contact().fillTitle("mr.");
-        app.contact().fillCompany("ooo Boldino");
-        app.contact().fillAddress1("Pskovskaya obl.");
-        app.contact().fillHomeMobileTlf("8 888 555 3214", "8 921 921 921 921");
-        app.contact().fillFaxWorkTlf();
-        app.contact().fillEmail(new Emails123("alexander0.puchkin@gmail.com", "apuchkin@kultura.tv", "\\9"));
-        app.contact().fillHomePage();
-        app.contact().fillBithday();
-        app.contact().fillContent();
-        app.contact().fillAddress2();
-        app.contact().fillPhone2();
-        app.contact().submitContact();
-        app.contact().goToContact();
+
+            //xeching - method where assert light values does before hard assert
+        assertThat(app.contact().count(),equalTo(before.size()+1));
+
                 //int after = app.contact().getContactCount();
                 //Assert.assertEquals(after,before +1);
                 //List<GroupData> after = app.contact().list();
@@ -49,6 +38,8 @@ public class NameCreationTestPuchkin extends TestBase {
                 //Assert.assertEquals(after,before +1);
                 //-old statement too assertEquals(after.size(),before.size() +1);
         assertThat(after.size(),equalTo(before.size() +1));
+        assertThat(after, equalTo(before.withAdded(
+                        name.withId(after.stream().mapToInt((g)-> g.getId()).max().getAsInt()))));
             // find max ID - first way
             //int max = 0;
                 //for (NameFirstMiddle g : after) {
@@ -77,8 +68,8 @@ public class NameCreationTestPuchkin extends TestBase {
            //System.out.println("after  assertE - " + after);
                 //Assert.assertEquals(before,after);
                 //assertEquals(before,after);
-        assertThat(after, equalTo(before.withAdded(
-                name.withId(after.stream().mapToInt((g)-> g.getId()).max().getAsInt()))));
+        //assertThat(after, equalTo(before.withAdded(
+        //        name.withId(after.stream().mapToInt((g)-> g.getId()).max().getAsInt()))));
 
     }
 
