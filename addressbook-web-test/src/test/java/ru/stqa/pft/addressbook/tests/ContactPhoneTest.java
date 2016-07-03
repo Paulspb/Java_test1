@@ -28,7 +28,7 @@ public class ContactPhoneTest extends TestBase {
     public void testContactPhones() {
         app.contact().goToContact();
         NameFirstMiddle contact = app.contact().all().iterator().next();
-            System.out.println("iterator            =" + contact);
+            //System.out.println("iterator            =" + contact);
             System.out.println("contact.getAllPhones() = " +contact.getAllPhones());
         NameFirstMiddle contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
             System.out.println("InfoFromEditForm ->  " + contactInfoFromEditForm);
@@ -58,10 +58,11 @@ public class ContactPhoneTest extends TestBase {
                 map(ContactPhoneTest::cleaned).
                 collect(Collectors.joining("\n"));
     }
+
             //static means Global
     public static String cleaned (String phones){
         // revoke 'blank' & () & -
-        // \\s  'blank'                           [a-z] [-az]
-        return phones.replaceAll("\\s","").replaceAll("[-()]","");
+        // \\s  'blank'                           [a-z] [-az]      \n - 'new line' to empty
+        return phones.replaceAll("\\s","").replaceAll("[-()]","").replaceAll("\\n","");
     }
 }

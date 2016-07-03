@@ -1,6 +1,7 @@
 package ru.stqa.pft.addressbook.model;
 
 public class Emails123 {
+    // !!!! no more used !!!!!!
     private final String email1;
     private final String email2;
     private final String email3;

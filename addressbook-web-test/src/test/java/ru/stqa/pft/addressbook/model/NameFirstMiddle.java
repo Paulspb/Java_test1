@@ -11,6 +11,13 @@ public class NameFirstMiddle {
     private String mobilePhone;
     private String workPhone;
     private String allPhones;
+        // home12
+    private String email1;
+    private String email2;
+    private String email3;
+    private String allEmails;
+    private String fullAddress;
+
 
 
      //public void withId(int id) {
@@ -48,20 +55,47 @@ public class NameFirstMiddle {
         return this;
     }
 
-
-    public int    getId()        { return id;  }
-    public String getFirstname() { return firstname;   }
-    public String getLastName()  { return lastname;    }
-    public String getMobile()    { return mobilePhone;    }
-    public String getHome()      { return homePhone;    }
-    public String getWork()      { return workPhone;    }
-    public String getAllPhones() {
-        return allPhones;
+    public NameFirstMiddle withEmail1(String email1) {
+        this.email1 = email1;
+        return this;
     }
 
+    public NameFirstMiddle withEmail2(String email2) {
+        this.email2 = email2;
+        return this;
+    }
 
-    public String getGroup() {        // to take value of pole
-            return group;    }
+    public NameFirstMiddle withEmail3(String email3) {
+        this.email3 = email3;
+        return this;
+    }
+
+    public NameFirstMiddle withAllEmails(String allEmails) {
+        this.allEmails = allEmails;
+        return this;
+    }
+
+    public NameFirstMiddle withFullAddress(String fullAddress) {
+        this.fullAddress = fullAddress;
+        return this;
+    }
+
+    public int    getId()        { return id;  }
+    public String getFirstname() { return firstname;  }
+    public String getLastName()  { return lastname;   }
+    public String getGroup()     {   return group;    }
+
+    public String getMobile()    { return mobilePhone;  }
+    public String getHome()      { return homePhone;    }
+    public String getWork()      { return workPhone;    }
+    public String getAllPhones() { return allPhones;    }
+        //home12
+    public String getEmail1()       { return email1;     }
+    public String getEmail2()       { return email2;     }
+    public String getEmail3()       { return email3;     }
+    public String getAllEmails()    { return allEmails;  }
+    public String getFullAddress()  { return fullAddress;}
+
 
     @Override
     public boolean equals(Object o) {
@@ -95,6 +129,11 @@ public class NameFirstMiddle {
                 ", mobilePhone='" + mobilePhone + '\'' +
                 ", workPhone='" + workPhone + '\'' +
                 ", allPhones='" + allPhones + '\'' +
+                ", email1='" + email1 + '\'' +
+                ", email2='" + email2 + '\'' +
+                ", email3='" + email3 + '\'' +
+                ", allEmails='" + allEmails + '\'' +
+                ", fullAddress='" + fullAddress + '\'' +
                 '}';
     }
 }

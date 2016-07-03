@@ -6,14 +6,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.Contacts;
-import ru.stqa.pft.addressbook.model.Emails123;
+//import ru.stqa.pft.addressbook.model.Emails123;
 import ru.stqa.pft.addressbook.model.LastNameNick2;
 import ru.stqa.pft.addressbook.model.NameFirstMiddle;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by khomep on 09-Jun-16.
@@ -95,11 +93,14 @@ public class ContactHelper extends HelperBase {
         type(By.name("fax"),fax);
     }
 
-    public void fillEmail(Emails123 emails123) {
-        type(By.name("email"),emails123.getEmail1());
-        type(By.name("email2"),emails123.getEmail2());
-        type(By.name("email3"),emails123.getEmail3());
+//    public void fillEmail(Emails123 emails123) {
+     public void fillEmail(String email1, String email2, String email3) {
+        //type(By.name("email"),emails123.getEmail1());
+        type(By.name("email"),email1);
+        type(By.name("email2"),email2);
+        type(By.name("email3"),email3);
     }
+
 
     public void fillHomePage() {
         type(By.name("homepage"),"www.kultura.tv");
@@ -173,7 +174,7 @@ public class ContactHelper extends HelperBase {
         goToAddNamePad();
         fillFirstLastNames(name,true);
         fillAddress1("Pskovskaya obl.");
-        fillEmail(new Emails123("alexander0.puchkin@gmail.com", "apuchkin@kultura.tv", "ACPushkin@kultura.tv"));
+        fillEmail("alexander0.puchkin@gmail.com", "apuchkin@kultura.tv", "ACPushkin@kultura.tv");
         fillHomeMobileTlf("8 11235 3214", "8 000 921 921 921");
         fillFaxWorkTlf("3333","4444");
         submitContact();
@@ -188,7 +189,7 @@ public class ContactHelper extends HelperBase {
         fillAddress1("Pskovskaya obl.");
         fillHomeMobileTlf("8 888 555 3214", "8 921 921 921 921");
         fillFaxWorkTlf("4444","5555");
-        fillEmail(new Emails123("alexander0.puchkin@gmail.com", "apuchkin@kultura.tv", "\\9"));
+        fillEmail("alexander0.puchkin@gmail.com", "apuchkin@kultura.tv", "333.444@gamil.com");
         fillHomePage();
         fillBithday();
         fillContent();
@@ -212,6 +213,42 @@ public class ContactHelper extends HelperBase {
 
         return new NameFirstMiddle().withId(contact.getId()).withFirstname(firstName).
             withLastname(lastName).withHomePhone(homePhone).withMobilePhone(mobilePhone).withWorkPhone(workPhone);
+    }
+
+    public NameFirstMiddle emailsFromEditForm (NameFirstMiddle contact) {
+        selectContactById(contact.getId());
+        String firstName = wd.findElement(By.name("firstname")).getAttribute("value");
+        String lastName  = wd.findElement(By.name("lastname")).getAttribute("value");
+        String email1 = wd.findElement(By.name("email")).getAttribute("value");
+        String email2 = wd.findElement(By.name("email2")).getAttribute("value");
+        String email3 = wd.findElement(By.name("email3")).getAttribute("value");
+        goToContact();
+            //System.out.println("return infoForm.. -> " +
+            //        new NameFirstMiddle().withId(contact.getId()).
+            //                withFirstname(firstName).
+            //                withLastname(lastName).withEmail1(email1).
+            //                withEmail2(email2).withEmail3(email3));
+
+        return new NameFirstMiddle().withId(contact.getId()).withFirstname(firstName).
+                withLastname(lastName).
+                withEmail1(email1).
+                withEmail2(email2).withEmail3(email3);
+    }
+
+    public NameFirstMiddle fullAddressFromEditForm (NameFirstMiddle contact) {
+        selectContactById(contact.getId());
+        String firstName = wd.findElement(By.name("firstname")).getAttribute("value");
+        String lastName  = wd.findElement(By.name("lastname")).getAttribute("value");
+        String address1 = wd.findElement(By.name("address")).getText();
+        goToContact();
+        //System.out.println("return HomeAddress.. -> " +
+        //        new NameFirstMiddle().withId(contact.getId()).
+        //                withFirstname(firstName).
+        //                withLastname(lastName).withFullAddress(address1));
+
+        return new NameFirstMiddle().withId(contact.getId()).withFirstname(firstName).
+                withLastname(lastName).
+                withFullAddress(address1);
     }
 
     //public void modify(List<NameFirstMiddle> before, NameFirstMiddle contact) {
@@ -346,19 +383,21 @@ public class ContactHelper extends HelperBase {
 
         for (WebElement element :elements) {
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
-            String lastName  = element.findElement(By.xpath(".//td[2]")).getText();
-            String firstName = element.findElement(By.xpath(".//td[3]")).getText();
-
-            String allPhone  = element.findElement(By.xpath(".//td[6]")).getText();
-                System.out.println("allPhones "+id+"---"+allPhone);
+            String lastName   = element.findElement(By.xpath(".//td[2]")).getText();
+            String firstName  = element.findElement(By.xpath(".//td[3]")).getText();
+            String allPhone   = element.findElement(By.xpath(".//td[6]")).getText();
+            String allEmails  = element.findElement(By.xpath(".//td[5]")).getText();
+            String fullAddress = element.findElement(By.xpath(".//td[4]")).getText();
+                //System.out.println("allEmails "+id+"---"+allEmails);
                                                         // regular vyragenie via .split()
                 //String[] phones =element.findElement(By.xpath(".//td[6]")).getText().split("\n");
                 //System.out.println("phones ---"+phones[0] + "-"+phones[2]);
             contactCache.add(new NameFirstMiddle().withId(id).
                     withFirstname(firstName).withLastname(lastName).
-                    withAllPhones(allPhone));
+                    withAllPhones(allPhone).withAllEmails(allEmails).withFullAddress(fullAddress));
             //withHomePhone(phones[0]).withMobilePhone(phones[1]).withWorkPhone(phones[2]));
         }
         return contactCache;
     }
+
 }
