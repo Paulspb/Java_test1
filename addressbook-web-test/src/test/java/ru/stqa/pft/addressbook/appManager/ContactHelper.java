@@ -12,6 +12,7 @@ import ru.stqa.pft.addressbook.model.NameFirstMiddle;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * Created by khomep on 09-Jun-16.
@@ -85,7 +86,7 @@ public class ContactHelper extends HelperBase {
 
     public void fillHomeMobileTlf(String hometlf, String mobiletlf) {
         type(By.name("home"),hometlf);
-        type(By.name("company"),mobiletlf);
+        type(By.name("mobile"),mobiletlf);
     }
 
     public void fillFaxWorkTlf(String workTlf, String fax) {
@@ -398,6 +399,74 @@ public class ContactHelper extends HelperBase {
             //withHomePhone(phones[0]).withMobilePhone(phones[1]).withWorkPhone(phones[2]));
         }
         return contactCache;
+    }
+
+    public void viewContactById(int id) {
+        // click at left
+        wd.findElement(By.cssSelector("input[value='"+id +"']")).click();
+        // click on Man
+        wd.findElement(By.cssSelector("a[href='view.php?id="+id+"']")).click();
+
+    }
+
+    public NameFirstMiddle readContactFromEditForm (NameFirstMiddle contact) {
+        selectContactById(contact.getId());
+        String firstName = wd.findElement(By.name("firstname")).getAttribute("value");
+        String lastName  = wd.findElement(By.name("lastname")).getAttribute("value");
+        String address1 = wd.findElement(By.name("address")).getText();
+        String email1 = wd.findElement(By.name("email")).getAttribute("value");
+        String email2 = wd.findElement(By.name("email2")).getAttribute("value");
+        String email3 = wd.findElement(By.name("email3")).getAttribute("value");
+        String homePhone = wd.findElement(By.name("home")).getAttribute("value");
+        String mobilePhone = wd.findElement(By.name("mobile")).getAttribute("value");
+        String workPhone = wd.findElement(By.name("work")).getAttribute("value");
+        goToContact();
+
+        return new NameFirstMiddle().withId(contact.getId()).withFirstname(firstName).
+                withLastname(lastName).
+                withFullAddress(address1).withAllPhones("").
+                withEmail1(email1).withEmail2(email2).withEmail3(email3).withAllEmails("").
+                withHomePhone(homePhone).withMobilePhone(mobilePhone).withWorkPhone(workPhone);
+
+    }
+
+    public NameFirstMiddle viewMan( NameFirstMiddle contact) {
+        //"abc".replaceAll("ab*c", "");
+        viewContactById(contact.getId());
+        String firstName = wd.findElement(By.xpath("//div[@id='content']/b[1]")).getText();
+        String viewForm  = wd.findElement(By.xpath("//div[@id='content']")).getText().replaceAll("\\n","");
+        String email1    = wd.findElement(By.xpath("//div[@id='content']/a[1]")).getText();
+        String email2    = wd.findElement(By.xpath("//div[@id='content']/a[2]")).getText();
+        String email3    = wd.findElement(By.xpath("//div[@id='content']/a[4]")).getText();
+        String splitViewForm[] = viewForm.split(email3);
+        String splitFullAddressEditForm[] = contact.getFullAddress().split("\\n");
+        String splitTlfs[]                = splitViewForm[0].split("H:");
+        String splitFullAddressViewForm[] = splitTlfs[0].split(splitFullAddressEditForm[0]);
+        String splitHome[]                = splitTlfs[1].split("M:");
+            //System.out.println("contact.splitHome[0] = " + splitHome[0]);
+                //System.out.println("contact.splitHome[1] = " + splitHome[1]);
+        String splitMobile[]              = splitHome[1].split("W:");
+            //System.out.println("contact.splitwork[0] = " + splitMobile[0]);// mobile
+                //System.out.println("contact.splitWork[1] = " + splitMobile[1]);
+        String splitWork[]                = splitMobile[1].split("F:");
+            //System.out.println("contact.splitMobile[0] = " + splitWork[0]); //work
+                //System.out.println("contact.splitMobile[1] = " + splitWork[1]);
+        String splitFax[]                 = splitWork[1].split(email1);
+            //System.out.println("contact.splitFax[0] = " + splitFax[0]);
+                //System.out.println("contact.splitFax[1] = " + splitFax[1]);
+        //for (String tmp : viewForm.split("<\\s*br\\s*(/?)\\s*>|\\n")) {
+        //    //System.out.println("xxx____" + tmp + "____xxx__");
+
+        //}
+
+
+
+        return new NameFirstMiddle().withId(contact.getId()).withFirstname(firstName).withLastname("").
+                withAllPhones(splitHome[0]+splitWork[0]+splitMobile[0]).
+                withMobilePhone("").withWorkPhone("").withHomePhone("").
+                withEmail1(email1).withEmail2(email2).withEmail3(email3).withAllEmails("").
+                withFullAddress(splitFullAddressEditForm[0]+splitFullAddressViewForm[1]);
+
     }
 
 }
