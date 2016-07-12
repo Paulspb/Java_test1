@@ -41,9 +41,10 @@ public class ContactAloneVsEditTest extends TestBase{
                 contact.getAllPhones(),contact.getHome(),contact.getWork(),contact.getMobile(),
                 contact.getFullAddress(),
                 contact.getEmail1(),contact.getEmail2(),contact.getEmail3()).
-                stream().filter( (s) ->  !s.equals("") && !s.equals("null")  ).
+                stream().filter( (s) ->  s!= null && !s.equals("")).
                 map(ContactPhoneTest::cleaned).
                 collect(Collectors.joining(""));
+        //stream().filter( (s) ->  !s.equals("") && !s.equals("null")  ).
     }
 
 

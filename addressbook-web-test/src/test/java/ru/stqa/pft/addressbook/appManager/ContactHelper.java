@@ -52,6 +52,8 @@ public class ContactHelper extends HelperBase {
                     //wd.findElement(By.name("firstname")).sendKeys(nameFirstMiddle.getFirstname());
                     //type(By.name("middlename"),nameFirstMiddle.getMiddleName());
         type(By.name("lastname"),nameFirstMiddle.getLastName());
+                //lesson 6.1
+        attach(By.name("photo"),nameFirstMiddle.getPhoto());
             // take group from GroupName
         if (creation) {
                     //if (isElementPresent(wd.findElement(By.name("new_group")).selectByVisibleText(nameFirstMiddle.getGroup()) {

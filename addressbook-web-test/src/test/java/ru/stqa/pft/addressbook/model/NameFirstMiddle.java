@@ -1,6 +1,13 @@
 package ru.stqa.pft.addressbook.model;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
+import java.io.File;
+
+@XStreamAlias("contacts")
 public class NameFirstMiddle {
+    @XStreamOmitField
     private int id = Integer.MAX_VALUE;
     private String firstname;
     private String lastname;
@@ -17,10 +24,10 @@ public class NameFirstMiddle {
     private String email3;
     private String allEmails;
     private String fullAddress;
+    private File   photo;
 
 
-
-     //public void withId(int id) {
+    //public void withId(int id) {
     public NameFirstMiddle withId(int id) {
         this.id = id;
         return this;
@@ -54,29 +61,28 @@ public class NameFirstMiddle {
         this.allPhones = allPhones;
         return this;
     }
-
     public NameFirstMiddle withEmail1(String email1) {
         this.email1 = email1;
         return this;
     }
-
     public NameFirstMiddle withEmail2(String email2) {
         this.email2 = email2;
         return this;
     }
-
     public NameFirstMiddle withEmail3(String email3) {
         this.email3 = email3;
         return this;
     }
-
     public NameFirstMiddle withAllEmails(String allEmails) {
         this.allEmails = allEmails;
         return this;
     }
-
     public NameFirstMiddle withFullAddress(String fullAddress) {
         this.fullAddress = fullAddress;
+        return this;
+    }
+    public NameFirstMiddle withPhoto(File photo) {
+        this.photo = photo;
         return this;
     }
 
@@ -95,6 +101,8 @@ public class NameFirstMiddle {
     public String getEmail3()       { return email3;     }
     public String getAllEmails()    { return allEmails;  }
     public String getFullAddress()  { return fullAddress;}
+        //home 14
+    public File   getPhoto()        { return photo;      }
 
 
     @Override

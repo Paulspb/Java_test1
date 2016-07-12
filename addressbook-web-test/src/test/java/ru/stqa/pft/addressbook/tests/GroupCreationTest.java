@@ -1,9 +1,13 @@
 package ru.stqa.pft.addressbook.tests;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -12,8 +16,46 @@ import static org.testng.Assert.assertEquals;
 
 public class GroupCreationTest extends TestBase {
 
-    @Test
-    public void groupCreationTestMethod() {
+    @DataProvider
+    public Iterator<Object[]>validGroups() throws IOException {
+        List<Object[]> list = new ArrayList<Object[]>();
+        BufferedReader reader = new BufferedReader(
+                new FileReader(new File("src/test/resources/group.csv")));
+                //new FileReader(new File("src/test/resources/group.xml")));
+        String line = reader.readLine();
+        while (line != null) {
+            String[] split = line.split(";");
+            list.add(new Object[]{ new GroupData().
+                    withName(split[0]).withHeader(split[1]).withFooter(split[2])});
+            line = reader.readLine();
+        }
+                //list.add(new Object[]{"test1","header1","footer1"});
+                //list.add(new Object[]{"test2","header2","footer2"});
+                //list.add(new Object[]{"test3","header3","footer3"});
+        return list.iterator();
+    }
+            //  do link between @dataprovider & the Test
+    @Test(dataProvider = "validGroups")
+    public void groupCreationTestMethod(String name, String header, String footer) {
+        //String [] names = new String[] {"test641","test642","test643"};
+        //for (String name :names ) {
+        GroupData group = new GroupData().withName(name).
+                    withHeader(header).withFooter(footer);
+        app.group().groupPage();
+        Groups before = app.group().all();
+        app.group().create(group);
+            //xeching - method where assert light values does before hard assert
+        assertThat(app.group().count(), equalTo(before.size() + 1));
+        Groups after = app.group().all();
+        assertThat(after.size(), equalTo(before.size() + 1));
+        assertThat(after, equalTo(before.withAdded(
+                    group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
+        //}
+    }
+
+
+    @Test(enabled = false)
+    public void groupCreationTestLesson() {
             //app.group().gotoGroupPage2();
             //app.getNavigationHelper()
         app.group().groupPage();
@@ -89,7 +131,7 @@ public class GroupCreationTest extends TestBase {
 
     }
 
-    @Test
+    @Test(enabled = false)
     public void groupCreationTestBadMethod() {
         app.group().groupPage();
         Groups before = app.group().all();  // ' is bad data
