@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook.tests;
 
+import com.thoughtworks.xstream.XStream;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.*;
@@ -8,6 +9,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -25,7 +27,7 @@ public class NameCreationTestPuchkin extends TestBase {
         //list.add(new Object[]{new NameFirstMiddle().withPhoto(photo).
         //        withFirstname("Alex643").withLastname("Pushkin643").withGroup("test134") });
         BufferedReader reader = new BufferedReader(
-                new FileReader(new File("src/test/resources/contact.csv")));
+                new FileReader(new File("src/test/resources/contact.xml")));
         String line = reader.readLine();
         while (line != null) {
             String[] split = line.split(";");
@@ -36,6 +38,7 @@ public class NameCreationTestPuchkin extends TestBase {
 
         return list.iterator();
     }
+
 
     @Test (enabled = true, dataProvider = "validContacts")
     public void nameCreationTestWithGenerator(NameFirstMiddle name) {

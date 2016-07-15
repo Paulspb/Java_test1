@@ -8,6 +8,7 @@ public class GroupData {
     // this constraucter not acept any parms
     //private int id;
     @XStreamOmitField
+            // this revoke id from xml file
     private int id = Integer.MAX_VALUE;  // new line at the buttom
     private String name;
     private String header;

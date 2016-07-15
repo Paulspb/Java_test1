@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook.tests;
 
+import com.thoughtworks.xstream.XStream;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
@@ -9,6 +10,10 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -18,21 +23,49 @@ public class GroupCreationTest extends TestBase {
 
     @DataProvider
     public Iterator<Object[]>validGroups() throws IOException {
-        List<Object[]> list = new ArrayList<Object[]>();
+                //functional programming, next no need:
+                //List<Object[]> list = new ArrayList<Object[]>();
         BufferedReader reader = new BufferedReader(
                 new FileReader(new File("src/test/resources/group.csv")));
-                //new FileReader(new File("src/test/resources/group.xml")));
+                //new FileReader(new File("src/test/resources/group.csv")));
+        // now read data from xml file:
+        String xml = "";
         String line = reader.readLine();
         while (line != null) {
-            String[] split = line.split(";");
-            list.add(new Object[]{ new GroupData().
-                    withName(split[0]).withHeader(split[1]).withFooter(split[2])});
+            xml +=line;
+                    //-no needs for xml-
+                    // String[] split = line.split(";");
+            //in case if 3 INPUT lines, then add 3 GroupData() lines
+                    //-no needs for xml-
+                    //list.add(new Object[]{ new GroupData().
+                    //withName(split[0]).withHeader(split[1]).withFooter(split[2])});
             line = reader.readLine();
         }
+        XStream xstream = new XStream();
+        //- needs only for convert-
+        xstream.processAnnotations(GroupData.class);
+                // read data from xml and keep data to var at the  same type
+        List<GroupData> groups  = (List<GroupData>)  xstream.fromXML(xml);
+                //functional programming
+                // collect potok -> spisok
+        //default Stream<E> stream() {
+        //    return StreamSupport.stream(spliterator(), false);  }
+        //<R> Stream<R> map(Function<? super T, ? extends R> mapper);
+        //String[] spl = groups.stream().map((g) -> new Object[] {g} );
+        //List<Object[]> list = new ArrayList<Object[]>();
+        return groups.stream().
+                map( (g) -> new Object[] {g} ).collect(Collectors.toList()).iterator();  //   .collect(Collectors.toList()).
+
+        //return
+        //        groups.stream().
+          //              map( (g) -> new Object[] {g}).collect(Collectors.toList()).
+            //            iterator();
+
                 //list.add(new Object[]{"test1","header1","footer1"});
                 //list.add(new Object[]{"test2","header2","footer2"});
                 //list.add(new Object[]{"test3","header3","footer3"});
-        return list.iterator();
+            //-no- afrter add functional progr.
+        //return list.iterator();
     }
             //  do link between @dataprovider & the Test
     @Test(dataProvider = "validGroups")
@@ -54,7 +87,7 @@ public class GroupCreationTest extends TestBase {
     }
 
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void groupCreationTestLesson() {
             //app.group().gotoGroupPage2();
             //app.getNavigationHelper()

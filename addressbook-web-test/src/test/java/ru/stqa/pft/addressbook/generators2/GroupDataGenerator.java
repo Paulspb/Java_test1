@@ -75,7 +75,7 @@ public class GroupDataGenerator {
         XStream xstream = new XStream();
                 //rename / cut long line <ru.stqa.pft.addressbook.model.GroupData>
             //xstream.alias("group", GroupData.class);
-                // needs to rea podskazki in GroupData as :@XStreamAlias("group")
+                // needs to read podskazki in GroupData as :@XStreamAlias("group")
         xstream.processAnnotations(GroupData.class);
         String xml = xstream.toXML(groups);
         Writer writer = new FileWriter(file);
