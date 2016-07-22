@@ -18,6 +18,7 @@ import java.util.stream.Stream;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.testng.Assert.assertEquals;
+import static ru.stqa.pft.addressbook.appManager.ApplicationManager.properties;
 
 public class GroupCreationTest extends TestBase {
 
@@ -25,36 +26,39 @@ public class GroupCreationTest extends TestBase {
     public Iterator<Object[]>validGroups() throws IOException {
                 //functional programming, next no need:
                 //List<Object[]> list = new ArrayList<Object[]>();
-        BufferedReader reader = new BufferedReader(
-                new FileReader(new File("src/test/resources/group.csv")));
+        try (BufferedReader reader = new BufferedReader(
+                new FileReader(new File(properties.getProperty("web.groupFile"))))
+                ) {
+            String xml = "";
+            String line = reader.readLine();
+            while (line != null) {
+                xml +=line;
+                //-no needs for xml-
+                // String[] split = line.split(";");
+                //in case if 3 INPUT lines, then add 3 GroupData() lines
+                //-no needs for xml-
+                //list.add(new Object[]{ new GroupData().
+                //withName(split[0]).withHeader(split[1]).withFooter(split[2])});
+                line = reader.readLine();
+            }
+            XStream xstream = new XStream();
+            //- needs only for convert-
+            xstream.processAnnotations(GroupData.class);
+            // read data from xml and keep data to var at the  same type
+            List<GroupData> groups  = (List<GroupData>)  xstream.fromXML(xml);
+            //functional programming
+            // collect potok -> spisok
+            //default Stream<E> stream() {
+            //    return StreamSupport.stream(spliterator(), false);  }
+            //<R> Stream<R> map(Function<? super T, ? extends R> mapper);
+            //String[] spl = groups.stream().map((g) -> new Object[] {g} );
+            //List<Object[]> list = new ArrayList<Object[]>();
+            return groups.stream().
+                    map( (g) -> new Object[] {g} ).collect(Collectors.toList()).iterator();  //   .collect(Collectors.toList()).
+
+        }
                 //new FileReader(new File("src/test/resources/group.csv")));
         // now read data from xml file:
-        String xml = "";
-        String line = reader.readLine();
-        while (line != null) {
-            xml +=line;
-                    //-no needs for xml-
-                    // String[] split = line.split(";");
-            //in case if 3 INPUT lines, then add 3 GroupData() lines
-                    //-no needs for xml-
-                    //list.add(new Object[]{ new GroupData().
-                    //withName(split[0]).withHeader(split[1]).withFooter(split[2])});
-            line = reader.readLine();
-        }
-        XStream xstream = new XStream();
-        //- needs only for convert-
-        xstream.processAnnotations(GroupData.class);
-                // read data from xml and keep data to var at the  same type
-        List<GroupData> groups  = (List<GroupData>)  xstream.fromXML(xml);
-                //functional programming
-                // collect potok -> spisok
-        //default Stream<E> stream() {
-        //    return StreamSupport.stream(spliterator(), false);  }
-        //<R> Stream<R> map(Function<? super T, ? extends R> mapper);
-        //String[] spl = groups.stream().map((g) -> new Object[] {g} );
-        //List<Object[]> list = new ArrayList<Object[]>();
-        return groups.stream().
-                map( (g) -> new Object[] {g} ).collect(Collectors.toList()).iterator();  //   .collect(Collectors.toList()).
 
         //return
         //        groups.stream().
@@ -69,11 +73,13 @@ public class GroupCreationTest extends TestBase {
     }
             //  do link between @dataprovider & the Test
     @Test(dataProvider = "validGroups")
-    public void groupCreationTestMethod(String name, String header, String footer) {
+    //public void groupCreationTestMethod(String name, String header, String footer) {
+    public void groupCreationTestMethod(GroupData group) {
+    //public void groupCreationTestMethod() {
         //String [] names = new String[] {"test641","test642","test643"};
         //for (String name :names ) {
-        GroupData group = new GroupData().withName(name).
-                    withHeader(header).withFooter(footer);
+        //GroupData group = new GroupData().withName(name).
+        //            withHeader(header).withFooter(footer);
         app.group().groupPage();
         Groups before = app.group().all();
         app.group().create(group);
@@ -87,7 +93,10 @@ public class GroupCreationTest extends TestBase {
     }
 
 
-    @Test(enabled = true)
+    //@Test(enabled = true ,dataProvider = "validGroups")
+    @Test(enabled = true )
+    //@Test(dataProvider = "validGroups")
+            //public void groupCreationTestLesson(GroupData group) {
     public void groupCreationTestLesson() {
             //app.group().gotoGroupPage2();
             //app.getNavigationHelper()
@@ -96,9 +105,13 @@ public class GroupCreationTest extends TestBase {
         //-after added withAdded Set<GroupData> before = app.group().all();
         Groups before = app.group().all();
             //int before1 = app.group().getGroupCount();
+            // no needs as take from generator !!!
         //GroupData group = new GroupData("test134", "test21", "test31");
-        GroupData group = new GroupData().withName("test134").
-                withHeader("test21").withFooter("test31");
+        GroupData group = new GroupData().
+                withName(properties.getProperty("web.groupName")).
+                withHeader(properties.getProperty("web.groupHeader")).
+                withFooter(properties.getProperty("web.groupFooter"));
+
         app.group().create(group);
             //xeching - method where assert light values does before hard assert
         assertThat(app.group().count(),equalTo(before.size()+1));

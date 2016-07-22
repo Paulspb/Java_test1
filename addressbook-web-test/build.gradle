@@ -22,8 +22,40 @@ dependencies{
     compile 'com.beust:jcommander:1.48'
     //compile 'com.thoughtworks.xstream:xstrean:1.4.8'
     compile group: 'com.thoughtworks.xstream', name: 'xstream', version: '1.4.8'
-
 }
 
+task testGroups(type: Test)  {
+    useTestNG() {
+        suites 'src/test/resources/testng-group.xml'
+    }
+    if (project.hasProperty('browser')) {
+        systemProperty 'browser', "${browser}"
+    }
+    if (project.hasProperty('target')) {
+        systemProperty 'target', "${target}"
+    }
+}
 
+task testContacts(type: Test)  {
+    useTestNG() {
+        suites 'src/test/resources/testng-contacts.xml'
+    }
+    if (project.hasProperty('browser')) {
+        systemProperty 'browser', "${browser}"
+    }
+    if (project.hasProperty('target')) {
+        systemProperty 'target', "${target}"
+    }
+}
 
+task test1Contact(type: Test)  {
+    useTestNG() {
+        suites 'src/test/resources/testng-small-01.xml'
+    }
+    if (project.hasProperty('browser')) {
+        systemProperty 'browser', "${browser}"
+    }
+    if (project.hasProperty('target')) {
+        systemProperty 'target', "${target}"
+    }
+}

@@ -13,30 +13,40 @@ import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static ru.stqa.pft.addressbook.appManager.ApplicationManager.properties;
 
 public class NameCreationTestPuchkin extends TestBase {
 
     @DataProvider
     public Iterator<Object[]> validContacts() throws IOException {
-        List<Object[]> list = new ArrayList<Object[]>();
-        File photo = new File("src/test/resources/kira2back.jpg");
+
         //list.add(new Object[]{new NameFirstMiddle().withPhoto(photo).
         //        withFirstname("Alex641").withLastname("Pushkin641").withGroup("test134") });
         //list.add(new Object[]{new NameFirstMiddle().withPhoto(photo).
         //        withFirstname("Alex642").withLastname("Pushkin642").withGroup("test134") });
         //list.add(new Object[]{new NameFirstMiddle().withPhoto(photo).
         //        withFirstname("Alex643").withLastname("Pushkin643").withGroup("test134") });
-        BufferedReader reader = new BufferedReader(
-                new FileReader(new File("src/test/resources/contact.xml")));
-        String line = reader.readLine();
-        while (line != null) {
-            String[] split = line.split(";");
-            list.add(new Object[]{ new NameFirstMiddle().
-                    withFirstname(split[0]).withLastname(split[1]).withGroup(split[2]).withPhoto(photo)});
-            line = reader.readLine();
-        }
 
-        return list.iterator();
+
+
+
+        List<Object[]> list = new ArrayList<Object[]>();
+        //File photo = new File("src/test/resources/kira2back.jpg");
+        File photo = new File(properties.getProperty("web.contactPhoto"));
+
+        try (BufferedReader reader = new BufferedReader(
+                new FileReader(new File(properties.getProperty("web.contactData"))))
+                //new FileReader(new File("src/test/resources/contact.csv")))
+            ) {
+            String line = reader.readLine();
+            while (line != null) {
+                String[] split = line.split(";");
+                list.add(new Object[]{ new NameFirstMiddle().
+                        withFirstname(split[0]).withLastname(split[1]).withGroup(split[2]).withPhoto(photo)});
+                line = reader.readLine();
+            }
+            return list.iterator();
+        }
     }
 
 

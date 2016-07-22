@@ -6,18 +6,21 @@ import com.beust.jcommander.ParameterException;
 import com.thoughtworks.xstream.XStream;
 import ru.stqa.pft.addressbook.model.NameFirstMiddle;
 
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 /**
  * Created by khomep on 10-Jul-16.
  */
 public class ContactDataGenerator {
 
+    //private static Properties properties;
     @Parameter(names = "-c", description =  "Contact = count")
     public int count;
 
@@ -29,6 +32,7 @@ public class ContactDataGenerator {
 
 
     public static void main(String[] args) throws IOException {
+
         ContactDataGenerator generator = new ContactDataGenerator();
         JCommander jCommander = new JCommander(generator);
         try {
@@ -59,27 +63,38 @@ public class ContactDataGenerator {
         XStream xstream = new XStream();
         xstream.processAnnotations(NameFirstMiddle.class);
         String xml = xstream.toXML(contacts);
-        Writer writer = new FileWriter(file);
-        writer.write(xml);
-        writer.close();
+        try (Writer writer = new FileWriter(file)){
+            writer.write(xml);
+        }         //-no needs with Try- writer.close();
     }
 
     private static void saveAsCsv(List<NameFirstMiddle> contacts, File file) throws IOException {
         System.out.println("    working directory: " +new File(".").getAbsolutePath());
-        Writer writer = new FileWriter(file);
-        for (NameFirstMiddle contact :contacts) {
-            writer.write(String.format("%s;%s;%s\n",
-                    contact.getFirstname(),contact.getLastName(),contact.getGroup()));
+        try (Writer writer = new FileWriter(file)){
+            for (NameFirstMiddle contact :contacts) {
+                writer.write(String.format("%s;%s;%s\n",
+                        contact.getFirstname(),contact.getLastName(),contact.getGroup()));
+            }         //-no needs with
         }
-        writer.close();
     }
 
     private static List<NameFirstMiddle> generateContacts(int count) {
+        //properties    = new Properties();
         List<NameFirstMiddle> contacts = new ArrayList<NameFirstMiddle>();
+        //String name1 = properties.getProperty("web.contactFirstName");
         for (int i = 0; i < count; i++) {
-            contacts.add(new NameFirstMiddle().withFirstname(String.format("test %s",i)).
-                    withLastname(String.format("lastName %s",i)).withGroup(String.format("group %s",i)));
+
+            contacts.add(new NameFirstMiddle().withFirstname(
+                     String.format("Alex-generator%s",i)).
+                    withLastname(String.format("lastName %s",i)).
+                    withGroup("test134"));
+
+            //contacts.add(new NameFirstMiddle().withFirstname(String.format("Alex-generator%s",i)).
+            //        withLastname(String.format("lastName %s",i)).
+            //        withGroup("test134"));
+                    //withGroup(String.format("test134 %s",i)));
         }
+
         return contacts;
     }
 }

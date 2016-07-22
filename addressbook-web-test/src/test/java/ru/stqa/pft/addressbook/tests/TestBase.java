@@ -11,8 +11,9 @@ import ru.stqa.pft.addressbook.appManager.ApplicationManager;
 public class TestBase {
 
     //    protected final ApplicationManager app = new ApplicationManager(BrowserType.IE);
-    //    protected final ApplicationManager app = new ApplicationManager(BrowserType.FIREFOX);
-     protected static final ApplicationManager app = new ApplicationManager(BrowserType.CHROME);
+      //  protected final ApplicationManager app = new ApplicationManager(BrowserType.FIREFOX);
+     protected static final ApplicationManager app =
+            new ApplicationManager(System.getProperty("browser",BrowserType.CHROME));
 
     @BeforeSuite
     public void setUp() throws Exception {

@@ -8,6 +8,7 @@ import ru.stqa.pft.addressbook.model.Groups;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.testng.Assert.assertEquals;
+import static ru.stqa.pft.addressbook.appManager.ApplicationManager.properties;
 
 public class GroupDeleteTest extends TestBase  {
     @BeforeMethod
@@ -15,7 +16,8 @@ public class GroupDeleteTest extends TestBase  {
                 // load web in cache 1-time
         app.group().groupPage();
         if ( app.group().all().size() == 0) {
-            app.group().create(new GroupData().withName("delete"));
+            app.group().create(new GroupData().
+                    withName(properties.getProperty("web.groupModifiedName")));
             }
     }
 

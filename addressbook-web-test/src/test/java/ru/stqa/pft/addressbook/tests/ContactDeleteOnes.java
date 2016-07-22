@@ -8,6 +8,7 @@ import ru.stqa.pft.addressbook.model.NameFirstMiddle;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.testng.Assert.assertEquals;
+import static ru.stqa.pft.addressbook.appManager.ApplicationManager.properties;
 
 /**
  * Created by khomep on 09-Jun-16.
@@ -18,8 +19,10 @@ public class ContactDeleteOnes extends TestBase {
         app.contact().goToContact();
         if ( app.contact().all().size() == 0) {
             app.contact().create(new NameFirstMiddle().withId(0).
-                    withFirstname("new contact2").
-                    withLastname("Dostoyevsky").withGroup("test134") );
+                    withFirstname(properties.getProperty("web.contactModifiedFirstName")).
+                    withLastname(properties.getProperty("web.contactModifiedLastName")).
+                            withGroup(properties.getProperty("web.contactGroup")) );
+
         }
     }
 

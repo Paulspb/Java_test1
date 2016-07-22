@@ -78,9 +78,11 @@ public class GroupDataGenerator {
                 // needs to read podskazki in GroupData as :@XStreamAlias("group")
         xstream.processAnnotations(GroupData.class);
         String xml = xstream.toXML(groups);
-        Writer writer = new FileWriter(file);
-        writer.write(xml);
-        writer.close();
+                // lesson 6.8
+                // close the file
+        try (Writer writer = new FileWriter(file)){
+            writer.write(xml);
+        }         //-no needs with Try- writer.close();
     }
 
 
@@ -89,12 +91,12 @@ public class GroupDataGenerator {
         //no directory
         //invalid file name
         System.out.println(new File(".").getAbsolutePath());
-        Writer writer = new FileWriter(file);
-        for (GroupData group : groups) {
-            writer.write(String.format("%s;%s;%s\n",
-                    group.getName(),group.getHeader(),group.getFooter()));
+        try (Writer writer = new FileWriter(file)){
+            for (GroupData group : groups) {
+                writer.write(String.format("%s;%s;%s\n",
+                        group.getName(),group.getHeader(),group.getFooter()));
+            }
         }
-        writer.close();
         // data write on cache at first
         // if prog close, but data not write, then date could lost
     }

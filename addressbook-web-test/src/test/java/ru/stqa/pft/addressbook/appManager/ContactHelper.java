@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import static ru.stqa.pft.addressbook.appManager.ApplicationManager.properties;
+
 /**
  * Created by khomep on 09-Jun-16.
  */
@@ -176,29 +178,37 @@ public class ContactHelper extends HelperBase {
     public void create(NameFirstMiddle name) {
         goToAddNamePad();
         fillFirstLastNames(name,true);
-        fillAddress1("Pskovskaya obl.");
-        fillEmail("alexander0.puchkin@gmail.com", "apuchkin@kultura.tv", "ACPushkin@kultura.tv");
-        fillHomeMobileTlf("8 11235 3214", "8 000 921 921 921");
-        fillFaxWorkTlf("3333","4444");
+        fillAddress1(properties.getProperty("web.contactAddress1"));
+        fillEmail(properties.getProperty("web.contactEmail1"),
+                properties.getProperty("web.contactEmail2"),
+                properties.getProperty("web.contactEmail3") );
+
+        fillHomeMobileTlf(properties.getProperty("web.contactHomeTel"),
+                properties.getProperty("web.contactMobileTel") );
+
+        fillFaxWorkTlf(properties.getProperty("web.contactFax"),
+                properties.getProperty("web.contactWorkTel"));
+
+
+        //fillAddress1("Pskovskaya obl.");
+        //fillEmail("alexander0.puchkin@gmail.com", "apuchkin@kultura.tv", "ACPushkin@kultura.tv");
+        //fillHomeMobileTlf("8 11235 3214", "8 000 921 921 921");
+        //fillFaxWorkTlf("3333","4444");
         submitContact();
         contactCache = null;
         goToContact();
     }
 
-    public void createRestFields() {
-        createContactName(new LastNameNick2("Push"));
-        fillTitle("mr.");
-        fillCompany("ooo Boldino");
-        fillAddress1("Pskovskaya obl.");
-        fillHomeMobileTlf("8 888 555 3214", "8 921 921 921 921");
-        fillFaxWorkTlf("4444","5555");
-        fillEmail("alexander0.puchkin@gmail.com", "apuchkin@kultura.tv", "333.444@gamil.com");
-        fillHomePage();
-        fillBithday();
-        fillContent();
-        fillAddress2();
-        fillPhone2();
-    }
+    //public void createRestFields() {
+    //    createContactName(new LastNameNick2("Push"));
+    //    fillTitle("mr.");
+    //  fillCompany("ooo Boldino");
+    //fillHomePage();
+    //    fillBithday();
+    //  fillContent();
+    //fillAddress2();
+    //fillPhone2();
+    //}
 
     public NameFirstMiddle infoFromEditForm (NameFirstMiddle contact) {
         selectContactById(contact.getId());

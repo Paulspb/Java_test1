@@ -8,6 +8,7 @@ import ru.stqa.pft.addressbook.model.Groups;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.testng.Assert.assertEquals;
+import static ru.stqa.pft.addressbook.appManager.ApplicationManager.properties;
 
 /**
  * Created by khomep on 09-Jun-16.
@@ -20,7 +21,8 @@ public class GroupModificationTests extends TestBase {
         //app.getNavigationHelpe().groupPage();
         //if (! app.group().isThereAGroup()) {
         if ( app.group().all().size() == 0) {
-            app.group().create(new GroupData().withName("delete"));
+            app.group().create(new GroupData().
+                    withName(properties.getProperty("web.groupModifiedName")));
         }
     }
 
@@ -35,9 +37,10 @@ public class GroupModificationTests extends TestBase {
                 //        "test-modification", "updat3331", "updat3331");
                 //GroupData group = new GroupData().withId(before.get(index).getId()).
         GroupData group = new GroupData().withId(modifiedGroup.getId()).
-                withName("test134").withHeader("updat3331").withFooter("updat3331");
-
-                //app.group().modify(modifiedGroup, group);
+                withName(properties.getProperty("web.groupName")).
+                withHeader(properties.getProperty("web.groupHeader")).
+                withFooter(properties.getProperty("web.groupFooter"));
+                        //app.group().modify(modifiedGroup, group);
         app.group().modify( group);
             //int after = app.group().getGroupCount();
         Groups after = app.group().all();
