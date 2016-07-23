@@ -2,29 +2,65 @@ package ru.stqa.pft.addressbook.model;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 import java.io.File;
 
 @XStreamAlias("contacts")
+@javax.persistence.Entity
+@javax.persistence.Table(name = "addressbook")
 public class NameFirstMiddle {
     @XStreamOmitField
+    @Id
+    @Column(name = "id")
     private int id = Integer.MAX_VALUE;
+    @Column(name = "firstname")
     private String firstname;
+    @Column(name = "lastname")
     private String lastname;
-            //private final String middleName;
+            //private final String middleName
+            //@Column(name = "id")
+    @Transient
     private String group;
         // lesson 5.9
+        @Column(name = "home")
+        @Type(type ="text")
     private String homePhone;
+    @Column(name = "mobile")
+    @Type(type ="text")
     private String mobilePhone;
+    @Column(name = "work")
+    @Type(type ="text")
     private String workPhone;
+
+    @Transient
     private String allPhones;
         // home12
+        //@Transient
+        @Column(name = "email")
+        @Type(type ="text")
     private String email1;
+
+    @Column(name = "email2")
+    @Type(type ="text")
     private String email2;
+
+    @Column(name = "email3")
+    @Type(type ="text")
     private String email3;
+    @Transient
     private String allEmails;
+    @Column(name = "address")
+    @Type(type ="text")
     private String fullAddress;
-    private File   photo;
+
+    @Column(name = "photo")
+    @Type(type ="text")
+    //private File   photo;
+    private String   photo;
 
 
     //public void withId(int id) {
@@ -32,7 +68,6 @@ public class NameFirstMiddle {
         this.id = id;
         return this;
     }
-
     public NameFirstMiddle withFirstname(String firstname) {
         this.firstname = firstname;
         return this;
@@ -81,8 +116,10 @@ public class NameFirstMiddle {
         this.fullAddress = fullAddress;
         return this;
     }
+    // public NameFirstMiddle withPhoto(File photo) {
     public NameFirstMiddle withPhoto(File photo) {
-        this.photo = photo;
+        //this.photo = photo;
+        this.photo = photo.getPath();
         return this;
     }
 
@@ -102,7 +139,8 @@ public class NameFirstMiddle {
     public String getAllEmails()    { return allEmails;  }
     public String getFullAddress()  { return fullAddress;}
         //home 14
-    public File   getPhoto()        { return photo;      }
+        //public File   getPhoto()        { return photo;      }  // now is String
+    public File   getPhoto()        { return new File(photo);      }
 
 
     @Override

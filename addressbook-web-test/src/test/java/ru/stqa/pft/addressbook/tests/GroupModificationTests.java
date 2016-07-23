@@ -36,7 +36,7 @@ public class GroupModificationTests extends TestBase {
                 //GroupData group = new GroupData(before.get(index).getId(),
                 //        "test-modification", "updat3331", "updat3331");
                 //GroupData group = new GroupData().withId(before.get(index).getId()).
-        GroupData group = new GroupData().withId(modifiedGroup.getId()).
+        GroupData group = new GroupData().setId(modifiedGroup.getId()).
                 withName(properties.getProperty("web.groupName")).
                 withHeader(properties.getProperty("web.groupHeader")).
                 withFooter(properties.getProperty("web.groupFooter"));

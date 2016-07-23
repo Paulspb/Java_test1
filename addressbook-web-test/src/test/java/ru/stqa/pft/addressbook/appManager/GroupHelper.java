@@ -141,7 +141,7 @@ public class GroupHelper extends HelperBase {
             // no more needs GroupData group = new GroupData().withId(id).withName(name);
                     //app.group().create(new GroupData("tesNotNull",null,null));
                     // add element to group
-            groups.add(new GroupData().withId(id).withName(name));
+            groups.add(new GroupData().setId(id).withName(name));
         }
         return  groups;
     }
@@ -174,7 +174,7 @@ public class GroupHelper extends HelperBase {
             int id   = Integer.parseInt(element.findElement
                     (By.tagName("input")).getAttribute("value"));
                     //groups.add(new GroupData().withId(id).withName(name));
-            groupCache.add(new GroupData().withId(id).withName(name));
+            groupCache.add(new GroupData().setId(id).withName(name));
         }
         return new Groups(groupCache);
                 //  return  groups;

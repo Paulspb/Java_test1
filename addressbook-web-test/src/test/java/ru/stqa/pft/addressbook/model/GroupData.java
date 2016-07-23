@@ -2,16 +2,35 @@ package ru.stqa.pft.addressbook.model;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
+//import org.hibernate.annotations.GenericGenerator;
+//import org.hibernate.persister.entity.SingleTableEntityPersister;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @XStreamAlias("group")
+
+@javax.persistence.Entity
+        //mapping table group_list
+@javax.persistence.Table(name = "group_list")
 public class GroupData {
-    // this constraucter not acept any parms
+    // this constructer not acept any parms
     //private int id;
     @XStreamOmitField
             // this revoke id from xml file
+    @Id
+    @Column(name = "group_id")
+
     private int id = Integer.MAX_VALUE;  // new line at the buttom
+    @Column(name = "group_name")
     private String name;
+    @Column(name = "group_header")
+    @Type(type ="text")
     private String header;
+    @Column(name = "group_footer")
+    @Type(type ="text")
     private String footer;
 
     @Override
@@ -52,7 +71,7 @@ public class GroupData {
     //    this.footer = footer;
     //}
 
-    public GroupData withId(int id) {
+    public GroupData setId(int id) {
         this.id = id;
         return this;
     }
