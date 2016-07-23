@@ -19,6 +19,7 @@ public class NameFirstMiddle {
     private int id = Integer.MAX_VALUE;
     @Column(name = "firstname")
     private String firstname;
+
     @Column(name = "lastname")
     private String lastname;
             //private final String middleName
@@ -29,9 +30,11 @@ public class NameFirstMiddle {
         @Column(name = "home")
         @Type(type ="text")
     private String homePhone;
+
     @Column(name = "mobile")
     @Type(type ="text")
     private String mobilePhone;
+
     @Column(name = "work")
     @Type(type ="text")
     private String workPhone;

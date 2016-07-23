@@ -18,19 +18,25 @@ public class GroupModificationTests extends TestBase {
     @BeforeMethod
     public void ensurePreconditions() {
         app.group().groupPage();
-        //app.getNavigationHelpe().groupPage();
-        //if (! app.group().isThereAGroup()) {
-        if ( app.group().all().size() == 0) {
+        if(app.db().groups().size() == 0 ) {
             app.group().create(new GroupData().
                     withName(properties.getProperty("web.groupModifiedName")));
         }
+
+        //app.group().groupPage();
+                //if (! app.group().isThereAGroup()) {
+        //if ( app.group().all().size() == 0) {
+        //    app.group().create(new GroupData().
+        //            withName(properties.getProperty("web.groupModifiedName")));
+        //}
     }
 
     @Test
     public void testGroupModification() {
-            //int before = app.group().getGroupCount();
-            //List<GroupData> before = app.group().list(); - spisok
-        Groups before = app.group().all();      // mnogestvo
+                        //int before = app.group().getGroupCount();
+                        //List<GroupData> before = app.group().list(); - spisok
+                //less 7.4 Groups before = app.group().all();      // mnogestvo
+        Groups before = app.db().groups();      // mnogestvo
         GroupData modifiedGroup = before.iterator().next();
                 //int index = before.size() -1;
                 //GroupData group = new GroupData(before.get(index).getId(),
@@ -43,7 +49,8 @@ public class GroupModificationTests extends TestBase {
                         //app.group().modify(modifiedGroup, group);
         app.group().modify( group);
             //int after = app.group().getGroupCount();
-        Groups after = app.group().all();
+                //lesson 7.4 Groups after = app.group().all();
+        Groups after = app.db().groups();
         assertEquals(after.size(),before.size() );
             //Assert.assertEquals(after,before );
             // modify old spicok in two steps

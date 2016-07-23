@@ -4,7 +4,7 @@
         <classes>
             <class name="ru.stqa.pft.addressbook.tests.GroupCreationTest" />
             <class name="ru.stqa.pft.addressbook.tests.GroupModificationTests" />
-            <class name="ru.stqa.pft.addressbook.tests.GroupDeleteOneOf" />
+            <class name="ru.stqa.pft.addressbook.tests.GroupDeleteTest" />
         </classes>
     </test>
 </suite>

@@ -16,8 +16,7 @@ import javax.persistence.Id;
         //mapping table group_list
 @javax.persistence.Table(name = "group_list")
 public class GroupData {
-    // this constructer not acept any parms
-    //private int id;
+        // this constructer not acept any parms
     @XStreamOmitField
             // this revoke id from xml file
     @Id
@@ -41,18 +40,22 @@ public class GroupData {
         GroupData groupData = (GroupData) o;
 
         if (id != groupData.id) return false;
-        return name != null ? name.equals(groupData.name) : groupData.name == null;
+        if (name != null ? !name.equals(groupData.name) : groupData.name != null) return false;
+        if (header != null ? !header.equals(groupData.header) : groupData.header != null) return false;
+        return footer != null ? footer.equals(groupData.footer) : groupData.footer == null;
 
     }
 
     @Override
     public int hashCode() {
-            //if hashCode not the same, then equlas() not needs. hashCode - faster
         int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (header != null ? header.hashCode() : 0);
+        result = 31 * result + (footer != null ? footer.hashCode() : 0);
         return result;
     }
-// revoke after
+
+    // revoke after
             //private int id;
             //private int id = Integer.MAX_VALUE;  // new line at the buttom
 

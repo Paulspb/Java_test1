@@ -2,12 +2,10 @@ package ru.stqa.pft.addressbook.model;
 
 import com.google.common.collect.ForwardingSet;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Created by khomep on 29-Jun-16.
- */
 public class Contacts extends ForwardingSet<NameFirstMiddle> {
 
     private Set<NameFirstMiddle> delegateC;
@@ -15,9 +13,13 @@ public class Contacts extends ForwardingSet<NameFirstMiddle> {
     public Contacts(Contacts contacts) {
         this.delegateC = new HashSet<NameFirstMiddle>(contacts.delegateC);
     }
-
+            //constructor1
     public Contacts() {
         this.delegateC = new HashSet<NameFirstMiddle>();
+    }
+            //constructor2
+    public Contacts(Collection<NameFirstMiddle> contacts) {
+        this.delegateC = new HashSet<NameFirstMiddle>(contacts);
     }
 
     @Override

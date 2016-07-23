@@ -11,7 +11,7 @@ import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.NameFirstMiddle;
 
 import java.util.List;
-//import org.hibernate.persister.entity.SingleTableEntityPersister;
+
 
 public class HbConnectionTest {
     private SessionFactory sessionFactory;
@@ -44,7 +44,6 @@ public class HbConnectionTest {
         List result = session.createQuery(
                 "from NameFirstMiddle where deprecated = '0000-00-00'" ).list();
         for (NameFirstMiddle contact : (List<NameFirstMiddle>) result ) {
-            //for ( GroupData group :  result ) {
             System.out.println( "     contacts===========> " + contact );
         }
         session.getTransaction().commit();

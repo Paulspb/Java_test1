@@ -21,12 +21,11 @@ public class ContactModificationTests extends TestBase {
     public void ensurePreconditionContact(){
         app.contact().goToContact();
         //if (! app.contact().isThereAContact()) {
-        if ( app.contact().all().size() == 0) {
+        if ( app.db().contacts().size() == 0) {
             app.contact().create(new NameFirstMiddle().withId(0).
                     withFirstname(properties.getProperty("web.contactModifiedFirstName")).
                     withLastname(properties.getProperty("web.contactModifiedLastName")).
                     withGroup(properties.getProperty("web.contactGroup")) );
-                        //app.contact().create(new NameFirstMiddle().withId(0).
         }
     }
 
@@ -34,7 +33,7 @@ public class ContactModificationTests extends TestBase {
     public void testContactModification() throws IOException {
                     //List<NameFirstMiddle> before = app.contact().list();
             // all() return spisok, not mnogestvo
-        Contacts before = app.contact().all();
+        Contacts before = app.db().contacts();
             // next() return sly4ainyi element, not last, not first
         NameFirstMiddle modifiedContact = before.iterator().next();
                     //int index = before.size() -1;
@@ -44,8 +43,7 @@ public class ContactModificationTests extends TestBase {
                 withLastname(properties.getProperty("web.contactModifiedLastName") );
 
         app.contact().modify(contact);
-                    //app.contact().modify(contact);
-        Contacts after = app.contact().all();
+        Contacts after = app.db().contacts();
         assertEquals(after.size(),before.size() );
         assertThat(after, equalTo(
                 before.without(modifiedContact).withAdded(contact)));

@@ -32,6 +32,8 @@ public class ApplicationManager {
     private NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
     private String browser;
+            // lesson 7.4
+    private DbHelper dbHelper;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
@@ -39,9 +41,13 @@ public class ApplicationManager {
     }
 
     public void initTests() throws IOException {
-        // file config name
+            // file config name
         String target = System.getProperty("target","local");
         properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties",target))));
+
+            //this is constructor ??? // lesson 7.4
+        dbHelper = new DbHelper();
+
         if (browser.equals(BrowserType.FIREFOX)) {
                 // .....goes method 'setup'
                 // groupHelper.wd = new FirefoxDriver();
@@ -77,8 +83,9 @@ public class ApplicationManager {
     public NavigationHelper getNavigationHelper() {
         return navigationHelper;
     }
-
     public ContactHelper contact() {
         return contactHelper;
     }
+            // new constructor in Groups.java
+    public DbHelper db()     { return dbHelper; }
 }

@@ -7,7 +7,6 @@ import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -33,59 +32,48 @@ public class GroupCreationTest extends TestBase {
             String line = reader.readLine();
             while (line != null) {
                 xml +=line;
-                //-no needs for xml-
-                // String[] split = line.split(";");
-                //in case if 3 INPUT lines, then add 3 GroupData() lines
-                //-no needs for xml-
-                //list.add(new Object[]{ new GroupData().
-                //withName(split[0]).withHeader(split[1]).withFooter(split[2])});
+                        //-no needs for xml-
+                    // String[] split = line.split(";");
+                    //in case if 3 INPUT lines, then add 3 GroupData() lines
+                    //-no needs for xml-
+                    //list.add(new Object[]{ new GroupData().
+                    //withName(split[0]).withHeader(split[1]).withFooter(split[2])});
                 line = reader.readLine();
             }
             XStream xstream = new XStream();
-            //- needs only for convert-
+                //- needs only for convert-
             xstream.processAnnotations(GroupData.class);
-            // read data from xml and keep data to var at the  same type
+                // read data from xml and keep data to var at the  same type
             List<GroupData> groups  = (List<GroupData>)  xstream.fromXML(xml);
-            //functional programming
-            // collect potok -> spisok
-            //default Stream<E> stream() {
-            //    return StreamSupport.stream(spliterator(), false);  }
-            //<R> Stream<R> map(Function<? super T, ? extends R> mapper);
-            //String[] spl = groups.stream().map((g) -> new Object[] {g} );
-            //List<Object[]> list = new ArrayList<Object[]>();
+                //functional programming
+                    // collect potok -> spisok
+                    //default Stream<E> stream() {
+                        //List<Object[]> list = new ArrayList<Object[]>();
             return groups.stream().
                     map( (g) -> new Object[] {g} ).collect(Collectors.toList()).iterator();  //   .collect(Collectors.toList()).
 
         }
-                //new FileReader(new File("src/test/resources/group.csv")));
-        // now read data from xml file:
-
-        //return
-        //        groups.stream().
-          //              map( (g) -> new Object[] {g}).collect(Collectors.toList()).
-            //            iterator();
-
                 //list.add(new Object[]{"test1","header1","footer1"});
                 //list.add(new Object[]{"test2","header2","footer2"});
                 //list.add(new Object[]{"test3","header3","footer3"});
             //-no- afrter add functional progr.
-        //return list.iterator();
+
     }
             //  do link between @dataprovider & the Test
     @Test(dataProvider = "validGroups")
     //public void groupCreationTestMethod(String name, String header, String footer) {
     public void groupCreationTestMethod(GroupData group) {
-    //public void groupCreationTestMethod() {
-        //String [] names = new String[] {"test641","test642","test643"};
-        //for (String name :names ) {
-        //GroupData group = new GroupData().withName(name).
-        //            withHeader(header).withFooter(footer);
+
+                //String [] names = new String[] {"test641","test642","test643"};
+                //for (String name :names ) {
+                    //GroupData group = new GroupData().withName(name).
+                        //    withHeader(header).withFooter(footer);
         app.group().groupPage();
-        Groups before = app.group().all();
+        Groups before = app.db().groups();      // mnogestvo  les-7.4
         app.group().create(group);
             //xeching - method where assert light values does before hard assert
         assertThat(app.group().count(), equalTo(before.size() + 1));
-        Groups after = app.group().all();
+        Groups after = app.db().groups();
         assertThat(after.size(), equalTo(before.size() + 1));
         assertThat(after, equalTo(before.withAdded(
                     group.setId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
@@ -93,7 +81,6 @@ public class GroupCreationTest extends TestBase {
     }
 
 
-    //@Test(enabled = true ,dataProvider = "validGroups")
     @Test(enabled = true )
     //@Test(dataProvider = "validGroups")
             //public void groupCreationTestLesson(GroupData group) {
@@ -103,7 +90,7 @@ public class GroupCreationTest extends TestBase {
         app.group().groupPage();
             //List<GroupData> before = app.group().list();
         //-after added withAdded Set<GroupData> before = app.group().all();
-        Groups before = app.group().all();
+        Groups before = app.db().groups();      // mnogestvo  les-7.4
             //int before1 = app.group().getGroupCount();
             // no needs as take from generator !!!
         //GroupData group = new GroupData("test134", "test21", "test31");
@@ -122,7 +109,7 @@ public class GroupCreationTest extends TestBase {
             //app.group().getNavigationHelper().returntoGroupPage();
         //List<GroupData> after = app.group().list();
             //-no need Set<GroupData> after = app.group().all();
-        Groups after = app.group().all();
+        Groups after = app.db().groups();
             //-old statement- Assert.assertEquals(after.size(),before.size() +1);
             //-old too-assertEquals(after.size(),equalTo(before.size() +1));
         assertThat(after.size(),equalTo(before.size() +1));

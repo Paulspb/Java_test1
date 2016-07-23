@@ -15,10 +15,10 @@ public class GroupDeleteTest extends TestBase  {
     public void ensurePreconditions() {
                 // load web in cache 1-time
         app.group().groupPage();
-        if ( app.group().all().size() == 0) {
+        if(app.db().groups().size() == 0 ) {
             app.group().create(new GroupData().
                     withName(properties.getProperty("web.groupModifiedName")));
-            }
+        }
     }
 
     @Test(enabled = true)
@@ -28,14 +28,15 @@ public class GroupDeleteTest extends TestBase  {
             //int groupbefore = app.group().getGroupCount();
             // in was  Set<GrooupData> before
             // load web in cache 2-time
-        Groups before = app.group().all();
+        //Groups before = app.group().all();
+        Groups before = app.db().groups();      // mnogestvo
             //take from mnovestvo iterator, then next
         GroupData deletedGroup = before.iterator().next();
             // as substitute on deletedGroup int index = before.size() -1;
                 // needs to delete whole element with Id
                 //it was : app.group().delete(index);, now:
         app.group().delete(deletedGroup);
-        Groups after = app.group().all();
+        Groups after = app.db().groups();
                 // int after = app.group().getGroupCount();
                 //Assert.assertEquals(after,before +1);
         assertEquals(after.size(),before.size()-1);

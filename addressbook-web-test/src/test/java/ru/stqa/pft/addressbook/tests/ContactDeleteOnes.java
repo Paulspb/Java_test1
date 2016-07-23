@@ -17,18 +17,17 @@ public class ContactDeleteOnes extends TestBase {
     @BeforeMethod
     public void ensurePreconditionContact(){
         app.contact().goToContact();
-        if ( app.contact().all().size() == 0) {
+        if ( app.db().contacts().size() == 0) {
             app.contact().create(new NameFirstMiddle().withId(0).
                     withFirstname(properties.getProperty("web.contactModifiedFirstName")).
                     withLastname(properties.getProperty("web.contactModifiedLastName")).
-                            withGroup(properties.getProperty("web.contactGroup")) );
-
+                    withGroup(properties.getProperty("web.contactGroup")) );
         }
     }
 
     @Test
     public void testContactDeletion() {
-        Contacts before = app.contact().all();
+        Contacts before = app.db().contacts();
         int index = before.size() -1;
                     //int index2 = before.size() +0;
             // next return sly4ainyi element, not last, not first
@@ -40,7 +39,7 @@ public class ContactDeleteOnes extends TestBase {
                 //app.contact().delete(before);
                 //app.contact().delete(index2);
         app.contact().delete(deletedContact);
-        Contacts after = app.contact().all();
+        Contacts after = app.db().contacts();
             //System.out.println("after.size =" +after.size());
             // int after = app.group().getGroupCount();
                 //Assert.assertEquals(after,before - 1);
