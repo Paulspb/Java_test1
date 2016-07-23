@@ -22,8 +22,7 @@ public class NameFirstMiddle {
 
     @Column(name = "lastname")
     private String lastname;
-            //private final String middleName
-            //@Column(name = "id")
+
     @Transient
     private String group;
         // lesson 5.9
@@ -145,7 +144,6 @@ public class NameFirstMiddle {
         //public File   getPhoto()        { return photo;      }  // now is String
     public File   getPhoto()        { return new File(photo);      }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -155,7 +153,14 @@ public class NameFirstMiddle {
 
         if (id != that.id) return false;
         if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
-        return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
+        if (lastname != null ? !lastname.equals(that.lastname) : that.lastname != null) return false;
+        if (homePhone != null ? !homePhone.equals(that.homePhone) : that.homePhone != null) return false;
+        if (mobilePhone != null ? !mobilePhone.equals(that.mobilePhone) : that.mobilePhone != null) return false;
+        if (workPhone != null ? !workPhone.equals(that.workPhone) : that.workPhone != null) return false;
+        if (email1 != null ? !email1.equals(that.email1) : that.email1 != null) return false;
+        if (email2 != null ? !email2.equals(that.email2) : that.email2 != null) return false;
+        if (email3 != null ? !email3.equals(that.email3) : that.email3 != null) return false;
+        return fullAddress != null ? fullAddress.equals(that.fullAddress) : that.fullAddress == null;
 
     }
 
@@ -164,6 +169,13 @@ public class NameFirstMiddle {
         int result = id;
         result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
         result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
+        result = 31 * result + (homePhone != null ? homePhone.hashCode() : 0);
+        result = 31 * result + (mobilePhone != null ? mobilePhone.hashCode() : 0);
+        result = 31 * result + (workPhone != null ? workPhone.hashCode() : 0);
+        result = 31 * result + (email1 != null ? email1.hashCode() : 0);
+        result = 31 * result + (email2 != null ? email2.hashCode() : 0);
+        result = 31 * result + (email3 != null ? email3.hashCode() : 0);
+        result = 31 * result + (fullAddress != null ? fullAddress.hashCode() : 0);
         return result;
     }
 

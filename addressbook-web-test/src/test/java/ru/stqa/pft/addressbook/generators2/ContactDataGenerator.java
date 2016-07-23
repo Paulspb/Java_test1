@@ -21,7 +21,7 @@ import java.util.Properties;
 public class ContactDataGenerator {
 
     //private static Properties properties;
-    @Parameter(names = "-c", description =  "Contact = count")
+    @Parameter(names = "-c", description =  "Contact count")
     public int count;
 
     @Parameter(names = "-f", description =  "target file")
@@ -72,9 +72,13 @@ public class ContactDataGenerator {
         System.out.println("    working directory: " +new File(".").getAbsolutePath());
         try (Writer writer = new FileWriter(file)){
             for (NameFirstMiddle contact :contacts) {
-                writer.write(String.format("%s;%s;%s\n",
-                        contact.getFirstname(),contact.getLastName(),contact.getGroup()));
-            }         //-no needs with
+                writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n",
+                        contact.getFirstname(),contact.getLastName(),contact.getGroup(),
+                        contact.getHome(),contact.getWork(),contact.getMobile(),
+                        contact.getEmail1(),contact.getEmail2(),contact.getEmail3(),
+                        contact.getFullAddress()
+                ));
+            }         //-no needs with Try
         }
     }
 
@@ -87,7 +91,17 @@ public class ContactDataGenerator {
             contacts.add(new NameFirstMiddle().withFirstname(
                      String.format("Alex-generator%s",i)).
                     withLastname(String.format("lastName %s",i)).
-                    withGroup("test134"));
+                    withGroup("test134").
+                    withHomePhone("8 11235 3214").withMobilePhone("8 000 921 921 921").
+                    withWorkPhone("4444").
+                    withEmail1("alexander0.puchkin@gmail.com").
+                    withEmail2("apuchkin@kultura.tv").
+                    withEmail3("ACPushkin@kultura.tv").
+                    withFullAddress("Pskovskaya obl.")
+            );
+
+
+
 
             //contacts.add(new NameFirstMiddle().withFirstname(String.format("Alex-generator%s",i)).
             //        withLastname(String.format("lastName %s",i)).

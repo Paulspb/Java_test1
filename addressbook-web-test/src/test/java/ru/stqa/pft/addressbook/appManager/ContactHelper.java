@@ -54,7 +54,13 @@ public class ContactHelper extends HelperBase {
                     //wd.findElement(By.name("firstname")).sendKeys(nameFirstMiddle.getFirstname());
                     //type(By.name("middlename"),nameFirstMiddle.getMiddleName());
         type(By.name("lastname"),nameFirstMiddle.getLastName());
-                //lesson 6.1, lesson 7.4
+
+
+            type(By.name("work"),nameFirstMiddle.getWork());
+            //type(By.name("fax"),nameFirstMiddle.g`);
+
+
+        //lesson 6.1, lesson 7.4
         //attach(By.name("photo"),nameFirstMiddle.getPhoto());
             // take group from GroupName
         if (creation) {
@@ -188,8 +194,8 @@ public class ContactHelper extends HelperBase {
         fillHomeMobileTlf(properties.getProperty("web.contactHomeTel"),
                 properties.getProperty("web.contactMobileTel") );
 
-        fillFaxWorkTlf(properties.getProperty("web.contactFax"),
-                properties.getProperty("web.contactWorkTel"));
+        fillFaxWorkTlf(properties.getProperty("web.contactWorkTel"),
+                properties.getProperty("web.contactFax"));
 
 
         //fillAddress1("Pskovskaya obl.");

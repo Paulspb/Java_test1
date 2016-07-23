@@ -40,7 +40,14 @@ public class ContactModificationTests extends TestBase {
         NameFirstMiddle contact = new NameFirstMiddle().
             withId(modifiedContact.getId()).
                 withFirstname(properties.getProperty("web.contactModifiedFirstName")).
-                withLastname(properties.getProperty("web.contactModifiedLastName") );
+                withLastname(properties.getProperty("web.contactModifiedLastName")).
+                withEmail1(properties.getProperty("web.contactEmail1")).
+                withEmail2(properties.getProperty("web.contactEmail2")).
+                withEmail3(properties.getProperty("web.contactEmail3")).
+                withFullAddress(properties.getProperty("web.contactAddress1")).
+                withHomePhone(properties.getProperty("web.contactHomeTel")).
+                withWorkPhone(properties.getProperty("web.contactWorkTel")).
+                withMobilePhone(properties.getProperty("web.contactMobileTel"));
 
         app.contact().modify(contact);
         Contacts after = app.db().contacts();

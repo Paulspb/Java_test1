@@ -3,7 +3,11 @@ package ru.stqa.pft.addressbook.tests;
 import com.thoughtworks.xstream.XStream;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import ru.stqa.pft.addressbook.model.*;
+
+import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.NameFirstMiddle;
+
+import java.io.IOException;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -13,39 +17,36 @@ import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.testng.Assert.assertEquals;
 import static ru.stqa.pft.addressbook.appManager.ApplicationManager.properties;
 
 public class NameCreationTestPuchkin extends TestBase {
 
     @DataProvider
     public Iterator<Object[]> validContacts() throws IOException {
+                //list.add(new Object[]{new NameFirstMiddle().withPhoto(photo).
+                //        withFirstname("Alex641").withLastname("Pushkin641").withGroup("test134") });
 
-        //list.add(new Object[]{new NameFirstMiddle().withPhoto(photo).
-        //        withFirstname("Alex641").withLastname("Pushkin641").withGroup("test134") });
-        //list.add(new Object[]{new NameFirstMiddle().withPhoto(photo).
-        //        withFirstname("Alex642").withLastname("Pushkin642").withGroup("test134") });
-        //list.add(new Object[]{new NameFirstMiddle().withPhoto(photo).
-        //        withFirstname("Alex643").withLastname("Pushkin643").withGroup("test134") });
-
-
-
-
-        List<Object[]> list = new ArrayList<Object[]>();
+                    List<Object[]> list = new ArrayList<Object[]>();
         //File photo = new File("src/test/resources/kira2back.jpg");
         File photo = new File(properties.getProperty("web.contactPhoto"));
 
         try (BufferedReader reader = new BufferedReader(
                 new FileReader(new File(properties.getProperty("web.contactData"))))
-                //new FileReader(new File("src/test/resources/contact.csv")))
             ) {
+                String xml = "";
             String line = reader.readLine();
             while (line != null) {
+                    xml +=line;
                 String[] split = line.split(";");
                 list.add(new Object[]{ new NameFirstMiddle().
-                        withFirstname(split[0]).withLastname(split[1]).withGroup(split[2]).withPhoto(photo)});
+                        withFirstname(split[0]).withLastname(split[1]).withGroup(split[2]).withHomePhone(split[3]).withWorkPhone(split[4]).withMobilePhone(split[5]). withEmail1(split[6]).withEmail2(split[7]).withEmail3(split[8]).withFullAddress(split[9]).
+                        withPhoto(photo)});
                 line = reader.readLine();
             }
+
             return list.iterator();
+
         }
     }
 
