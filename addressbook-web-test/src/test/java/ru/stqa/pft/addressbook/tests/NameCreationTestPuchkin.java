@@ -26,11 +26,9 @@ public class NameCreationTestPuchkin extends TestBase {
     public Iterator<Object[]> validContacts() throws IOException {
                 //list.add(new Object[]{new NameFirstMiddle().withPhoto(photo).
                 //        withFirstname("Alex641").withLastname("Pushkin641").withGroup("test134") });
-
                     List<Object[]> list = new ArrayList<Object[]>();
         //File photo = new File("src/test/resources/kira2back.jpg");
         File photo = new File(properties.getProperty("web.contactPhoto"));
-
         try (BufferedReader reader = new BufferedReader(
                 new FileReader(new File(properties.getProperty("web.contactData"))))
             ) {
@@ -44,16 +42,13 @@ public class NameCreationTestPuchkin extends TestBase {
                         withPhoto(photo)});
                 line = reader.readLine();
             }
-
             return list.iterator();
-
         }
     }
 
 
     @Test (enabled = true, dataProvider = "validContacts")
     public void nameCreationTestWithGenerator(NameFirstMiddle name) {
-
         app.contact().goToContact();
         Contacts before = app.db().contacts();
         app.contact().create(name);
@@ -63,8 +58,7 @@ public class NameCreationTestPuchkin extends TestBase {
         assertThat(after.size(),equalTo(before.size() +1));
         assertThat(after, equalTo(before.withAdded(
                     name.withId(after.stream().mapToInt((g)-> g.getId()).max().getAsInt()))));
-
-
+        verifyContactListInUi();
     }
 
 

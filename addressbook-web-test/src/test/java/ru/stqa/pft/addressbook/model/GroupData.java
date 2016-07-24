@@ -79,7 +79,11 @@ public class GroupData {
         return this;
     }
 
-        //public void withName(String name) {
+        //less 7.5
+        public GroupData withId(int id) {
+            this.id = id;
+            return this;
+        }
     public GroupData withName(String name) {
         this.name = name;
         // will return object from them it calling

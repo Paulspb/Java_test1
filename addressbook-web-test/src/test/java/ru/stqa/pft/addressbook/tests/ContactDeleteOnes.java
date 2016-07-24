@@ -47,6 +47,7 @@ public class ContactDeleteOnes extends TestBase {
                 //before.remove(index);
             // -no needs after add eqbefulTo...ore.remove(deletedContact);
         assertThat(after, equalTo(before.without(deletedContact)));
+        verifyContactListInUi();
             //System.out.println("bef.remove =" + before);
             //System.out.println("after      =" + after);
                 //for ( int i = 0; i < after.size(); i++) {

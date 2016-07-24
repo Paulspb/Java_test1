@@ -54,6 +54,7 @@ public class ContactModificationTests extends TestBase {
         assertEquals(after.size(),before.size() );
         assertThat(after, equalTo(
                 before.without(modifiedContact).withAdded(contact)));
+        verifyContactListInUi();
                 //-no needs after assertThat:before.remove(modifiedContact);
                 //-no needs after assertThat:before.add(contact);
             // ne-uporjado4en - massiv
@@ -65,13 +66,6 @@ public class ContactModificationTests extends TestBase {
                 //Comparator<? super NameFirstMiddle> byId = (g1, g2) -> Integer.compare(g1.getId(),g2.getId());
                 //before.sort(byId);
                 //after.sort(byId);
-
                 //-no needs after assertThat:assertEquals(before,after);
-
-
-
     }
-
-
-
 }

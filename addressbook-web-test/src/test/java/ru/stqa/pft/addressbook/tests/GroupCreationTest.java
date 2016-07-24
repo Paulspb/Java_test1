@@ -74,6 +74,7 @@ public class GroupCreationTest extends TestBase {
         assertThat(after.size(), equalTo(before.size() + 1));
         assertThat(after, equalTo(before.withAdded(
                     group.setId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
+        verifyGroupListInUi();
         //}
     }
 
@@ -112,7 +113,7 @@ public class GroupCreationTest extends TestBase {
         assertThat(after.size(),equalTo(before.size() +1));
         assertThat(after, equalTo(before.withAdded(
                         group.setId(after.stream().mapToInt((g)-> g.getId()).max().getAsInt()))));
-
+        verifyGroupListInUi();
                     // find max ID
                     //int max = 0;
                     //for (GroupData g : after)  {
