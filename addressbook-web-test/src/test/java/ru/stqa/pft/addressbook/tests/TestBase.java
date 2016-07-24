@@ -1,6 +1,5 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.remote.BrowserType;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
@@ -10,12 +9,11 @@ import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 import ru.stqa.pft.addressbook.model.NameFirstMiddle;
 
-import java.util.Arrays;
 import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static ru.stqa.pft.addressbook.appManager.ApplicationManager.properties;
+
 
 /**
  * Created by khomep on 08-Jun-16.
@@ -53,22 +51,22 @@ public class TestBase {
         }
     }
 
-    
+
     public void verifyContactListInUi() {
         if (Boolean.getBoolean("verifyUI")) {
             Contacts dbContacts = app.db().contacts();
             Contacts uiContacts = app.contact().all();
 
             assertThat(uiContacts.stream()
-                            .filter( (s) ->  s!= null && !s.equals(""))
+                    .filter( (s) ->  s!= null && !s.equals(""))
                     .map(
                     (h) -> new NameFirstMiddle().withId(h.getId()).
                             withFirstname(h.getFirstname()).withLastname(h.getLastName()).withFullAddress(h.getFullAddress())).
                             collect(Collectors.toSet())
 
                     , equalTo(dbContacts.stream()
-                            .filter( (s) ->  s!= null && !s.equals(""))
-                            .map(
+                    .filter( (s) ->  s!= null && !s.equals(""))
+                    .map(
                     (g) -> new NameFirstMiddle().withId(g.getId()).
                             withFirstname(g.getFirstname()).withLastname(g.getLastName()).withFullAddress(g.getFullAddress())).
                     collect(Collectors.toSet())));

@@ -5,6 +5,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.Groups;
 import ru.stqa.pft.addressbook.model.NameFirstMiddle;
 
 import java.io.IOException;
@@ -38,7 +39,8 @@ public class NameCreationTestPuchkin extends TestBase {
                     xml +=line;
                 String[] split = line.split(";");
                 list.add(new Object[]{ new NameFirstMiddle().
-                        withFirstname(split[0]).withLastname(split[1]).withGroup(split[2]).withHomePhone(split[3]).withWorkPhone(split[4]).withMobilePhone(split[5]). withEmail1(split[6]).withEmail2(split[7]).withEmail3(split[8]).withFullAddress(split[9]).
+                        //withFirstname(split[0]).withLastname(split[1]).withGroup(split[2]).withHomePhone(split[3]).withWorkPhone(split[4]).withMobilePhone(split[5]). withEmail1(split[6]).withEmail2(split[7]).withEmail3(split[8]).withFullAddress(split[9]).
+                        withFirstname(split[0]).withLastname(split[1]).            withHomePhone(split[3]).withWorkPhone(split[4]).withMobilePhone(split[5]). withEmail1(split[6]).withEmail2(split[7]).withEmail3(split[8]).withFullAddress(split[9]).
                         withPhoto(photo)});
                 line = reader.readLine();
             }
@@ -47,7 +49,7 @@ public class NameCreationTestPuchkin extends TestBase {
     }
 
 
-    @Test (enabled = true, dataProvider = "validContacts")
+    @Test (enabled = false, dataProvider = "validContacts")
     public void nameCreationTestWithGenerator(NameFirstMiddle name) {
         app.contact().goToContact();
         Contacts before = app.db().contacts();
@@ -62,16 +64,26 @@ public class NameCreationTestPuchkin extends TestBase {
     }
 
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void nameCreationTestPushkinMethod() {
+                //lesson7.6
+        Groups groups = app.db().groups();      // mnogestvo
+        File photo = new File("src/test/resources/kira2back.jpg");
+        NameFirstMiddle name = new NameFirstMiddle().withFirstname("Alexey").
+                withLastname("Pushkin").withPhoto(photo)
+                .inGroup(groups.iterator().next())
+                ; //lesson7.6 .withGroup("test134");
         app.contact().goToContact();
+
                     //int before = app.group().getGroupCount();
                     //int before = app.contact().getContactCount();  it's counter
                     //List<GroupData> before = app.contact().list();  // it's full parms of one contact
             //  -no need Set<NameFirstMiddle> before = app.contact().all();
         Contacts before = app.contact().all();
-        NameFirstMiddle name = new NameFirstMiddle().withId(before.size()-1).withFirstname("Alexey").
-                withLastname("Pushkin").withGroup("test134");
+
+        //lesson 7.6
+        //NameFirstMiddle name = new NameFirstMiddle().withId(before.size()-1).withFirstname("Alexey").
+          //      withLastname("Pushkin"); //lesson7.6 .withGroup("test134");
                     //app.contact().fillFirstLastNames(name, true);
         app.contact().create(name);
                     //app.contact().createContactName(new NameFirstMiddle("Alexey", "Sergeevich","test134"), true);

@@ -73,7 +73,7 @@ public class ContactDataGenerator {
         try (Writer writer = new FileWriter(file)){
             for (NameFirstMiddle contact :contacts) {
                 writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n",
-                        contact.getFirstname(),contact.getLastName(),contact.getGroup(),
+                        contact.getFirstname(),contact.getLastName(),  //lesson 7.6contact.getGroup(),
                         contact.getHome(),contact.getWork(),contact.getMobile(),
                         contact.getEmail1(),contact.getEmail2(),contact.getEmail3(),
                         contact.getFullAddress()
@@ -91,7 +91,7 @@ public class ContactDataGenerator {
             contacts.add(new NameFirstMiddle().withFirstname(
                      String.format("Alex-generator%s",i)).
                     withLastname(String.format("lastName %s",i)).
-                    withGroup("test134").
+                    //lesson 7.6withGroup("test134").
                     withHomePhone("8 11235 3214").withMobilePhone("8 000 921 921 921").
                     withWorkPhone("4444").
                     withEmail1("alexander0.puchkin@gmail.com").

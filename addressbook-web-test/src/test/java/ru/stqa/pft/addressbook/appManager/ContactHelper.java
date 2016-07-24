@@ -1,6 +1,7 @@
 package ru.stqa.pft.addressbook.appManager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -64,11 +65,19 @@ public class ContactHelper extends HelperBase {
         //attach(By.name("photo"),nameFirstMiddle.getPhoto());
             // take group from GroupName
         if (creation) {
+            if (nameFirstMiddle.getGroups().size() > 0 ) {
+                //lesson 7.6
+                Assert.assertTrue(nameFirstMiddle.getGroups().size() == 1);
+                new Select(wd.findElement(By.name("new_group")))
+                        .selectByVisibleText(nameFirstMiddle.getGroups().
+                                iterator().next().getName());
+                        //.selectByVisibleText(nameFirstMiddle.getGroup());
+                //lesson 6.1, lesson 7.4
+                attach(By.name("photo"),nameFirstMiddle.getPhoto());
+            }
                     //if (isElementPresent(wd.findElement(By.name("new_group")).selectByVisibleText(nameFirstMiddle.getGroup()) {
                     //}
-            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(nameFirstMiddle.getGroup());
-                //lesson 6.1, lesson 7.4
-            attach(By.name("photo"),nameFirstMiddle.getPhoto());
+
         } else {
                 // test modify, not creating
             Assert.assertFalse(isElementPresent(By.name("new_group")));
@@ -282,6 +291,99 @@ public class ContactHelper extends HelperBase {
                 //submitUpdateId(contact.getId());
         goToContact();
     }
+
+    public void deleteFromGroup( NameFirstMiddle contact) {
+        selectOneGroup(contact.getId());
+        //removeOneGroup(contact,false);
+        selectWholeGroups();
+        contactCache = null;
+        goToContact();
+    }
+
+    public void selectOneGroup(int id) {
+        // click at left
+        //1wd.findElement(By.cssSelector("input[value='"+id +"']")).click();
+        // click on remove
+        //1wd.findElement(By.cssSelector("input[name='remove']")).click();
+
+
+        //wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
+        /// it was option =khomep 20
+        if (!wd.findElement(By.xpath("//form[@id='right']/select//option[3]")).isSelected()) {
+            wd.findElement(By.xpath("//form[@id='right']/select//option[3]")).click();
+        }
+        //if (wd.findElement(By.xpath("//form[@id='right']/select//option["+groupId+"]")).isSelected()) {
+        //    wd.findElement(By.xpath("//form[@id='right']/select//option["+groupId+"]")).click();
+        //}
+
+        if (isElementPresent(By.name("selected[]"))) {
+            wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+            submitRemoveFrom();
+        }
+        //click(By.xpath("//div[@id='content']/form[1]/input[22]"));
+        //wd.findElement(By.cssSelector("a[href='edit.php?id="+id+"']")).click();
+        //or 1
+        //WebElement checkbox = wd.findElement(By.cssSelector((String.
+        //        format("input[value='%s']", index))));
+    }
+
+    public void selectWholeGroups() {
+
+        if (isElementPresent(By.xpath("//form[@id='right']/select//option[2]"))) {
+            wd.findElement(By.xpath("//form[@id='right']/select//option[2]")).click();
+        }
+
+    }
+
+
+    public void submitRemoveFrom() {
+
+        wd.findElement(By.name("remove")).click();
+        //click(By.xpath("//div[@id='content']/form[1]/input[22]"));
+    }
+
+    public void removeOneGroup(NameFirstMiddle nameFirstMiddle, boolean creation) {
+        ///goToAddNamePad();
+        type(By.name("firstname"),nameFirstMiddle.getFirstname());
+        //wd.findElement(By.name("firstname")).click();
+        //wd.findElement(By.name("firstname")).clear();
+        //wd.findElement(By.name("firstname")).sendKeys(nameFirstMiddle.getFirstname());
+        //type(By.name("middlename"),nameFirstMiddle.getMiddleName());
+        type(By.name("lastname"),nameFirstMiddle.getLastName());
+
+
+        type(By.name("work"),nameFirstMiddle.getWork());
+        //type(By.name("fax"),nameFirstMiddle.g`);
+
+
+        //lesson 6.1, lesson 7.4
+        //attach(By.name("photo"),nameFirstMiddle.getPhoto());
+        // take group from GroupName
+        if (creation) {
+            if (nameFirstMiddle.getGroups().size() > 0 ) {
+                //lesson 7.6
+                Assert.assertTrue(nameFirstMiddle.getGroups().size() == 1);
+                new Select(wd.findElement(By.name("new_group")))
+                        .selectByVisibleText(nameFirstMiddle.getGroups().
+                                iterator().next().getName());
+                //.selectByVisibleText(nameFirstMiddle.getGroup());
+                //lesson 6.1, lesson 7.4
+                attach(By.name("photo"),nameFirstMiddle.getPhoto());
+            }
+            //if (isElementPresent(wd.findElement(By.name("new_group")).selectByVisibleText(nameFirstMiddle.getGroup()) {
+            //}
+
+        } else {
+            // test modify, not creating
+            Assert.assertFalse(isElementPresent(By.name("new_group")));
+        }
+        // take element from predefined values
+        // //if (isElementPresent(By.name("new_group"))) {
+        //new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(nameFirstMiddle.getGroup());
+        //  }
+        ///createRestFields();
+    }
+
 
     public void selectContactById(int id) {
             // click at left

@@ -4,10 +4,10 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 
 @XStreamAlias("contacts")
 @javax.persistence.Entity
@@ -23,11 +23,19 @@ public class NameFirstMiddle {
     @Column(name = "lastname")
     private String lastname;
 
-    @Transient
-    private String group;
+        // lesson 7.6
+    //@Transient
+    //private String group;
+
+    @ManyToMany(fetch = FetchType.EAGER)    // link address and group table  Gadny !!
+    @JoinTable(name = "address_in_groups",
+            joinColumns = @JoinColumn(name = "id"),
+            inverseJoinColumns = @JoinColumn(name = "group_id"))
+    private Set<GroupData> groups = new HashSet<GroupData>();
+
         // lesson 5.9
-        @Column(name = "home")
-        @Type(type ="text")
+    @Column(name = "home")
+    @Type(type ="text")
     private String homePhone;
 
     @Column(name = "mobile")
@@ -78,10 +86,11 @@ public class NameFirstMiddle {
         this.lastname = lastname;
         return this;
     }
-    public NameFirstMiddle withGroup(String group) {
-        this.group = group;
-        return this;
-    }
+        // lesson 7.6
+    //public NameFirstMiddle withGroup(String group) {
+    //    this.group = group;
+    //    return this;
+    //}
     public NameFirstMiddle withHomePhone(String homePhone) {
         this.homePhone = homePhone;
         return this;
@@ -128,7 +137,18 @@ public class NameFirstMiddle {
     public int    getId()        { return id;  }
     public String getFirstname() { return firstname;  }
     public String getLastName()  { return lastname;   }
-    public String getGroup()     {   return group;    }
+        // lesson 7.6
+    //public String getGroup()     {   return group;    }
+        // lesson 7.6
+    //public Set<GroupData> getGroup() {
+    //    return group;
+    //}
+           /// lesson 7.6 for unification
+    public Groups getGroups() {
+                // mnogestvo -> object with type group
+                //return group;
+        return new Groups(groups);
+    }
 
     public String getMobile()    { return mobilePhone;  }
     public String getHome()      { return homePhone;    }
@@ -185,7 +205,7 @@ public class NameFirstMiddle {
                 "id=" + id +
                 ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
-                ", group='" + group + '\'' +
+//                ", group='" + group + '\'' +
                 ", homePhone='" + homePhone + '\'' +
                 ", mobilePhone='" + mobilePhone + '\'' +
                 ", workPhone='" + workPhone + '\'' +
@@ -196,5 +216,10 @@ public class NameFirstMiddle {
                 ", allEmails='" + allEmails + '\'' +
                 ", fullAddress='" + fullAddress + '\'' +
                 '}';
+    }
+
+    public NameFirstMiddle inGroup(GroupData group) {
+        groups.add(group);
+        return this;
     }
 }

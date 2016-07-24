@@ -27,7 +27,7 @@ public class ContactAloneVsEditTest extends TestBase{
 
 
                     withFirstname("new dummy contact2").
-                    withLastname("Dostoyevsky").withGroup("test134") );
+                    withLastname("Dostoyevsky") ); //lesson 7.6.withGroup("test134") );
         }
     }
 

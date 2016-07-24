@@ -24,8 +24,9 @@ public class ContactModificationTests extends TestBase {
         if ( app.db().contacts().size() == 0) {
             app.contact().create(new NameFirstMiddle().withId(0).
                     withFirstname(properties.getProperty("web.contactModifiedFirstName")).
-                    withLastname(properties.getProperty("web.contactModifiedLastName")).
-                    withGroup(properties.getProperty("web.contactGroup")) );
+                    withLastname(properties.getProperty("web.contactModifiedLastName"))
+            );
+              //lesson 7.6      withGroup(properties.getProperty("web.contactGroup")) );
         }
     }
 

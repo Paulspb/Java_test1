@@ -20,7 +20,7 @@ public class ContactEmailsTest extends TestBase {
         if ( app.contact().all().size() == 0) {
             app.contact().create(new NameFirstMiddle().withId(0).
                     withFirstname("new dummy contact2").
-                    withLastname("Dostoyevsky").withGroup("test134") );
+                    withLastname("Dostoyevsky")); //lesson 7.6.withGroup("test134") );
         }
     }
 

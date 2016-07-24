@@ -43,15 +43,21 @@ public class HbConnectionTest {
         session.beginTransaction();
         List result = session.createQuery(
                 "from NameFirstMiddle where deprecated = '0000-00-00'" ).list();
-        for (NameFirstMiddle contact : (List<NameFirstMiddle>) result ) {
-            System.out.println( "     contacts===========> " + contact );
-        }
+        //for (NameFirstMiddle contact : (List<NameFirstMiddle>) result ) {
+        //    System.out.println( "     contacts===========> " + contact );
+        //    System.out.println("     contact joined into Groups ---------------> " +contact.getGroups());
+        //}
         session.getTransaction().commit();
         session.close();
+
+        for (NameFirstMiddle contact : (List<NameFirstMiddle>) result ) {
+            System.out.println( "     contacts===========> " + contact );
+            System.out.println("     contact joined into Groups ---------------> " +contact.getGroups());
+        }
     }
 
     @Test (enabled = false)
-    public void testHbConnection() {
+    public void testHbConnectionGroup() {
                 //Example 6. Obtaining a list of entities
         Session session = sessionFactory.openSession();
         session.beginTransaction();
