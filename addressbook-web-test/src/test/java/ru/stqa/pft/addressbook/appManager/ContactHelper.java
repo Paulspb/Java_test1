@@ -179,17 +179,6 @@ public class ContactHelper extends HelperBase {
         wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
     }
 
-    public boolean isThereAContact() {
-            //return isElementPresent(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
-
-            //return isElementPresent(By.name("selected[]"));
-        return (isElementPresent(By.name("selected[]")) &&
-                ! wd.findElement(By.tagName("strong")).getText().equals("Select all")    );
-            //if (isElementPresent(By.tagName("h1"))
-            //        && wd.findElement(By.tagName("h1")).getText().equals("Groups")
-            //        && isElementPresent(By.name("new"))) {
-
-        }
 
     //public void create(NameFirstMiddle name, boolean b) {
     public void create(NameFirstMiddle name) {
@@ -292,68 +281,82 @@ public class ContactHelper extends HelperBase {
         goToContact();
     }
 
-    public void deleteFromGroup( NameFirstMiddle contact) {
-        selectOneGroup(contact.getId());
-        //removeOneGroup(contact,false);
-        selectWholeGroups();
-        contactCache = null;
+    public boolean isThereContactInGroup() {
+        boolean inGroup;
+        if (isElementPresent(By.name("selected[]"))) {
+            inGroup = true;
+        } else {
+            inGroup = false;
+        }
+        submitRemoveFrom();
         goToContact();
+        selectWholeGroups();
+        return (inGroup);
+
+        //return (isElementPresent(By.name("selected[]")) &&
+          //      ! wd.findElement(By.tagName("strong")).getText().equals("Select all")    );
+
+        //return isElementPresent(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+
+        //if (isElementPresent(By.tagName("h1"))
+        //        && wd.findElement(By.tagName("h1")).getText().equals("Groups")
+        //        && isElementPresent(By.name("new"))) {
+
     }
 
-    public void selectOneGroup(int id) {
-        // click at left
-        //1wd.findElement(By.cssSelector("input[value='"+id +"']")).click();
-        // click on remove
-        //1wd.findElement(By.cssSelector("input[name='remove']")).click();
+    public void  deleteFromGroup( NameFirstMiddle contact,int groupSize) {
+        selectOneGroup(contact.getId(),groupSize);
+        contactCache = null;
+    }
 
-
-        //wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
-        /// it was option =khomep 20
-        if (!wd.findElement(By.xpath("//form[@id='right']/select//option[3]")).isSelected()) {
-            wd.findElement(By.xpath("//form[@id='right']/select//option[3]")).click();
+    public void  selectOneGroup(int id,int groupSize) {
+        int r = groupSize-1;
+         if (isElementPresent(By.xpath("//form[@id='right']/select//option["+r+"]"))) {
+            wd.findElement(By.xpath("//form[@id='right']/select//option["+r+"]")).click();
+        } else {
+            System.out.println("!!! no suitable group for selection found out !!!!!");
         }
-        //if (wd.findElement(By.xpath("//form[@id='right']/select//option["+groupId+"]")).isSelected()) {
-        //    wd.findElement(By.xpath("//form[@id='right']/select//option["+groupId+"]")).click();
-        //}
 
         if (isElementPresent(By.name("selected[]"))) {
             wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
-            submitRemoveFrom();
         }
-        //click(By.xpath("//div[@id='content']/form[1]/input[22]"));
-        //wd.findElement(By.cssSelector("a[href='edit.php?id="+id+"']")).click();
-        //or 1
-        //WebElement checkbox = wd.findElement(By.cssSelector((String.
-        //        format("input[value='%s']", index))));
     }
+    //if (wd.findElement(By.xpath("//form[@id='right']/select//option["+groupId+"]")).isSelected()) {
+    //    wd.findElement(By.xpath("//form[@id='right']/select//option["+groupId+"]")).click();
+    //}
+    //click(By.xpath("//div[@id='content']/form[1]/input[22]"));
+    //wd.findElement(By.cssSelector("a[href='edit.php?id="+id+"']")).click();
+    //or 1
+    //WebElement checkbox = wd.findElement(By.cssSelector((String.
+    //        format("input[value='%s']", index))));
+
+    // click at left
+    //1wd.findElement(By.cssSelector("input[value='"+id +"']")).click();
+    // click on remove
+    //1wd.findElement(By.cssSelector("input[name='remove']")).click();
+
+    /// it was option =khomep 20
+    //if (!wd.findElement(By.xpath("//form[@id='right']/select//option[3]")).isSelected()) {
+    //if (isElementPresent(By.name("//form[@id='right']/select//option[3]"))) {
+
 
     public void selectWholeGroups() {
-
         if (isElementPresent(By.xpath("//form[@id='right']/select//option[2]"))) {
             wd.findElement(By.xpath("//form[@id='right']/select//option[2]")).click();
         }
-
     }
 
 
     public void submitRemoveFrom() {
-
         wd.findElement(By.name("remove")).click();
-        //click(By.xpath("//div[@id='content']/form[1]/input[22]"));
     }
 
     public void removeOneGroup(NameFirstMiddle nameFirstMiddle, boolean creation) {
         ///goToAddNamePad();
         type(By.name("firstname"),nameFirstMiddle.getFirstname());
-        //wd.findElement(By.name("firstname")).click();
-        //wd.findElement(By.name("firstname")).clear();
-        //wd.findElement(By.name("firstname")).sendKeys(nameFirstMiddle.getFirstname());
-        //type(By.name("middlename"),nameFirstMiddle.getMiddleName());
         type(By.name("lastname"),nameFirstMiddle.getLastName());
-
-
         type(By.name("work"),nameFirstMiddle.getWork());
-        //type(By.name("fax"),nameFirstMiddle.g`);
+
 
 
         //lesson 6.1, lesson 7.4

@@ -56,7 +56,6 @@ public class TestBase {
         if (Boolean.getBoolean("verifyUI")) {
             Contacts dbContacts = app.db().contacts();
             Contacts uiContacts = app.contact().all();
-
             assertThat(uiContacts.stream()
                     .filter( (s) ->  s!= null && !s.equals(""))
                     .map(
@@ -70,6 +69,9 @@ public class TestBase {
                     (g) -> new NameFirstMiddle().withId(g.getId()).
                             withFirstname(g.getFirstname()).withLastname(g.getLastName()).withFullAddress(g.getFullAddress())).
                     collect(Collectors.toSet())));
+        } else {
+            System.out.println("!!! step verifyContactListInUi skipped due to " +
+                    "this parameter equal false : -ea -DverifyUI=false  !!! ");
         }
     }
 }

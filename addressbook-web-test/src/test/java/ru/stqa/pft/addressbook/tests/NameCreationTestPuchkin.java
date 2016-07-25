@@ -71,8 +71,7 @@ public class NameCreationTestPuchkin extends TestBase {
         File photo = new File("src/test/resources/kira2back.jpg");
         NameFirstMiddle name = new NameFirstMiddle().withFirstname("Alexey").
                 withLastname("Pushkin").withPhoto(photo)
-                .inGroup(groups.iterator().next())
-                ; //lesson7.6 .withGroup("test134");
+                .inGroup(groups.iterator().next()); //lesson7.6 .withGroup("test134");
         app.contact().goToContact();
 
                     //int before = app.group().getGroupCount();

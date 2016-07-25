@@ -9,15 +9,10 @@ import ru.stqa.pft.addressbook.model.NameFirstMiddle;
 
 import java.io.IOException;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.testng.Assert.assertEquals;
 import static ru.stqa.pft.addressbook.appManager.ApplicationManager.properties;
 
-/**
- * Created by khomep on 24-Jul-16.
- */
-public class ContactDeleteFromGroup extends TestBase  {
+    public class ContactAddToGroupTest extends TestBase  {
 
         @BeforeMethod
         public void ensurePreconditionContact(){
@@ -40,7 +35,7 @@ public class ContactDeleteFromGroup extends TestBase  {
         }
 
         @Test
-        public void testContactDeleteFromGroup() throws IOException {
+        public void testContactAddToGroup() throws IOException {
             Contacts before = app.db().contacts();
             Groups   groups = app.db().groups();      // mnogestvo
             // next() return sly4ainyi element, not last, not first
@@ -56,4 +51,4 @@ public class ContactDeleteFromGroup extends TestBase  {
                 verifyContactListInUi();
             }
         }
-}
+    }
