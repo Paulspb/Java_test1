@@ -304,6 +304,56 @@ public class ContactHelper extends HelperBase {
 
     }
 
+    public void  addOneGroup( NameFirstMiddle contact,int groupSize) {
+                //reset -all- group visibility
+        selectOneGroup(contact.getId(),groupSize);
+        goToContact();
+        selectWholeGroups();
+
+        selectOneGroupForAdding(contact.getId(),groupSize);
+        contactCache = null;
+    }
+
+    public void  selectOneGroupForAdding(int id,int groupSize) {
+        int r = groupSize-2;
+
+        //if (isElementPresent(By.xpath("//form[@id='right']/select//option["+r+"]"))) {
+        //    wd.findElement(By.xpath("//form[@id='right']/select//option["+r+"]")).click();
+        //} else {
+        //    System.out.println("!!! no suitable group for selection found out on selection visibility fields!!!!!");
+        //}
+
+
+        if (isElementPresent(By.xpath("//div[@class='right']/select//option["+r+"]"))) {
+            wd.findElement(By.xpath("//div[@class='right']/select//option["+r+"]")).click();
+        } else {
+            System.out.println("!!! no suitable group for selection found out for 'Add to' bottom  !!!!!");
+        }
+
+        if (isElementPresent(By.name("selected[]"))) {
+            wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+        }
+
+    }
+
+    public void submitAddInGroup() {
+        wd.findElement(By.name("add")).click();
+    }
+
+    public boolean isThereContactReadyToAdd() {
+        boolean inGroup;
+        if (isElementPresent(By.name("selected[]"))) {
+            inGroup = true;
+        } else {
+            inGroup = false;
+        }
+        submitAddInGroup();
+        goToContact();
+        //selectWholeGroups();
+        return (inGroup);
+    }
+
+
     public void  deleteFromGroup( NameFirstMiddle contact,int groupSize) {
         selectOneGroup(contact.getId(),groupSize);
         contactCache = null;
@@ -314,7 +364,7 @@ public class ContactHelper extends HelperBase {
          if (isElementPresent(By.xpath("//form[@id='right']/select//option["+r+"]"))) {
             wd.findElement(By.xpath("//form[@id='right']/select//option["+r+"]")).click();
         } else {
-            System.out.println("!!! no suitable group for selection found out !!!!!");
+            System.out.println("!!! no suitable group for selection found out on selection visibility fields!!!!!");
         }
 
         if (isElementPresent(By.name("selected[]"))) {

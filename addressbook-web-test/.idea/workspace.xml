@@ -41,12 +41,14 @@
       <file leaf-file-name="ContactHelper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ContactHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="314" column="90" selection-start-line="314" selection-start-column="90" selection-end-line="314" selection-end-column="90" />
+            <state relative-caret-position="192">
+              <caret line="352" column="0" selection-start-line="352" selection-start-column="0" selection-end-line="352" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#14523#14524#0" expanded="true" />
-                <element signature="e#14580#14581#0" expanded="true" />
+                <element signature="e#13946#13947#0" expanded="true" />
+                <element signature="e#14000#14001#0" expanded="true" />
+                <element signature="e#16192#16193#0" expanded="true" />
+                <element signature="e#16249#16250#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -55,8 +57,8 @@
       <file leaf-file-name="ContactDeleteFromGroup.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/ContactDeleteFromGroup.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+            <state relative-caret-position="124">
+              <caret line="49" column="42" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -67,8 +69,8 @@
       <file leaf-file-name="ContactAddToGroupTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/ContactAddToGroupTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="38" column="36" selection-start-line="38" selection-start-column="36" selection-end-line="38" selection-end-column="36" />
+            <state relative-caret-position="254">
+              <caret line="38" column="50" selection-start-line="38" selection-start-column="50" selection-end-line="38" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -448,9 +450,9 @@
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/NameCreationTestPuchkin.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/GroupDeleteOneOf.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/TestBase.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ContactHelper.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/ContactDeleteFromGroup.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/ContactAddToGroupTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ContactHelper.java" />
       </list>
     </option>
   </component>
@@ -994,24 +996,24 @@
       <module name="addressbook-web-test_test" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
+      <option name="SUITE_NAME" value="" />
       <option name="PACKAGE_NAME" value="ru.stqa.pft.addressbook.tests" />
       <option name="MAIN_CLASS_NAME" value="ru.stqa.pft.addressbook.tests.ContactAddToGroupTest" />
       <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
+      <option name="GROUP_NAME" value="" />
       <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
+      <option name="VM_PARAMETERS" value="-ea -DverifyUI=true" />
+      <option name="PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="OUTPUT_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" value="" />
       <option name="ANNOTATION_TYPE" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
+        <value defaultName="moduleWithDependencies" />
       </option>
       <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
+      <option name="PROPERTIES_FILE" value="" />
       <envs />
       <properties />
       <listeners />
@@ -1297,26 +1299,26 @@
     <history-entry file="ContactAddToGroupTest - 2016.07.25 at 15h 38m 49s.xml">
       <configuration name="ContactAddToGroupTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="ContactDeleteFromGroup - 2016.07.25 at 14h 26m 30s.xml">
-      <configuration name="ContactDeleteFromGroup" configurationId="TestNG" />
+    <history-entry file="ContactAddToGroupTest - 2016.07.25 at 16h 47m 45s.xml">
+      <configuration name="ContactAddToGroupTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="ContactDeleteFromGroup - 2016.07.25 at 14h 29m 53s.xml">
-      <configuration name="ContactDeleteFromGroup" configurationId="TestNG" />
+    <history-entry file="ContactAddToGroupTest - 2016.07.25 at 16h 50m 32s.xml">
+      <configuration name="ContactAddToGroupTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="ContactDeleteFromGroup - 2016.07.25 at 14h 34m 39s.xml">
-      <configuration name="ContactDeleteFromGroup" configurationId="TestNG" />
+    <history-entry file="ContactAddToGroupTest - 2016.07.25 at 16h 52m 49s.xml">
+      <configuration name="ContactAddToGroupTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="ContactDeleteFromGroup - 2016.07.25 at 14h 37m 11s.xml">
-      <configuration name="ContactDeleteFromGroup" configurationId="TestNG" />
+    <history-entry file="ContactAddToGroupTest - 2016.07.25 at 16h 53m 43s.xml">
+      <configuration name="ContactAddToGroupTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="ContactDeleteFromGroup - 2016.07.25 at 14h 46m 15s.xml">
-      <configuration name="ContactDeleteFromGroup" configurationId="TestNG" />
+    <history-entry file="ContactAddToGroupTest - 2016.07.25 at 16h 59m 06s.xml">
+      <configuration name="ContactAddToGroupTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="ContactDeleteFromGroup - 2016.07.25 at 14h 54m 33s.xml">
-      <configuration name="ContactDeleteFromGroup" configurationId="TestNG" />
+    <history-entry file="ContactAddToGroupTest - 2016.07.25 at 17h 05m 08s.xml">
+      <configuration name="ContactAddToGroupTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="ContactDeleteFromGroup - 2016.07.25 at 14h 55m 29s.xml">
-      <configuration name="ContactDeleteFromGroup" configurationId="TestNG" />
+    <history-entry file="ContactAddToGroupTest - 2016.07.25 at 17h 06m 03s.xml">
+      <configuration name="ContactAddToGroupTest" configurationId="TestNG" />
     </history-entry>
     <history-entry file="ContactDeleteFromGroup - 2016.07.25 at 14h 58m 43s.xml">
       <configuration name="ContactDeleteFromGroup" configurationId="TestNG" />
@@ -1390,13 +1392,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ContactHelper.java</url>
-          <line>452</line>
+          <line>502</line>
           <properties />
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ContactHelper.java</url>
-          <line>419</line>
+          <line>469</line>
           <properties />
           <option name="timeStamp" value="34" />
         </line-breakpoint>
@@ -1432,7 +1434,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ContactHelper.java</url>
-          <line>588</line>
+          <line>638</line>
           <properties />
           <option name="timeStamp" value="98" />
         </line-breakpoint>
@@ -1528,7 +1530,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ContactHelper.java</url>
-          <line>578</line>
+          <line>628</line>
           <properties />
           <option name="timeStamp" value="174" />
         </line-breakpoint>
@@ -1629,19 +1631,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ContactHelper.java</url>
-          <line>319</line>
-          <properties />
-          <option name="timeStamp" value="239" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ContactHelper.java</url>
-          <line>343</line>
+          <line>393</line>
           <properties />
           <option name="timeStamp" value="240" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ContactHelper.java</url>
-          <line>308</line>
+          <line>358</line>
           <properties />
           <option name="timeStamp" value="248" />
         </line-breakpoint>
@@ -1664,19 +1660,55 @@
           <option name="timeStamp" value="256" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ContactHelper.java</url>
-          <line>313</line>
-          <properties />
-          <option name="timeStamp" value="257" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/ContactDeleteFromGroup.java</url>
           <line>47</line>
           <properties />
           <option name="timeStamp" value="258" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/ContactAddToGroupTest.java</url>
+          <line>41</line>
+          <properties />
+          <option name="timeStamp" value="260" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/ContactAddToGroupTest.java</url>
+          <line>43</line>
+          <properties />
+          <option name="timeStamp" value="261" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ContactHelper.java</url>
+          <line>308</line>
+          <properties />
+          <option name="timeStamp" value="262" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ContactHelper.java</url>
+          <line>317</line>
+          <properties />
+          <option name="timeStamp" value="263" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ContactHelper.java</url>
+          <line>312</line>
+          <properties />
+          <option name="timeStamp" value="264" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ContactHelper.java</url>
+          <line>310</line>
+          <properties />
+          <option name="timeStamp" value="265" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ContactHelper.java</url>
+          <line>349</line>
+          <properties />
+          <option name="timeStamp" value="266" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="260" />
+      <option name="time" value="267" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="TestNG">
@@ -1769,7 +1801,7 @@
         <state relative-caret-position="202">
           <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1971,8 +2003,8 @@
         <state relative-caret-position="1961">
           <caret line="140" column="6" selection-start-line="140" selection-start-column="6" selection-end-line="140" selection-end-column="6" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1008#1019#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1008#1019#0" expanded="false" />
             <element signature="method#withFirstname#0;class#NameFirstMiddle#0" expanded="false" />
             <element signature="method#withLastname#0;class#NameFirstMiddle#0" expanded="false" />
             <element signature="method#withHomePhone#0;class#NameFirstMiddle#0" expanded="false" />
@@ -2003,8 +2035,8 @@
         <state relative-caret-position="166">
           <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3221#3222#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#3221#3222#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2134,32 +2166,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ContactHelper.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/ContactDeleteFromGroup.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="314" column="90" selection-start-line="314" selection-start-column="90" selection-end-line="314" selection-end-column="90" />
+        <state relative-caret-position="124">
+          <caret line="49" column="42" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#14523#14524#0" expanded="true" />
-            <element signature="e#14580#14581#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/ContactDeleteFromGroup.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ContactHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+        <state relative-caret-position="192">
+          <caret line="352" column="0" selection-start-line="352" selection-start-column="0" selection-end-line="352" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#13946#13947#0" expanded="true" />
+            <element signature="e#14000#14001#0" expanded="true" />
+            <element signature="e#16192#16193#0" expanded="true" />
+            <element signature="e#16249#16250#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/ContactAddToGroupTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="38" column="36" selection-start-line="38" selection-start-column="36" selection-end-line="38" selection-end-column="36" />
+        <state relative-caret-position="254">
+          <caret line="38" column="50" selection-start-line="38" selection-start-column="50" selection-end-line="38" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
