@@ -37,15 +37,17 @@ import static ru.stqa.pft.addressbook.appManager.ApplicationManager.properties;
         @Test
         public void testContactAddToGroup() throws IOException {
             Contacts before = app.db().contacts();
-            Groups   groups = app.db().groups();      // mnogestvo
+            Groups   groups = app.db().groups();
             NameFirstMiddle modifiedContact = before.iterator().next();
-            app.contact().addOneGroup(modifiedContact,groups.size());
+            app.contact().addOneGroup(modifiedContact,groups);
 
-            if (! app.contact().isThereContactReadyToAdd()) {
+            if ( !app.contact().isThereContactReadyToAdd()) {
                 System.out.println("*** there is no any contacts in this group : '"+ groups.iterator().next().getName()+"' ***");
                 System.out.println("*** verification skipped ***");
             } else {
                 Contacts after = app.db().contacts();
+                        // evaluate new size = +1;
+                assertEquals(after.iterator().next().getGroups().size(),modifiedContact.getGroups().size() + 1);
                 assertEquals(after.size(),before.size() );
                 verifyContactListInUi();
             }

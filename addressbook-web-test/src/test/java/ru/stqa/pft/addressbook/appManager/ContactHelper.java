@@ -6,10 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.*;
 //import ru.stqa.pft.addressbook.model.Emails123;
-import ru.stqa.pft.addressbook.model.LastNameNick2;
-import ru.stqa.pft.addressbook.model.NameFirstMiddle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +64,7 @@ public class ContactHelper extends HelperBase {
             // take group from GroupName
         if (creation) {
             if (nameFirstMiddle.getGroups().size() > 0 ) {
-                //lesson 7.6
+                        //lesson 7.6
                 Assert.assertTrue(nameFirstMiddle.getGroups().size() == 1);
                 new Select(wd.findElement(By.name("new_group")))
                         .selectByVisibleText(nameFirstMiddle.getGroups().
@@ -304,30 +302,23 @@ public class ContactHelper extends HelperBase {
 
     }
 
-    public void  addOneGroup( NameFirstMiddle contact,int groupSize) {
-                //reset -all- group visibility
-        selectOneGroup(contact.getId(),groupSize);
-        goToContact();
-        selectWholeGroups();
-
-        selectOneGroupForAdding(contact.getId(),groupSize);
-        contactCache = null;
+    public void  addOneGroup( NameFirstMiddle contact,Groups groups) {
+        String newGroup  = "xxx";
+        newGroup = selectOneGroup(contact,groups,"add");
+        if (newGroup == "xxx") {
+            System.out.println("!!! all groups is already added to contact : 'first name' =" + contact.getFirstname());
+        } else {
+            selectOneGroupForAdding(contact.getId(),newGroup);
+            contactCache = null;
+        }
     }
 
-    public void  selectOneGroupForAdding(int id,int groupSize) {
-        int r = groupSize-2;
 
-        //if (isElementPresent(By.xpath("//form[@id='right']/select//option["+r+"]"))) {
-        //    wd.findElement(By.xpath("//form[@id='right']/select//option["+r+"]")).click();
-        //} else {
-        //    System.out.println("!!! no suitable group for selection found out on selection visibility fields!!!!!");
-        //}
-
-
-        if (isElementPresent(By.xpath("//div[@class='right']/select//option["+r+"]"))) {
-            wd.findElement(By.xpath("//div[@class='right']/select//option["+r+"]")).click();
-        } else {
-            System.out.println("!!! no suitable group for selection found out for 'Add to' bottom  !!!!!");
+    public void  selectOneGroupForAdding(int id, String newGroup) {
+        if (isElementPresent(By.xpath("//select[@name='to_group']"))) {
+            new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(newGroup);
+                    //reset 'group'-select  to 'all'
+            new Select(wd.findElement(By.name("group"))).selectByVisibleText("[all]");
         }
 
         if (isElementPresent(By.name("selected[]"))) {
@@ -335,6 +326,8 @@ public class ContactHelper extends HelperBase {
         }
 
     }
+    //if (isElementPresent(By.xpath("//div[@class='right']/select//option["+r+"]"))) {
+    //wd.findElement(By.xpath("//div[@class='right']/select//option["+r+"]")).click();
 
     public void submitAddInGroup() {
         wd.findElement(By.name("add")).click();
@@ -349,20 +342,71 @@ public class ContactHelper extends HelperBase {
         }
         submitAddInGroup();
         goToContact();
-        //selectWholeGroups();
         return (inGroup);
     }
 
+    private String  selectOneGroup(NameFirstMiddle contact,Groups groups, String movement) {
+        List<GroupData> groupsTemp    = new ArrayList<>();
+        String newGroup  = "xxx";
+        int choice = 2;
+            // movement = 'add' or 'remove'
+            // fill-in temporary groups  marked '11'
+        for (GroupData oneGroup: groups) {
+            groupsTemp.add(new GroupData().withName(oneGroup.getName()).withId(11));
+        }
 
-    public void  deleteFromGroup( NameFirstMiddle contact,int groupSize) {
-        selectOneGroup(contact.getId(),groupSize);
-        contactCache = null;
+        // fill-in temporary group element with marker '0' in case if element exist in contact
+        for (GroupData oneGroupInContact: contact.getGroups()) {
+            for (GroupData oneGroup: groupsTemp ) {
+                if ( oneGroup.getId() != 0
+                        && !oneGroup.getName().equals(oneGroupInContact.getName())) {
+                    //notAddGroup2 = oneGroup;
+                    continue;
+                    //notAddGroup.add(new GroupData());
+                } else{
+                    if (groupsTemp.size() > 0 ) {
+                        // marking this group as present in contact
+                        oneGroup.withId(0);
+                    }
+                }
+            }
+        }
+
+            // read first group not marked as '0' for add (still not used in contact)
+            // read first group not marked as '11' for remove (still not used in contact)
+        if (movement == "add")    {choice = 0; }
+        if (movement == "remove") {choice = 11; }
+
+        for (GroupData oneGroup: groupsTemp) {
+            if ( oneGroup.getId() != choice ) {
+                System.out.println("*** new group for adding :  " + oneGroup.getName());
+                newGroup = oneGroup.getName();
+                break;
+            }
+        }
+
+        return newGroup;
     }
 
-    public void  selectOneGroup(int id,int groupSize) {
-        int r = groupSize-1;
-         if (isElementPresent(By.xpath("//form[@id='right']/select//option["+r+"]"))) {
-            wd.findElement(By.xpath("//form[@id='right']/select//option["+r+"]")).click();
+    
+    public void  deleteFromGroup( NameFirstMiddle contact,Groups groups) {
+
+        String oldGroup = "yyy";
+        oldGroup = selectOneGroup(contact,groups,"remove");
+
+        if (oldGroup == "yyy") {
+                System.out.println("!!! all groups is already removed from contact : 'first name' =" + contact.getFirstname());
+        } else {
+            selectOneGroupForDeletion(contact.getId(),oldGroup);
+            contactCache = null;
+        }
+    }
+
+    public void  selectOneGroupForDeletion(int id,String oldGroup) {
+
+        if (isElementPresent(By.xpath("//select[@name='group']"))) {
+                //reset 'group'-select  to 'all'
+            new Select(wd.findElement(By.name("group"))).selectByVisibleText(oldGroup);
         } else {
             System.out.println("!!! no suitable group for selection found out on selection visibility fields!!!!!");
         }
@@ -371,19 +415,9 @@ public class ContactHelper extends HelperBase {
             wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
         }
     }
-    //if (wd.findElement(By.xpath("//form[@id='right']/select//option["+groupId+"]")).isSelected()) {
-    //    wd.findElement(By.xpath("//form[@id='right']/select//option["+groupId+"]")).click();
-    //}
-    //click(By.xpath("//div[@id='content']/form[1]/input[22]"));
-    //wd.findElement(By.cssSelector("a[href='edit.php?id="+id+"']")).click();
     //or 1
     //WebElement checkbox = wd.findElement(By.cssSelector((String.
     //        format("input[value='%s']", index))));
-
-    // click at left
-    //1wd.findElement(By.cssSelector("input[value='"+id +"']")).click();
-    // click on remove
-    //1wd.findElement(By.cssSelector("input[name='remove']")).click();
 
     /// it was option =khomep 20
     //if (!wd.findElement(By.xpath("//form[@id='right']/select//option[3]")).isSelected()) {
@@ -391,8 +425,8 @@ public class ContactHelper extends HelperBase {
 
 
     public void selectWholeGroups() {
-        if (isElementPresent(By.xpath("//form[@id='right']/select//option[2]"))) {
-            wd.findElement(By.xpath("//form[@id='right']/select//option[2]")).click();
+        if (isElementPresent(By.xpath("//select[@name='group']"))) {
+            new Select(wd.findElement(By.name("group"))).selectByVisibleText("[all]");
         }
     }
 
@@ -470,13 +504,6 @@ public class ContactHelper extends HelperBase {
     //    click(By.xpath("//div[@id='content']/form[1]/input[22]"));
     //}
 
-                //public void delete(List<NameFirstMiddle> index2) {
-                //public void delete(NameFirstMiddle index2) {
-    //public void delete(int index2) {
-    //    initContactModification(index2);
-    //    submitDelete();
-    //    goToContact();
-    //}
 
 
     public void initContactModification(int index) {
@@ -487,7 +514,7 @@ public class ContactHelper extends HelperBase {
         //        format("input[value='%s']", index))));
         //then
         //WebElement row = checkbox.findElement(By.xpath("./../.."));
-        //List<WebElement> cells = row.findElements(By.tagName("td")));
+        //<WebListElement> cells = row.findElements(By.tagName("td")));
         //cells.get(7).findElement(By.tagName("a")).click();
         //or
         //wd.findElement(By.xpath(String.format("//input[@value='%s']/../../td[8]/a",index))).click();

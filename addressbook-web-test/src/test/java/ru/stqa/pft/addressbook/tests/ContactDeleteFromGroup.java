@@ -45,7 +45,7 @@ public class ContactDeleteFromGroup extends TestBase  {
             Groups   groups = app.db().groups();      // mnogestvo
             // next() return sly4ainyi element, not last, not first
             NameFirstMiddle modifiedContact = before.iterator().next();
-            app.contact().deleteFromGroup(modifiedContact,groups.size());
+            app.contact().deleteFromGroup(modifiedContact,groups);
 
             if (! app.contact().isThereContactInGroup()) {
                 System.out.println("*** there is no any contacts in this group : '"+ groups.iterator().next().getName()+"' ***");
@@ -53,6 +53,7 @@ public class ContactDeleteFromGroup extends TestBase  {
             } else {
                 Contacts after = app.db().contacts();
                 assertEquals(after.size(),before.size() );
+                assertEquals(after.iterator().next().getGroups().size(),modifiedContact.getGroups().size() - 1);
                 verifyContactListInUi();
             }
         }
