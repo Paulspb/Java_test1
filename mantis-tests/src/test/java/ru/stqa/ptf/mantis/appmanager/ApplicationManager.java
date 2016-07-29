@@ -47,14 +47,22 @@ public class ApplicationManager {
         // init attribute of object = WD
         // groupHelper.wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         // groupHelper.wd.get("http://localhost/addressbook/group.php");
-        wd.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
                 //wd.get("http://localhost/addressbook/group.php");
         wd.get(properties.getProperty("web.baseUrl"));
 
     }
 
-    //public void afterTests() {         wd.quit();    }
     public void stop() {wd.quit(); }
 
+    public HttpSession newSession() {
+            //constructor
+            // we could open session from user + developer + manager + administrator
+            // 4 session are resurce consuming
+        return  new HttpSession(this);
+    }
 
+    public String getProperty(String key) {
+        return properties.getProperty(key);
+    }
 }
