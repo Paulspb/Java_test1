@@ -48,7 +48,9 @@ public class HttpSession {
         //String body = geTextFrom(response);
                 //is user loging correctly
         //return  body.contains(String.format("<span class=\"italic\">%s<span>", username));
-        return  body.contains(String.format("<span class=%s<span>", username));
+        // <span id="logged-in-user">administrator</span>
+        return  body.contains(String.format("<span id=\"logged-in-user\">%s</span>", username));
+        //return  body.contains(String.format("<span class=%s<span>", username));
     }
     private  String geTextFrom(CloseableHttpResponse response) throws  IOException {
         try {
@@ -68,6 +70,7 @@ public class HttpSession {
         CloseableHttpResponse response = httpclient.execute(get);
         String body = geTextFrom(response);
         //return  body.contains(String.format("<span class=\"italic\">%s<span>", username));
-        return  body.contains(String.format("<span class=%s<span>", username));
+        //return  body.contains(String.format("<span class=%s<span>", username));
+        return body.contains(String.format("<span id=\"logged-in-user\">%s</span>", username));
     }
 }
