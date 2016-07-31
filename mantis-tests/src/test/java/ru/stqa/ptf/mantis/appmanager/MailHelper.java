@@ -30,7 +30,8 @@ public class MailHelper {
         while (System.currentTimeMillis() < start + timeout) {
             if (wiser.getMessages().size() >= count) {
                         //transfer real object to internal model object
-                return wiser.getMessages().stream().map((m) -> toModelMail(m)).collect(Collectors.toList());
+                return wiser.getMessages().stream().map((m) -> toModelMail(m)).
+                        collect(Collectors.toList());
             }
             try {
                 Thread.sleep(1000);

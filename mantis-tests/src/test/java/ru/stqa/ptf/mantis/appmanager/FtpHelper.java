@@ -33,7 +33,7 @@ public class FtpHelper {
     public void restore(String backup, String target) throws IOException {
         ftp.connect(app.getProperty("ftp.host"));
         ftp.login(app.getProperty("ftp.logon"), app.getProperty("ftp.password"));
-        Boolean nextDir = ftp.changeWorkingDirectory("/config");
+        ftp.changeWorkingDirectory("/config");
         ftp.deleteFile(target);
         ftp.rename(backup, target);
         ftp.disconnect();

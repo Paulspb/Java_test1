@@ -44,14 +44,31 @@ public class HttpSession {
         post.setEntity(new UrlEncodedFormEntity(params));
                                         //sending the request(zapros)
         CloseableHttpResponse response = httpclient.execute(post);
-        String body = EntityUtils.toString(response.getEntity());
-        //String body = geTextFrom(response);
+                //String body = EntityUtils.toString(response.getEntity());
+        String body = geTextFrom(response);
                 //is user loging correctly
-        //return  body.contains(String.format("<span class=\"italic\">%s<span>", username));
-        // <span id="logged-in-user">administrator</span>
         return  body.contains(String.format("<span id=\"logged-in-user\">%s</span>", username));
-        //return  body.contains(String.format("<span class=%s<span>", username));
     }
+
+
+    public boolean loginFailed(String username, String password) throws IOException {
+        //HttpPost post = new HttpPost(app.getProperty("web.baseUrl") + "/login_page.php");
+        HttpPost post = new HttpPost(app.getProperty("web.baseUrl") + "/login.php");
+        List<NameValuePair>  params = new ArrayList<>();
+        params.add(new BasicNameValuePair("username",username));
+        params.add(new BasicNameValuePair("password",password));
+        params.add(new BasicNameValuePair("secure_session","on"));
+        params.add(new BasicNameValuePair("return","index.php"));
+        // packing for parameters
+        post.setEntity(new UrlEncodedFormEntity(params));
+        //sending the request(zapros)
+        CloseableHttpResponse response = httpclient.execute(post);
+        //String body = EntityUtils.toString(response.getEntity());
+        String body = geTextFrom(response);
+        //is user loging correctly
+        return  body.contains(String.format("user/password you entered %s" , "is invalid"));
+    }
+
     private  String geTextFrom(CloseableHttpResponse response) throws  IOException {
         try {
                     // test analyzing for respond
@@ -61,9 +78,27 @@ public class HttpSession {
         }
     }
 
-    //public String toString() {
-    //    return getClass().getName() + "@" + Integer.toHexString(hashCode());
-    //}
+
+    public boolean loginForReset(String username, String password) throws IOException {
+        //HttpPost post = new HttpPost(app.getProperty("web.baseUrl") + "/login_page.php");
+        HttpPost post = new HttpPost(app.getProperty("web.baseUrl") + "/login.php");
+        List<NameValuePair>  params = new ArrayList<>();
+        params.add(new BasicNameValuePair("username",username));
+        params.add(new BasicNameValuePair("password",password));
+        params.add(new BasicNameValuePair("secure_session","on"));
+        params.add(new BasicNameValuePair("return","index.php"));
+        // packing for parameters
+        post.setEntity(new UrlEncodedFormEntity(params));
+        //sending the request(zapros)
+        CloseableHttpResponse response = httpclient.execute(post);
+        //String body = EntityUtils.toString(response.getEntity());
+        String body = geTextFrom(response);
+        //is user loging correctly
+        return  body.contains(String.format("<span id=\"logged-in-user\">%s</span>", username));
+
+    }
+
+
 
     public boolean isLoggedInAs(String username) throws IOException {
         HttpGet get = new HttpGet(app.getProperty("web.baseUrl")+ "/index.php");

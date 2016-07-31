@@ -3,7 +3,6 @@ package ru.stqa.ptf.mantis.tests;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import ru.lanwen.verbalregex.VerbalExpression;
 import ru.stqa.ptf.mantis.model.MailMessage;
 
 import javax.mail.MessagingException;
@@ -33,7 +32,7 @@ public class RegistrationTests extends TestBase{
                 //awaiting mail: 2 items for 10sec
         List<MailMessage> mailMessages = app.mail().waitForMail(2, 10000);
                 // return string
-        String confirmationLink = findConfirmationLink(mailMessages, email);
+        String confirmationLink = app.registration().findConfirmationLink(mailMessages, email);
 
         app.registration().finish(confirmationLink, password);
                 // verification of results
@@ -41,13 +40,6 @@ public class RegistrationTests extends TestBase{
 
     }
 
-    private String findConfirmationLink(List<MailMessage> mailMessages, String email) {
-            // take all msgs, filter only ==email, then
-        MailMessage mailMessage = mailMessages.stream().filter((m) -> m.to.equals(email)).findFirst().get();
-                //now needs for extraction of link via regular expression
-        VerbalExpression regex = VerbalExpression.regex().find("http://").nonSpace().oneOrMore().build();
-        return  regex.getText(mailMessage.text);
-    }
 
     @AfterMethod(alwaysRun = true)
     public  void  stopMailServer() {
