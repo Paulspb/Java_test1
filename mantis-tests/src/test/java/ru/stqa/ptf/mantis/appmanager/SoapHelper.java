@@ -34,7 +34,7 @@ public class SoapHelper {
         collect(Collectors.toSet());
     }
 
-    private MantisConnectPortType getMantisConnect() throws ServiceException, MalformedURLException {
+    public MantisConnectPortType getMantisConnect() throws ServiceException, MalformedURLException {
         return new MantisConnectLocator().getMantisConnectPort(new URL(
                     "http://localhost/mantisbt-1.3.0/api/soap/mantisconnect.php"));
     }
@@ -47,7 +47,8 @@ public class SoapHelper {
         issueData.setProject(new ObjectRef(
                 BigInteger.valueOf(issue.getProject().getId()) ,issue.getProject().getName()));
             /// ask BT via API randomly
-        String[] categories = mc.mc_project_get_categories("administrator", "root", BigInteger.valueOf(issue.getProject().getId()));
+        String[] categories = mc.mc_project_get_categories
+                ("administrator", "root", BigInteger.valueOf(issue.getProject().getId()));
         issueData.setCategory(categories[0]);
                 //issue.getProject().getId() ,issue.getProject().getName()));
         BigInteger issueId = mc.mc_issue_add("administrator", "root", issueData);

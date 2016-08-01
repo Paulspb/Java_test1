@@ -1,13 +1,22 @@
 package ru.stqa.ptf.mantis.tests;
 
+import biz.futureware.mantis.rpc.soap.client.IssueData;
+import biz.futureware.mantis.rpc.soap.client.MantisConnectLocator;
+import biz.futureware.mantis.rpc.soap.client.MantisConnectPortType;
 import org.openqa.selenium.remote.BrowserType;
+import org.testng.SkipException;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import ru.stqa.ptf.mantis.appmanager.ApplicationManager;
 import ru.stqa.ptf.mantis.model.Issue;
+import ru.stqa.ptf.mantis.appmanager.SoapHelper;
 
+import javax.xml.rpc.ServiceException;
 import java.io.File;
 import java.io.IOException;
+import java.math.BigInteger;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 
 public class TestBase {
@@ -30,20 +39,28 @@ public class TestBase {
     }
 
 
-    public boolean isIssueOpen(int issueId) throws IOException {
-             return !getIssueById(issueId).getState_name().equals("Resolved");
+    public void skipIfNotFixed(int issueID) throws IOException, ServiceException,SkipException {
+        if(isIssueOpen(issueID)) {
+            throw new SkipException("Ignored because of issue " +issueID);
+        }
     }
 
-    public Issue getIssueById(int id) throws IOException {
-               Issue issue = new Issue();
-               getIssues()
-                       .stream().findFirst().map
-                      ((i) -> issue.withId(i.getId()).withSubject(i.getSubject())
-                              .withDescription(i.getDescription())
-                           .withStateName(i.getState_name())
-                 );
-          return issue;
+    public boolean isIssueOpen(int issueId) throws IOException, ServiceException {
+             //return !getIssueById(issueId).getState_name().equals("Resolved");
+        return !getIssueById(issueId);
+    }
+
+    public Boolean getIssueById(int id) throws IOException, ServiceException {
+        MantisConnectPortType mc = getMantisConnect2();
+        BigInteger idBig = BigInteger.valueOf(id);
+        IssueData createdIssueData = mc.mc_issue_get("administrator", "root", idBig);
+            System.out.println("Project id: "+id +" in Status: " +
+                    createdIssueData.getStatus().getName());
+        return  createdIssueData.getStatus().getName().equals("Resolved");
         }
 
-
+    private MantisConnectPortType getMantisConnect2() throws ServiceException, MalformedURLException {
+        return new MantisConnectLocator().getMantisConnectPort(new URL(
+                "http://localhost/mantisbt-1.3.0/api/soap/mantisconnect.php"));
+    }
 }

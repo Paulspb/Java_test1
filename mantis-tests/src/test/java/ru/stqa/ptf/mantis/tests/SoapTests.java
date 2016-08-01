@@ -3,11 +3,13 @@ package ru.stqa.ptf.mantis.tests;
 import biz.futureware.mantis.rpc.soap.client.MantisConnectLocator;
 import biz.futureware.mantis.rpc.soap.client.MantisConnectPortType;
 import biz.futureware.mantis.rpc.soap.client.ProjectData;
+import org.testng.SkipException;
 import org.testng.annotations.Test;
 import ru.stqa.ptf.mantis.model.Issue;
 import ru.stqa.ptf.mantis.model.Project;
 
 import javax.xml.rpc.ServiceException;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.rmi.RemoteException;
@@ -23,22 +25,22 @@ import static org.testng.AssertJUnit.assertEquals;
 
 
     @Test(enabled = true)
-    public void testGetProjects() throws MalformedURLException, ServiceException, RemoteException {
+    public void testGetProjects() throws IOException, ServiceException, SkipException {
         Set<Project> projects = app.soap().getProjects();  //mnogestvo
             //System.out.println(projects.length); // for massiv
         System.out.println(projects.size()); // for mnogestvo
         for (Project project: projects) {
             System.out.println(project.getName());
+            skipIfNotFixed(project.getId());
         }
     }
 
     @Test
-    public void testCreateIssue()throws MalformedURLException, ServiceException, RemoteException {
-        Set<Project> projects = app.soap().getProjects();  //mnogestvo
-        Issue issue = new Issue().withSummary("Test summary").withDescription("Test issue description")
-                .withProject(projects.iterator().next());
-        Issue created = app.soap().addIssue(issue);
-        assertEquals(issue.getSummary(),created.getSummary());
-
+    public void testCreateIssue() throws IOException,            ServiceException {
+            Set<Project> projects = app.soap().getProjects();  //mnogestvo
+            Issue issue = new Issue().withSummary("Test summary").withDescription("Test issue description")
+                    .withProject(projects.iterator().next());
+            Issue created = app.soap().addIssue(issue);
+            assertEquals(issue.getSummary(),created.getSummary());
     }
 }
