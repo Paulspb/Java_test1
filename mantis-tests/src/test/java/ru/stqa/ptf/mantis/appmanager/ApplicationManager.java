@@ -25,6 +25,7 @@ public class ApplicationManager {
     private RegistrationHelper registrationHelper;
     private FtpHelper ftp;
     private MailHelper mailHelper;
+    private SoapHelper soapHelper;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
@@ -94,5 +95,23 @@ public class ApplicationManager {
             mailHelper = new MailHelper(this);
         }
         return mailHelper;
+    }
+
+    //public JamesHelper james() {
+    //    if (jamesHelper == null) {
+    //        jamesHelper = new JamesHelper(this);
+    //    }
+    //    return jamesHelper;
+    //}
+
+
+        //init SoapHelper after declaration as in class (separated class)
+    public SoapHelper soap() {
+        //this is lenivyi initialization
+        if (soapHelper == null) {
+            soapHelper = new SoapHelper(this);
+        }  // then create bew field(not new variable) called : soapHelper here
+        return  soapHelper;
+
     }
 }
