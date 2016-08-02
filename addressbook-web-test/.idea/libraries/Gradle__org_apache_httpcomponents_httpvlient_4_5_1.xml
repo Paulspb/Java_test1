@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: org.apache.httpcomponents:httpvlient:4.5.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../rest_sample/Could not find org.apache.httpcomponents:httpvlient:4.5.1.&#13;&#10;Searched in the following locations:&#13;&#10;    https:/repo1.maven.org/maven2/org/apache/httpcomponents/httpvlient/4.5.1/httpvlient-4.5.1.pom&#13;&#10;    https:/repo1.maven.org/maven2/org/apache/httpcomponents/httpvlient/4.5.1/httpvlient-4.5.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
