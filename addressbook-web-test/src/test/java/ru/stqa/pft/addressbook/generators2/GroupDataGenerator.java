@@ -3,8 +3,6 @@ package ru.stqa.pft.addressbook.generators2;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
-import com.sun.jna.platform.win32.GDI32;
-import com.sun.org.apache.xerces.internal.impl.xs.models.XSAllCM;
 import com.thoughtworks.xstream.XStream;
 import ru.stqa.pft.addressbook.model.GroupData;
 
