@@ -1,6 +1,7 @@
 package ru.stqa.pft.addressbook.appManager;
 
 import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -47,7 +48,6 @@ public class ApplicationManager {
     public void initTests() throws IOException {
             // file config name
         String target = System.getProperty("target","local");
-        //String target = System.getProperty("target","remote");
         properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties",target))));
 
             //this is constructor ??? // lesson 7.4
@@ -67,6 +67,7 @@ public class ApplicationManager {
                 // using remote servet
                 DesiredCapabilities capabilities = new DesiredCapabilities();
                 capabilities.setBrowserName(browser);
+                capabilities.setPlatform(Platform.fromString(System.getProperty("platform","win7")));
                 wd = new RemoteWebDriver(new URL
                         (properties.getProperty("selenium.server")),capabilities);
             }

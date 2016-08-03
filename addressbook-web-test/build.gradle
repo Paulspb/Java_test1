@@ -34,13 +34,16 @@ test {
   return true
 }
 
-task testGroups(type: Test)  {
+task testGroups(type: Test) {
     useTestNG() {
         suites 'src/test/resources/testng-groups.xml'
-		return true
+        return true
     }
     if (project.hasProperty('browser')) {
         systemProperty 'browser', "${browser}"
+    }
+    if (project.hasProperty('platform')) {
+        systemProperty 'platform', "${platform}"
     }
     if (project.hasProperty('target')) {
         systemProperty 'target', "${target}"
@@ -48,4 +51,37 @@ task testGroups(type: Test)  {
     if (project.hasProperty('verifyUI')) {
         systemProperty 'verifyUI', "${verifyUI}"
     }
+
 }
+    task testContacts(type: Test)  {
+        useTestNG() {
+            suites 'src/test/resources/testng-contacts.xml'
+        }
+        if (project.hasProperty('browser')) {
+            systemProperty 'browser', "${browser}"
+        }
+        if (project.hasProperty('platform')) {
+            systemProperty 'platform', "${platform}"
+        }
+        if (project.hasProperty('target')) {
+            systemProperty 'target', "${target}"
+        }
+        if (project.hasProperty('verifyUI')) {
+            systemProperty 'verifyUI', "${verifyUI}"
+        }
+    }
+
+    task test1Contact(type: Test)  {
+        useTestNG() {
+            suites 'src/test/resources/testng-small-01.xml'
+        }
+        if (project.hasProperty('browser')) {
+            systemProperty 'browser', "${browser}"
+        }
+        if (project.hasProperty('platform')) {
+            systemProperty 'platform', "${platform}"
+        }
+        if (project.hasProperty('target')) {
+            systemProperty 'target', "${target}"
+        }
+    }
