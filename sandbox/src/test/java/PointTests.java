@@ -14,7 +14,7 @@ public class PointTests {
 
          assertEquals(p11.distance3(p21),0.4123105625617664);
         //assertEquals(p11.distance3(p21),50.4);
-        assert p11.distance3(p21) == 5.0;
+        //assert p11.distance3(p21) == 5.0;
 
 
     }
