@@ -47,6 +47,7 @@ public class ApplicationManager {
     public void initTests() throws IOException {
             // file config name
         String target = System.getProperty("target","local");
+        //String target = System.getProperty("target","remote");
         properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties",target))));
 
             //this is constructor ??? // lesson 7.4
