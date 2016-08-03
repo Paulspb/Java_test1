@@ -5,29 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6ab3893-de6c-410d-b80b-82e7e3e7db91" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/addressbook-web-test_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/addressbook-web-test_main.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/addressbook-web-test_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/addressbook-web-test_test.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/mantis-tests_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/mantis-tests_main.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/mantis-tests_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/mantis-tests_test.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/rest_sample_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/rest_sample_main.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/rest_sample_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/rest_sample_test.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/soap-sample_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/soap-sample_test.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ApplicationManager.java" afterPath="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ApplicationManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ContactHelper.java" afterPath="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/appManager/ContactHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/ContactAloneVsEditTest.java" afterPath="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/ContactAloneVsEditTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/ContactDeleteFromGroup.java" afterPath="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/ContactDeleteFromGroup.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/TestBase.java" afterPath="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/TestBase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../rest_sample/src/test/java/ru/stqa/pft/rset/Issue.java" afterPath="$PROJECT_DIR$/../rest_sample/src/test/java/ru/stqa/pft/rset/Issue.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../rest_sample/src/test/java/ru/stqa/pft/rset/RestTests.java" afterPath="$PROJECT_DIR$/../rest_sample/src/test/java/ru/stqa/pft/rset/RestTests.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../rest_sample/src/test/java/ru/stqa/pft/rset/testBase.java" afterPath="$PROJECT_DIR$/../rest_sample/src/test/java/ru/stqa/pft/rset/testBase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../sandbox/build.gradle" afterPath="$PROJECT_DIR$/../sandbox/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../soap-sample/src/test/java/ru/stqa/pft/soap/GeoIpSeviceTests.java" afterPath="$PROJECT_DIR$/../soap-sample/src/test/java/ru/stqa/pft/soap/GeoIpSeviceTests.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/resources/testng-groups.xml" afterPath="$PROJECT_DIR$/src/test/resources/testng-groups.xml" />
     </list>
     <ignored path="addressbook-web-test.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -100,15 +80,15 @@
         <entry file="file://$PROJECT_DIR$/../rest_sample/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="286">
-              <caret line="16" column="55" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
+              <caret line="21" column="55" selection-start-line="21" selection-start-column="55" selection-end-line="21" selection-end-column="55" />
               <folding>
-                <element signature="n#!!doc" expanded="true" />
+                <marker date="1470208465912" expanded="true" signature="0:130" placeholder="/*...*/" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RestTests.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RestTests.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../rest_sample/src/test/java/ru/stqa/pft/rset/RestTests.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="66">
@@ -116,6 +96,26 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="local.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/resources/local.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="testng-groups.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/resources/testng-groups.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="88">
+              <caret line="4" column="81" selection-start-line="4" selection-start-column="81" selection-end-line="4" selection-end-column="81" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -808,7 +808,7 @@
       <map>
         <entry key="$PROJECT_DIR$" value="1469895568702" />
         <entry key="$PROJECT_DIR$/../mantis-tests" value="1470055576467" />
-        <entry key="$PROJECT_DIR$/../rest_sample" value="1470131881390" />
+        <entry key="$PROJECT_DIR$/../rest_sample" value="1470208465912" />
         <entry key="$PROJECT_DIR$/../soap-sample" value="1469997406147" />
       </map>
     </option>
@@ -1156,7 +1156,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/test/resources/local.properties" />
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/GroupModificationTests.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/GroupDeleteTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/stqa/pft/addressbook/tests/GroupCreationTest.java" />
@@ -1207,6 +1206,7 @@
         <option value="$PROJECT_DIR$/../rest_sample/src/test/java/ru/stqa/pft/rset/Issue.java" />
         <option value="$PROJECT_DIR$/../rest_sample/src/test/java/ru/stqa/pft/rset/RestTests.java" />
         <option value="$PROJECT_DIR$/../rest_sample/src/test/java/ru/stqa/pft/rset/TestBase.java" />
+        <option value="$PROJECT_DIR$/src/test/resources/testng-groups.xml" />
       </list>
     </option>
   </component>
@@ -1340,10 +1340,6 @@
               <option name="myItemId" value="addressbook-web-test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -1351,7 +1347,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="soap-sample" />
+              <option name="myItemId" value="addressbook-web-test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1361,17 +1357,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="rest_sample" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
               <option name="myItemId" value="addressbook-web-test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rest_sample" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -1382,6 +1368,10 @@
               <option name="myItemId" value="test" />
               <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -1389,7 +1379,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="rest_sample" />
+              <option name="myItemId" value="addressbook-web-test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -1405,7 +1395,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="rset" />
+              <option name="myItemId" value="addressbook" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1415,18 +1405,34 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="rest_sample" />
+              <option name="myItemId" value="addressbook-web-test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="addressbook-web-test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="addressbook-web-test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -1935,7 +1941,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1947,7 +1953,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18375" sideWeight="0.8070404" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18375" sideWeight="0.8070404" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0675" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -2560,20 +2566,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/19.0/91a4d115400e904f22b03a78deb355e9ea803cd4/guava-19.0-sources.jar!/com/google/common/collect/ImmutableMapEntry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/19.0/91a4d115400e904f22b03a78deb355e9ea803cd4/guava-19.0-sources.jar!/com/google/common/base/Preconditions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="335" column="0" selection-start-line="335" selection-start-column="0" selection-end-line="335" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/19.0/91a4d115400e904f22b03a78deb355e9ea803cd4/guava-19.0-sources.jar!/com/google/common/collect/Hashing.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="87">
@@ -2634,6 +2626,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
           <caret line="27" column="4" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2775,6 +2770,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="514">
           <caret line="32" column="37" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2826,9 +2824,9 @@
     <entry file="file://$PROJECT_DIR$/../rest_sample/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
-          <caret line="16" column="55" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
+          <caret line="21" column="55" selection-start-line="21" selection-start-column="55" selection-end-line="21" selection-end-column="55" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <marker date="1470208465912" expanded="true" signature="0:130" placeholder="/*...*/" />
           </folding>
         </state>
       </provider>
@@ -2955,6 +2953,22 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/local.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/testng-groups.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="81" selection-start-line="4" selection-start-column="81" selection-end-line="4" selection-end-column="81" />
+          <folding />
         </state>
       </provider>
     </entry>
