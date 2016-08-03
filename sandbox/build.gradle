@@ -20,5 +20,8 @@ dependencies{
     compile 'org.testng:testng:6.9.10'
 }
 
-
+test {
+   useTestNG()
+   return true
+}
 
