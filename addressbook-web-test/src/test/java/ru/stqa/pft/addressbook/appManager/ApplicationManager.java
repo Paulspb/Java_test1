@@ -58,17 +58,12 @@ public class ApplicationManager {
         } else if (Objects.equals(browser, BrowserType.IE)) {
             wd = new InternetExplorerDriver();
         }
-        // init attribute of object = WD
-        // groupHelper.wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        // groupHelper.wd.get("http://localhost/addressbook/group.php");
         wd.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-                //wd.get("http://localhost/addressbook/group.php");
         wd.get(properties.getProperty("web.baseUrl"));
         groupHelper = new GroupHelper(wd);
         navigationHelper = new NavigationHelper(wd);
         sessionHelper    = new SessionHelper(wd);
         contactHelper = new ContactHelper(wd);
-        //sessionHelper.loginAddressbook("admin", "secret");
         sessionHelper.loginAddressbook(properties.getProperty("web.adminLogin"),
                 properties.getProperty("web.adminPassword"));
     }

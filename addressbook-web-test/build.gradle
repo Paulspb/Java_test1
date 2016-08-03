@@ -25,7 +25,13 @@ dependencies{
     compile 'mysql:mysql-connector-java:6.0.3'
     //compile 'org.hibernate:hibernate-core:5.2.1.Final'
     compile 'org.hibernate:hibernate-core:5.1.0.Final'
+    compile 'ch.qos.logback:logback-classic:1.1.5'
 
+}
+
+test {
+   useTestNG()
+   return true
 }
 
 task testGroups(type: Test)  {

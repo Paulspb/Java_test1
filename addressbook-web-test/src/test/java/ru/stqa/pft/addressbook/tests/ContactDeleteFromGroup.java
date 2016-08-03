@@ -39,6 +39,7 @@ public class ContactDeleteFromGroup extends TestBase  {
             }
         }
 
+
         @Test
         public void testContactDeleteFromGroup() throws IOException {
             Contacts before = app.db().contacts();

@@ -31,6 +31,7 @@ public class ContactAloneVsEditTest extends TestBase{
         }
     }
 
+
     @Test
     public void testContactAloneVsEdit() {
         app.contact().goToContact();

@@ -388,7 +388,7 @@ public class ContactHelper extends HelperBase {
         return newGroup;
     }
 
-    
+
     public void  deleteFromGroup( NameFirstMiddle contact,Groups groups) {
 
         String oldGroup = "yyy";

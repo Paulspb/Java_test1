@@ -15,9 +15,6 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 
-/**
- * Created by khomep on 08-Jun-16.
- */
 public class TestBase {
 
     //    protected final ApplicationManager app = new ApplicationManager(BrowserType.IE);
