@@ -30,7 +30,7 @@ dependencies{
 }
 
 test {
-  ueseTestNG()
+  useTestNG()
   return true
 }
 
